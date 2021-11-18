@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+.login-title{
+    text-align: center;
+
+}
+.login-container{
+    width: 502px;
+    height: 620px;
+    border-radius: 46px;
+    border: 1px solid #D4CBCB ;
+    text-align: center;
+    margin: 40px auto;
+    
+}
+
+.login-container--fb-button{
+   width: 450px;
+   height: 48px;
+   border: none;
+   background-color: #4267B2;
+   border-radius: 36px;
+   color: #fff;
+   cursor: pointer;
+   font-weight: 600;
+   margin-top: 60px ;
+   position: relative;
+}
+.login-container--fb-button p, .login-container--google-button p{
+    position: absolute;
+    top: 14%;
+    left: 29%;
+}
+.login-container--fb-button p img, .login-container--google-button p img{
+    vertical-align: bottom;
+}
+
+.login-container--google-button{
+    width: 450px;
+    height: 48px;
+    border: 1px solid #666565;
+    background-color: #fff;
+    border-radius: 36px; 
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px ;
+    position: relative;
+}
+.form-container{
+    width: 450px;
+    text-align: left;
+    margin: 25px auto;
+}
+
+
+.login-container--line{
+    width: 450px;
+    margin: 20px auto;
+}
+.login-container--line p{
+    display: inline-block;    
+}
+
+.login-container--line-first, .login-container--line-second{
+    border-bottom: 1px solid #D4CBCB;
+    width: 215px;
+}
+
+.form-container input{
+    width: 450px;
+    height: 48px; 
+    border-radius: 36px;
+    border: 1px solid #D4CBCB;
+    margin-top: 10px;
+    margin-bottom: 10px;    
+    text-align: center;
+}
+
+.form-container .form-container--submit{
+    background-color: #CE0F0F;
+    color: #fff;
+    font-size: 16px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.login-container--create-account{
+    text-decoration: none;
+    color: #CE0F0F;
+}
+body{
+   text-align: center;
+}
+.line{
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-top: 10px;
+}
