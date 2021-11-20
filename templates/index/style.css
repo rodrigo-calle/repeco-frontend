@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+:root {
+    --red-color: #CE0F0F;
+    --blue-color: #0070BA;
+    --green-color: #70AF3D;
+    --violet-color: #9B156E;
+    --gris-color: #F3F3F3;
+}
+Body{
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.container-nav{
+    background-color: var(--red-color);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white
+}
+nav ul {
+    display: flex;
+    list-style: none;
+}
+nav ul li{
+    padding: 0 .25rem;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+header img{
+    width:100%;
+    object-fit: cover;
+    height: 300px;
+}
+
+.container{
+    max-width: 1200px;
+    padding: 0 1rem;
+    position: relative;
+    margin: 0 auto;
+}
+
+.search{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: .5rem;
+    margin-top: -50px;
+    padding: 1rem;
+}
+.search label{
+    border-radius: .25rem;
+    border: 1px var(--red-color) solid;
+    padding: 0.25rem 0;
+    display: flex;
+    margin: .25rem 0;
+    width: 100%;
+}
+
+.search label div{
+    font-size: 2rem;
+    margin: 0 0.5rem;
+}
+.search form input, .search form select{
+    width: 90%;
+    border: none; 
+    background: none;
+}
+/* .search form input[type="date"]::-webkit-inner-spin-button,
+.search form input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+} */
+
+/* cards */
+
+.card{
+    background-color: var(--gris-color);
+    margin-bottom: 1rem;
+    border-radius: 2rem;
+}
+
+.card__body{
+    padding: 0 1rem;
+}
+
+.card__body h3{
+    margin-bottom: 0;
+}
+
+.card__body h4{
+    font-weight: 500;
+    margin: 0;
+}
+
+.card img{
+    width: 100%;
+}
+
+.card__footer{
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.button{
+    padding: .5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    color: #F3F3F3;
+    background-color: var(--green-color);
+    margin: .25rem;
+}
+
+.button--big{
+    width: 100%;
+}
+
+/* pies de pagina */
+
+footer{
+    padding: 1rem;
+    background: var(--violet-color);
+    color: white;
+}
+footer div ul{
+    padding-inline: inherit;
+}
+footer div ul li{
+    list-style: none;
+}
+footer div ul li a{
+    text-decoration: none;
+    color: white;
+}
