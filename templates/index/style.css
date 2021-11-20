@@ -14,11 +14,12 @@ Body{
     font-family: 'Ubuntu', sans-serif;
 }
 
-.container-nav{
+nav{
     background-color: var(--red-color);
 }
 
-nav{
+.nav__container{
+    
     display: flex;
     justify-content: space-between;
     padding: 0 1rem;
@@ -27,24 +28,24 @@ nav{
     color: white
 }
 
-nav ul {
+.nav__container__menu{
     display: flex;
     list-style: none;
 }
 
-nav ul li{
+.nav__container__menu__list{
     padding: 0 .25rem;
 }
 
-nav ul li a{
+.nav__container__menu__list__link{
     color: white;
     text-decoration: none;
 }
 
-header img{
+.header__image{
     width:100%;
     object-fit: cover;
-    height: 300px;
+    height: 350px;
 }
 
 .container{
@@ -79,7 +80,6 @@ header img{
 
 .search__form__label__body{
     width: 100%;
-    /* border: solid 1px green; */
     display: block;
     position: relative;
     padding: 0 0.5rem;
@@ -96,12 +96,9 @@ header img{
     display: block;
     width: 100%;
     box-sizing: border-box;
-    /* border: solid 1px green; */
     padding: 1px 2px;
     font-size: 1rem;
 }
-
-/* cards */
 
 .card{
     background-color: var(--gris-color);
@@ -113,16 +110,16 @@ header img{
     padding: 0 1rem;
 }
 
-.card__body h3{
+.card__body__title{
     margin-bottom: 0;
 }
 
-.card__body h4{
+.card__body__subTitle{
     font-weight: 500;
     margin: 0;
 }
 
-.card img{
+.card__image{
     width: 100%;
 }
 
@@ -145,7 +142,11 @@ header img{
     width: 100%;
 }
 
-/* pies de pagina */
+.button--booking{
+    color: var(--blue-color);
+    background-color: transparent;
+    border:solid 1px var(--blue-color);
+}
 
 .footer__items{
     padding: 1rem;
@@ -153,15 +154,15 @@ header img{
     color: white;
 }
 
-.footer__items div ul{
+.footer__items__col__menu{
     padding-inline: inherit;
 }
 
-.footer__items div ul li{
+.footer__items__col__menu__lista{
     list-style: none;
 }
 
-.footer__items div ul li a{
+.footer__items__col__menu__lista__link{
     text-decoration: none;
     color: white;
 }
@@ -169,4 +170,10 @@ header img{
 .footer__redes{
     font-size: 2rem;
     text-align: center;
+}
+
+@media (min-width:768px) {
+    /* body{
+        background: #000;
+    } */
 }
