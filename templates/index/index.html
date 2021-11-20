@@ -23,44 +23,63 @@
     </div>
     
     <header>
-        <img src="./Image-header.png" alt="">
+        <img src="./image-header.png" alt="">
     </header>
     <div class="container">
         <div class="search">
-            <form action="">
-                <label for="location">
-                    <div>
+            <form class="search__form" action="">
+
+                <label class="search__form__label" for="location">
+                    <div class="search__form__label__icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <div>
-                        <span>Lugar</span>
-                        <input id="location" name="location" type="text">
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Lugar</span>
+                        <input class="search__form__label__body__input" id="location" name="location" type="text">
+                    </div> 
+                </label>
+
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Fecha de ida</span>
+                        <input class="search__form__label__body__input" type="date">
+                    </div>
+                </label>
+
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Fecha de regreso</span>
+                        <input class="search__form__label__body__input" type="date">
+                    </div>
+                </label>
+                
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Personas</span>
+                        
+                        <select class="search__form__label__body__select" name="select">
+                            <option value="1persona">1 Persona</option>
+                            <option value="2personas" selected>2 Personas</option>
+                            <option value="3personas">3 Personas</option>
+                            <option value="4personas">4 Personas</option>
+                        </select>
                     </div>
                      
-                </label>
-                <label for="">
-                    <i class="fas fa-calendar-day"></i> Fecha de ida
-                    <input type="date">
-                </label>
-                <label for="">
-                    <i class="fas fa-calendar-day"></i> Fecha de regreso
-                    <input type="date">
-                </label>
-                <label for="">
-                    <i class="fas fa-users"></i> Personas
-                    <select name="select">
-                        <option value="1persona">1 Persona</option>
-                        <option value="2personas" selected>2 Personas</option>
-                        <option value="3personas">3 Personas</option>
-                        <option value="4personas">4 Personas</option>
-                    </select>
+                    
                 </label>
                 
-            <button class="button button--big">
-                <i class="fas fa-search"></i> Buscar 
-            </button>
-                
-            
+                <button class="button button--big">
+                    <i class="fas fa-search"></i> Buscar 
+                </button>
 
             </form>
             
@@ -83,43 +102,46 @@
     </section>
     </div>
     <footer>
-        <div>
-            <h3>Asistencia</h3>
-            <ul>
-                <li><a href="">Centro de Ayuda</a></li>
-                <li><a href="">Información de seguridad</a></li>
-                <li><a href="">Opciones de cancelación</a></li>
-                <li><a href="">Nuestra respuesta ante el COVID-19</a></li>
-                <li><a href="">Accesibilidad para todos</a></li>
-                <li><a href="">¿Problemas en tu localidad?</a></li>
-            </ul>
+        <div class="footer__items">
+            <div>
+                <h3>Asistencia</h3>
+                <ul>
+                    <li><a href="">Centro de Ayuda</a></li>
+                    <li><a href="">Información de seguridad</a></li>
+                    <li><a href="">Opciones de cancelación</a></li>
+                    <li><a href="">Nuestra respuesta ante el COVID-19</a></li>
+                    <li><a href="">Accesibilidad para todos</a></li>
+                    <li><a href="">¿Problemas en tu localidad?</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Modo hoster</h3>
+                <ul>
+                    <li><a href="">Anímate a compartir tu espacio</a></li>
+                    <li><a href="">protección para los hosters</a></li>
+                    <li><a href="">Recursos para hosters</a></li>
+                    <li><a href="">Visita el foro de la comunidad</a></li>
+                    <li><a href="">Cómo brindar servicios de hoster de forma responsable</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Acerca de</h3>
+                <ul>
+                    <li><a href="">Sala de prensa</a></li>
+                    <li><a href="">Más información sobre las nuevas funciones</a></li>
+                    <li><a href="">Carta de nuestros fundadores</a></li>
+                    <li><a href="">Carreras</a></li>
+                    <li><a href="">Inversionistas</a></li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <h3>Modo hoster</h3>
-            <ul>
-                <li><a href="">Anímate a compartir tu espacio</a></li>
-                <li><a href="">protección para los hosters</a></li>
-                <li><a href="">Recursos para hosters</a></li>
-                <li><a href="">Visita el foro de la comunidad</a></li>
-                <li><a href="">Cómo brindar servicios de hoster de forma responsable</a></li>
-            </ul>
-        </div>
-        <div>
-            <h3>Acerca de</h3>
-            <ul>
-                <li><a href="">Sala de prensa</a></li>
-                <li><a href="">Más información sobre las nuevas funciones</a></li>
-                <li><a href="">Carta de nuestros fundadores</a></li>
-                <li><a href="">Carreras</a></li>
-                <li><a href="">Inversionistas</a></li>
-            </ul>
+        <div class="footer__redes">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube-square"></i>
         </div>
     </footer>
-    <div class="redes">
-        <i class="fab fa-facebook-square"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-youtube-square"></i>
-    </div>
+    
     
 </body>
 </html>

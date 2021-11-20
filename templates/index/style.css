@@ -6,15 +6,18 @@
     --violet-color: #9B156E;
     --gris-color: #F3F3F3;
 }
+
 Body{
     margin: 0;
     padding: 0;
     font-size: 16px;
     font-family: 'Ubuntu', sans-serif;
 }
+
 .container-nav{
     background-color: var(--red-color);
 }
+
 nav{
     display: flex;
     justify-content: space-between;
@@ -23,13 +26,16 @@ nav{
     margin: 0 auto;
     color: white
 }
+
 nav ul {
     display: flex;
     list-style: none;
 }
+
 nav ul li{
     padding: 0 .25rem;
 }
+
 nav ul li a{
     color: white;
     text-decoration: none;
@@ -54,8 +60,8 @@ header img{
     margin-top: -50px;
     padding: 1rem;
 }
-.search label{
-    border-radius: .25rem;
+.search__form__label{
+    border-radius: 1rem;
     border: 1px var(--red-color) solid;
     padding: 0.25rem 0;
     display: flex;
@@ -63,20 +69,37 @@ header img{
     width: 100%;
 }
 
-.search label div{
+.search__form__label__icon{
     font-size: 2rem;
     margin: 0 0.5rem;
+    color:var(--blue-color);
+    width: 50px;
+    text-align: center;
 }
-.search form input, .search form select{
+
+.search__form__label__body{
+    width: 100%;
+    /* border: solid 1px green; */
+    display: block;
+    position: relative;
+    padding: 0 0.5rem;
+}
+
+.search__form__label__body__title{
+    font-size: .8rem;
+}
+
+.search__form__label__body__input, .search__form__label__body__select{
     width: 90%;
     border: none; 
     background: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    /* border: solid 1px green; */
+    padding: 1px 2px;
+    font-size: 1rem;
 }
-/* .search form input[type="date"]::-webkit-inner-spin-button,
-.search form input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-} */
 
 /* cards */
 
@@ -124,18 +147,26 @@ header img{
 
 /* pies de pagina */
 
-footer{
+.footer__items{
     padding: 1rem;
     background: var(--violet-color);
     color: white;
 }
-footer div ul{
+
+.footer__items div ul{
     padding-inline: inherit;
 }
-footer div ul li{
+
+.footer__items div ul li{
     list-style: none;
 }
-footer div ul li a{
+
+.footer__items div ul li a{
     text-decoration: none;
     color: white;
+}
+
+.footer__redes{
+    font-size: 2rem;
+    text-align: center;
 }
