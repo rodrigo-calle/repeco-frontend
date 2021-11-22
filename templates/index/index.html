@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/bc19bca430.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav>
+        <div class="nav__container">
+            <!-- <img src=".log" alt=""> -->
+            <p class="nav__container__logo">logo</p>
+            <ul class="nav__container__menu">
+                <li class="nav__container__menu__list">
+                    <a class="nav__container__menu__list__link" href="">Acceder</a>
+                </li>
+                <li class="nav__container__menu__list">
+                    <a class="nav__container__menu__list__link" href="">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header class="header">
+        <img class="header__image" src="./image-header.webp" alt="">
+    </header>
+    <div class="container">
+        <div class="search">
+            <form class="search__form" action="">
+                <label class="search__form__label" for="location">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Lugar</span>
+                        <input class="search__form__label__body__input" id="location" name="location" type="text">
+                    </div> 
+                </label>
+
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Fecha de ida</span>
+                        <input class="search__form__label__body__input" type="date">
+                    </div>
+                </label>
+
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Fecha de regreso</span>
+                        <input class="search__form__label__body__input" type="date">
+                    </div>
+                </label>
+                
+                <label class="search__form__label" for="">
+                    <div class="search__form__label__icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="search__form__label__body">
+                        <span class="search__form__label__body__title">Personas</span>
+                        
+                        <select class="search__form__label__body__select" name="select">
+                            <option value="1persona">1 Persona</option>
+                            <option value="2personas" selected>2 Personas</option>
+                            <option value="3personas">3 Personas</option>
+                            <option value="4personas">4 Personas</option>
+                        </select>
+                    </div>
+                </label>
+                
+                <button class="search__form__submit">
+                    <i class="fas fa-search"></i> Buscar 
+                </button>
+
+            </form>
+            
+        </div>
+    <section>
+        <div class="card">
+            <img class="card__image" src="./image-card.jpeg" alt="">
+
+            <div class="card__body">
+                <h3 class="card__body__title">Título de la habitación <sub></sub></h3>
+                <h4 class="card__body__subTitle">Descripción de habitación</h4>
+                <p class="card__body__description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's.</p>
+                <p class="card__body__addres"><i class="fas fa-map-marker-alt"></i> Av. testavenida - Ciudad-Provincia-PAis</p>
+                <p class="card__body__price"><i class="fas fa-dollar-sign"></i> 123124.123</p>
+                <div class="card__body__footer">
+                    <button class="card__body__footer__button card__body__footer__button--booking">Lista de Deseos</button>
+                    <button class="card__body__footer__button">Reservar</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    </div>
+    <footer>
+        <div class="footer__items">
+            <div class="footer__items__container">
+                <div class="footer__items__container__col">
+                    <h3 class="footer__items__container__col__title">Asistencia</h3>
+                    <ul class="footer__items__container__col__menu">
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Centro de Ayuda</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Información de seguridad</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Opciones de cancelación</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Nuestra respuesta ante el COVID-19</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Accesibilidad para todos</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">¿Problemas en tu localidad?</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__items__container__col">
+                    <h3 class="footer__items__container__col__title">Modo hoster</h3>
+                    <ul class="footer__items__container__col__menu">
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Anímate a compartir tu espacio</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">protección para los hosters</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Recursos para hosters</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Visita el foro de la comunidad</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Cómo brindar servicios de hoster de forma responsable</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer__items__container__col">
+                    <h3 class="footer__items__container__col__title">Acerca de</h3>
+                    <ul class="footer__items__container__col__menu">
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Sala de prensa</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Más información sobre las nuevas funciones</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Carta de nuestros fundadores</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Carreras</a>
+                        </li>
+                        <li class="footer__items__container__col__menu__lista">
+                            <a class="footer__items__container__col__menu__lista__link" href="">Inversionistas</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer__redes">
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube-square"></i>
+        </div>
+    </footer>
+    
+    
+</body>
+</html>
