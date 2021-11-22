@@ -1,0 +1,28 @@
+
+nav{
+    background-color: var(--red-color);
+}
+
+.nav__container{
+    
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white
+}
+
+.nav__container__menu{
+    display: flex;
+    list-style: none;
+}
+
+.nav__container__menu__list{
+    padding: 0 .25rem;
+}
+
+.nav__container__menu__list__link{
+    color: white;
+    text-decoration: none;
+}
