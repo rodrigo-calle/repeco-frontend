@@ -1,0 +1,198 @@
+body {
+    margin: 0;
+    font-family: "Ubuntu";
+    font-size: 18px;
+}
+
+.title{
+    margin-left: 20px;
+}
+
+.container{
+    margin: 20px;
+}
+
+.card{
+    width: 100%;
+}
+
+.card__image{
+    width: 100%;
+    height: 160px;
+}
+
+.card__type{
+    color: grey;
+    font-size: 20px;
+    line-height: 0%;
+}
+.card__title{
+    font-size: 22px;    
+}
+
+.card__address{
+    font-weight: 100;
+    line-height: 0%;
+}
+
+.card__recomendation{
+    color: green;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.tag__item{
+    display: flex;
+    align-items: center;
+    background-color: #E5E5E5;    
+    margin-bottom: 10px;
+    padding: 0px 10px;
+    font-weight: 100;
+    font-size: 14px;
+    height: 30px; 
+    width: fit-content;   
+    
+}
+
+.tag__item > i{
+    margin-right: 10px;    
+}
+
+.card__button-container{
+    display: flex;
+    justify-content: flex-end;    
+    margin-bottom: 30px;
+}
+
+.card__button{
+    display: flex;  
+    background-color: #D42B1E;
+    border-radius: 5px;
+    color: white;
+    padding: 8px 12px;
+    border: none;    
+}
+
+.card__button > i {
+    margin-right: 10px;
+}
+
+.booking-container__resume{
+    margin-top: 30px;
+    border: 2px solid #A9A5A5;
+}
+
+.booking-container__resume > hr {
+    width: 90%;
+    margin: auto;        
+}
+
+.resume__title{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;    
+    margin-bottom: 0px;
+}
+
+
+.resume__subtotal, .resume__igv, .resume__total{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 0px;
+    width: 90%;
+}
+
+.resume__price{
+    color: #D20F0F;
+}
+
+.resume__total{
+    font-weight: 700;
+}
+
+.resume_button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.resume__button{    
+    font-size: 22px;
+    margin: 20px 0px;
+    padding: 15px 0px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
+    background-color: #0C8A01;
+    color: #FFFFFF;    
+}
+
+.services{
+    margin-top: 15px;
+}
+
+.services__description{
+    display: flex;
+    align-items: center;
+    margin-left: 36px;
+    font-size: 20px;
+    color: #524A4A;
+    height: 55px;
+}
+
+.services__description > i {
+    margin-right: 20px;    
+}
+
+@media (min-width: 415px){
+
+    .title{
+        width: 1200px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        width: 1200px;
+        margin: auto;
+        gap: 20px;
+    }
+
+    .card{
+        display: flex;
+    }
+    .card__image{
+        width: 160px;
+        
+        margin: 20px 17px 28px 20px;
+    }
+    .card__description{
+        width: 100%;
+    }
+    .card__type{
+        font-size: 16px;
+    }
+    .card__title{
+        font-size: 18px;
+    }
+    .card__addres{
+        font-size: 16px;
+    }
+    .card__footer{
+        max-width: 80% ;
+        flex-wrap: wrap;        
+        display: flex;        
+    }
+    .tag__item{
+        margin-right: 30px;
+    }
+
+    .tag__text{
+        font-size: 12px;
+    }
+    
+    
+    
+
+}
