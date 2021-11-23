@@ -4,7 +4,7 @@ import "./ServiceCard.css"
 const ServiceCard = (props) => {
     return (
         <div className="card">
-            <img className="card__classNameName" src="/image/image-card.jpeg" alt="" />          
+            <img className="card__image" src="/image/image-card.jpeg" alt="" />          
             <div className="card__body">
                 <h3 className="card__body__title">Título de la habitación <sub></sub></h3>
                 <h4 className="card__body__subTitle">Descripción de habitación</h4>
@@ -22,3 +22,4 @@ const ServiceCard = (props) => {
 };
 
 export default ServiceCard;
+
