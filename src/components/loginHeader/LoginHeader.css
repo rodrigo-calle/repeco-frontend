@@ -1,0 +1,16 @@
+header{
+    text-align: center;
+ }
+ .login-title{
+     text-align: center;
+ 
+ }
+ 
+ .line{
+     border-bottom: 1px solid #000;
+     width: 100%;
+     margin-top: 10px;
+ }
+ .login-container__line-letter{
+     margin: 0;
+ }
