@@ -1,0 +1,73 @@
+
+
+
+.booking-container__resume{
+    margin-top: 30px;
+    border: 2px solid #A9A5A5;
+}
+
+.booking-container__resume > hr {
+    width: 90%;
+    margin: auto;        
+}
+
+.resume__title{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;    
+    margin-bottom: 0px;
+}
+
+
+.resume__subtotal, .resume__igv, .resume__total{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 0px;
+    width: 90%;
+}
+
+.resume__price{
+    color: #D20F0F;
+}
+
+.resume__total{
+    font-weight: 700;
+}
+
+.resume_button-container{
+    display: flex;
+    justify-content: center;
+}
+
+.resume__button{    
+    font-size: 22px;
+    margin: 20px 0px;
+    padding: 15px 0px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
+    background-color: #0C8A01;
+    color: #FFFFFF;    
+}
+
+
+
+
+
+.services{
+    margin-top: 15px;
+}
+
+.services__description{
+    display: flex;
+    align-items: center;
+    margin-left: 36px;
+    font-size: 20px;
+    color: #524A4A;
+    height: 55px;
+}
+
+.services__description > i {
+    margin-right: 20px;    
+}
