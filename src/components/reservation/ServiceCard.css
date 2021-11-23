@@ -45,3 +45,30 @@
     background-color: transparent;
     border:solid 1px var(--blue-color);
 }
+
+
+
+@media (min-width:600px) {   
+    .card{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .card__image{
+        border-radius: 2rem 0 0 2rem;
+    }
+    .card__body {
+        padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+}
+
+@media (min-width:768px) {    
+    .card{
+        grid-template-columns: 1fr 2fr;
+    }   
+}
+
+
+
