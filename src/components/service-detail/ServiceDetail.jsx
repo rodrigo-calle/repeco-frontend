@@ -142,6 +142,7 @@ const ServiceDetail = () => {
             style={{ border: 0 }}
             allowfullscreen=""
             loading="lazy"
+            title="Map"
           />
         </div>
         <div className="container-detail--buttons">

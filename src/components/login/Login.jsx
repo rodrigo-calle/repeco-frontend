@@ -61,7 +61,7 @@ const Login = () => {
           <p className="login-container__question input">
             ¿No tienes una cuenta?
           </p>
-          <a href="" className="login-container__create-account">
+          <a href="www.google.com" className="login-container__create-account">
             Crear una cuenta
           </a>
         </>
