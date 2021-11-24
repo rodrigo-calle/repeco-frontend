@@ -1,0 +1,35 @@
+body {
+    margin: 0;
+    font-family: "Ubuntu";
+    font-size: 18px;
+}
+
+.title{
+    margin-left: 20px;
+}
+
+.container{
+    margin: 20px;
+}
+
+
+
+
+
+
+@media (min-width: 415px){
+
+    .title{
+        width: 1200px;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .container{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        width: 1200px;
+        margin: auto;
+        gap: 20px;
+    }
+
+}
