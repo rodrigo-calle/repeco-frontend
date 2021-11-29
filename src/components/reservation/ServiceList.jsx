@@ -2,10 +2,13 @@ import React from 'react';
 import ServiceCard from './ServiceCard';
 import "./ServiceList.css"
 
-const ServiceList = () => {       
+const ServiceList = ({roomList}) => {    
+    
     return (
-        <section>       
-            <ServiceCard />           
+        <section>
+            {roomList.map(room => (
+                <ServiceCard room={room} />           
+            ))}       
         </section>
     );
 };

@@ -38,6 +38,7 @@
     color: #F3F3F3;
     background-color: var(--green-color);
     margin: .25rem;
+    cursor: pointer;
 }
 
 .card__body__footer__button--booking{
