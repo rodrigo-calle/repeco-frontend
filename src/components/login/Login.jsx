@@ -42,11 +42,11 @@ const Login = () => {
           <p className="login-container__line-second"></p>
         </div>
         <form action="" className="form-container">
-          <label for="email">Correo electrónico</label>
+          <label htmlFor="email">Correo electrónico</label>
           <br />
           <input className="input" type="email" />
           <br />
-          <label for="password">Contraseña</label>
+          <label htmlFor="password">Contraseña</label>
           <br />
           <input className="input" type="password" />
           <br />

@@ -10,7 +10,8 @@ nav{
     padding: 0 1rem;
     max-width: 1200px;
     margin: 0 auto;
-    color: white
+    color: white;
+    align-items: center;
 }
 
 .nav__container__menu{
@@ -25,4 +26,11 @@ nav{
 .nav__container__menu__list__link{
     color: white;
     text-decoration: none;
+}
+
+.nav__container__logo{
+    width: 50px;
+    border-radius: 50px;
+    align-self: center;
+
 }

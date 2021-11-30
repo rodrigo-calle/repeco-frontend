@@ -1,8 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { getRoom } from "../../data";
 import "./ServiceDetail.css";
 
 
 const ServiceDetail = () => {
+
+  const [room, setRoom] = useState({
+    id: 0,
+    type: "",
+    title: "",
+    description: "",
+    images: [],
+    address: 
+    {
+        street: "",
+        city: "",
+        province: "",
+        country: "",
+        mapLocation: ""
+    },
+    tags: [],        
+    price: 0,  
+});
+  const id = parseInt(useParams().id);
+
+  useEffect(() => {
+    const roominfo = getRoom(id);   
+    setRoom(roominfo);    
+  }, [id])
+
+  
+
   return (
     <body>
       <div className="slider">
@@ -12,127 +41,30 @@ const ServiceDetail = () => {
       <div className="container-detail">
         <div className="container_detail__text">
           <h1 className="container_detail__text-title">
-            TÍTULO DE LA HABITACIÓN
+            {room.title}                  
           </h1>
           <h3 className="container_detail__text-subtitle">
-            Descripción dela habitación
+            Descripción de la habitación
           </h3>
           <p className="container_detail__text-pharagrap">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique
-            minima quos et, natus, recusandae laudantium quis commodi omnis
-            totam architecto laboriosam! Accusantium, tenetur. Possimus
-            explicabo, dignissimos voluptates quo beatae harum?
+            {room.description} 
           </p>
         </div>
         <div className="container-detail__services">
           <div className="container-detail__services--list-container">
-            <ul className="container-detail__services--list-container-list">
-              <li className="container-detail__services--list-container-list--item">
+            <ul className="container-detail__services--list-container-list">              
+              {room.tags.map(tag => (
+                <li className="container-detail__services--list-container-list--item">
                 <img
                   src="https://icongr.am/clarity/building.svg?size=148&color=000000"
                   height="27px"
                   alt=""
                 />
-                Lorem ipsum dolor sit
+                {tag}
               </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
+              ))}
             </ul>
-          </div>
-          <div className="container-detail__services--list-container">
-            <ul className="container-detail__services--list-container-list">
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-            </ul>
-          </div>
-          <div className="container-detail__services--list-container">
-            <ul className="container-detail__services--list-container-list">
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-              <li className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                Lorem ipsum dolor sit
-              </li>
-            </ul>
-          </div>
+          </div>         
         </div>
         <div className="container-detail--map">
           <iframe
@@ -146,12 +78,14 @@ const ServiceDetail = () => {
           />
         </div>
         <div className="container-detail--buttons">
-          <button className="container-detail--buttons-wishes">
+          {/* <button className="container-detail--buttons-wishes">
             Lista de Deseos
-          </button>
-          <button className="container-detail--buttons-reserve">
-            Reservar
-          </button>
+          </button> */}
+          <Link to={`/booking`}>
+            <button className="container-detail--buttons-reserve">
+              Reservar
+            </button>
+          </Link>
         </div>
       </div>
     </body>

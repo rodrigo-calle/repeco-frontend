@@ -5,7 +5,7 @@ const SearchBar = () => {
     return (
         <div className="search">
             <form className="search__form" action="">
-                <label className="search__form__label" for="location">
+                <label className="search__form__label" htmlFor="location" >
                     <div className="search__form__label__icon">
                         <i className="fas fa-map-marker-alt"></i>
                     </div>
@@ -15,7 +15,7 @@ const SearchBar = () => {
                     </div> 
                 </label>
 
-                <label className="search__form__label" for="">
+                <label className="search__form__label" htmlFor="">
                     <div className="search__form__label__icon">
                         <i className="fas fa-calendar-day"></i>
                     </div>
@@ -25,7 +25,7 @@ const SearchBar = () => {
                     </div>
                 </label>
 
-                <label className="search__form__label" for="">
+                <label className="search__form__label" htmlFor="">
                     <div className="search__form__label__icon">
                         <i className="fas fa-calendar-day"></i>
                     </div>
@@ -35,7 +35,7 @@ const SearchBar = () => {
                     </div>
                 </label>
                 
-                <label className="search__form__label" for="">
+                <label className="search__form__label" htmlFor="">
                     <div className="search__form__label__icon">
                         <i className="fas fa-users"></i>
                     </div>

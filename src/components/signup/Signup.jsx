@@ -41,15 +41,15 @@ const Signup = () => {
           <p className="signup-container__line-second"></p>
         </div>
         <form action="" className="form-container">
-          <label for="email">Correo electrónico</label>
+          <label htmlFor="email">Correo electrónico</label>
           <br />
           <input className="input" type="email" />
           <br />
-          <label for="password">Nueva Contraseña</label>
+          <label htmlFor="password">Nueva Contraseña</label>
           <br />
           <input className="input" type="password" />
           <br />
-          <label for="password">Repetir Contraseña</label>
+          <label htmlFor="password">Repetir Contraseña</label>
           <br />
           <input className="input" type="password" />
           <br />

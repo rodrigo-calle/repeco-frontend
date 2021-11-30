@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./ServiceCard.css"
 
-const ServiceCard = ({room}) => {       
+const ServiceCard = ({room}) => {  
     return (
         <div className="card">
             <img className="card__image" src="/image/image-card.jpeg" alt="" />          
@@ -11,8 +12,10 @@ const ServiceCard = ({room}) => {
                 <p className="card__body__addres"><i className="fas fa-map-marker-alt"></i> {`${room.address.street} - ${room.address.city} - ${room.address.province} - ${room.address.country}`}</p>
                 <p className="card__body__price"><i className="fas fa-dollar-sign"></i> {room.price}</p>
                 <div className="card__body__footer">
-                    <button className="card__body__footer__button card__body__footer__button--booking">Lista de Deseos</button>
-                    <a href="www.google.com"><button className="card__body__footer__button">Reservar</button></a>
+                    {/* <button className="card__body__footer__button card__body__footer__button--booking">Lista de Deseos</button>             */}
+                    <Link to={`/service/${room.id}`}>
+                        <button className="card__body__footer__button" >Reservar</button>
+                    </Link>
                 </div>
             </div>
 
