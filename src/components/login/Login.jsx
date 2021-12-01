@@ -37,12 +37,14 @@ const Login = () => {
 
   const handleLoginSubmit = (e) =>{
     e.preventDefault();    
-    validateLogin(email, password)?  
-    setTimeout(() => {
-      navigate("/") 
-    }, 2000)  
-    : console.log(false); 
-  
+   
+    if (validateLogin(email, password)) {
+      setTimeout(() => {
+        navigate("/") 
+      }, 2000); 
+    } else {
+      console.log(false)
+    } 
     // eslint-disable-next-line array-callback-return
     setEmail("")
     setPassword("")
