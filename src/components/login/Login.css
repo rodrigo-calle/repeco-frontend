@@ -115,7 +115,15 @@ header{
     color: #CE0F0F;
 }
 
-
+.login-container__flash-message{
+    background-color: #ce4d4d;
+    color: #fff;
+    font-weight: 600;
+    width: calc(fit-content+20px);
+    text-align: center;
+    font-size: 20px;
+    
+}
 
 @media screen and (max-width: 580px) {
     .login-container{
