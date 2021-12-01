@@ -14,11 +14,11 @@ const ServiceDetail = () => {
     images: [],
     address: 
     {
-        street: "",
-        city: "",
-        province: "",
-        country: "",
-        mapLocation: ""
+      street: "",
+      city: "",
+      province: "",
+      country: "",
+      mapLocation: ""
     },
     tags: [],        
     price: 0,  
