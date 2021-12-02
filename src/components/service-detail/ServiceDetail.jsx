@@ -4,7 +4,7 @@ import { getRoom } from "../../data";
 import "./ServiceDetail.css";
 
 
-const ServiceDetail = () => {
+const ServiceDetail = ({addCart, setAddCart}) => {
 
   const [room, setRoom] = useState({
     id: 0,
@@ -30,7 +30,9 @@ const ServiceDetail = () => {
     setRoom(roominfo);    
   }, [id])
 
-  
+  const HandlerClick = () =>{
+    setAddCart(addCart.concat(id))
+  }
 
   return (
     <body>
@@ -82,7 +84,7 @@ const ServiceDetail = () => {
             Lista de Deseos
           </button> */}
           <Link to={`/booking`}>
-            <button className="container-detail--buttons-reserve">
+            <button onClick={HandlerClick} className="container-detail--buttons-reserve">
               Reservar
             </button>
           </Link>
