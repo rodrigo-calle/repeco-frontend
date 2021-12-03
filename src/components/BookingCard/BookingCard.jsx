@@ -10,13 +10,15 @@ const BookingCard = ({addCart, setAddCart}) => {
         setRooms(getRooms)
     }, [])
 
-    const roomsSelect = addCart.map( elemento => {
-        return rooms.find( (room) => room.id === elemento)
-    })
+    // const roomsSelect = addCart.map( elemento => {
+    //     return rooms.find( (room) => room.id === elemento)
+    // })
+
+    const roomsSelect = rooms.filter( room => addCart.find((element) => element === room.id))
 
     // const array = roomsSelect[0]
 
-    console.log(roomsSelect)
+    // console.log(roomsSelect)
 
 
     return (
