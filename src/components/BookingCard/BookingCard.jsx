@@ -10,16 +10,13 @@ const BookingCard = ({addCart, setAddCart}) => {
         setRooms(getRooms)
     }, [])
 
-    // const roomsSelect = addCart.map( elemento => {
-    //     return rooms.find( (room) => room.id === elemento)
-    // })
-
     const roomsSelect = rooms.filter( room => addCart.find((element) => element === room.id))
 
-    // const array = roomsSelect[0]
-
-    // console.log(roomsSelect)
-
+    const hadlerClick = (roomIdDelete) => {
+        const roomsNotDelete = roomsSelect.filter( room => room.id !== roomIdDelete )
+        const idRoomsNotDelete = roomsNotDelete.map(room => room.id)
+        setAddCart(idRoomsNotDelete)
+    }
 
     return (
         <>
@@ -33,23 +30,23 @@ const BookingCard = ({addCart, setAddCart}) => {
                             <p className="bookingCard__type">{roomsel.type}</p>
                             <h3 className="bookingCard__title">{roomsel.title}</h3>
                             <p className="bookingCard__address">
-                                {/* {room.address.map()} */}
+                                {roomsel.address.street}, {roomsel.address.city}, {roomsel.address.province}, {roomsel.address.country}.
                             </p>
                             <p className="bookingCard__recomendation">Esta propiedad tiene una buena ubicación. ¡Las personas le dieron un puntaje de 9,1!</p>
                             <div className="bookingCard__footer">
-                                {/* {
-                                    room.tags.map((tag) =>{
+                                {
+                                    roomsel.tags.map((tag) =>{
                                         return(
                                             <div className="tag__item">
                                                 <i className="fa fa-envelope"></i>
                                                 <p className="tag__text">{tag}</p>
                                             </div>
-                                        ) 
+                                        )
                                     })
-                                } */}
+                                }
                             </div>
                             <div className="bookingCard__button-container">
-                                <button className="bookingCard__button"><i className="fa fa-trash"></i> Eliminar</button>
+                                <button onClick={()=>{hadlerClick(roomsel.id)}} className="bookingCard__button"><i className="fa fa-trash"></i>Eliminar</button>
                             </div>
                         </div>
                     </div>    
