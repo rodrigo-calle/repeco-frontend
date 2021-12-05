@@ -44,7 +44,7 @@ const SearchBar = () => {
                         
                         <select className="search__form__label__body__select" name="select">
                             <option value="1persona">1 Persona</option>
-                            <option value="2personas" selected>2 Personas</option>
+                            <option value="2personas">2 Personas</option>
                             <option value="3personas">3 Personas</option>
                             <option value="4personas">4 Personas</option>
                         </select>

@@ -11,7 +11,7 @@
 .bookingCard__type{
     color: grey;
     font-size: 20px;
-    line-height: 0%;
+  
 }
 .bookingCard__title{
     font-size: 22px;    
@@ -19,7 +19,7 @@
 
 .bookingCard__address{
     font-weight: 100;
-    line-height: 0%;
+    
 }
 
 .bookingCard__recomendation{
@@ -68,7 +68,7 @@
 
 
 
-@media (min-width: 415px){
+@media (min-width: 530px){
     .bookingCard{
         display: flex;
     }

@@ -63,9 +63,9 @@
     display: flex;
     align-items: center;
     margin-left: 36px;
-    font-size: 20px;
+    font-size: 18px;
     color: #524A4A;
-    height: 55px;
+  
 }
 
 .services__description > i {

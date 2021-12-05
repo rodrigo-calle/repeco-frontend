@@ -8,7 +8,7 @@ const Home = () => {
 
     useEffect(() => {
         setRooms(getRooms)
-    }, [rooms])
+    }, [])
 
     return (
         <div>

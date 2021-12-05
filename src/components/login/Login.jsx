@@ -35,7 +35,7 @@ const Login = () => {
 
   return (
 
-    <body>      
+    <div>      
       <header>
         <img
           className="logo-repeco"
@@ -115,7 +115,7 @@ const Login = () => {
           </a>
         </>
       </div>
-    </body>
+    </div>
   );
 };
 

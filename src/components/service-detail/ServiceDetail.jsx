@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import PropTypes from 'prop-types'
 import { getRoom } from "../../data";
 import "./ServiceDetail.css";
 
 
 const ServiceDetail = ({addCart, setAddCart}) => {
-
+  const navigate = useNavigate();
   const [room, setRoom] = useState({
     id: 0,
     type: "",
@@ -26,16 +27,18 @@ const ServiceDetail = ({addCart, setAddCart}) => {
   const id = parseInt(useParams().id);
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     const roominfo = getRoom(id);   
     setRoom(roominfo);    
   }, [id])
 
   const HandlerClick = () =>{
     setAddCart(addCart.concat(id))
+    navigate(`/booking`)
   }
 
   return (
-    <body>
+    <div>
       <div className="slider">
         <img src="/image/hotel.jpg" alt="hotel-slider" />
       </div>
@@ -56,7 +59,7 @@ const ServiceDetail = ({addCart, setAddCart}) => {
           <div className="container-detail__services--list-container">
             <ul className="container-detail__services--list-container-list">              
               {room.tags.map(tag => (
-                <li className="container-detail__services--list-container-list--item">
+                <li key={tag} className="container-detail__services--list-container-list--item">
                 <img
                   src="https://icongr.am/clarity/building.svg?size=148&color=000000"
                   height="27px"
@@ -74,7 +77,7 @@ const ServiceDetail = ({addCart, setAddCart}) => {
             width="100%"
             height="450"
             style={{ border: 0 }}
-            allowfullscreen=""
+            allowFullScreen=""
             loading="lazy"
             title="Map"
           />
@@ -83,15 +86,21 @@ const ServiceDetail = ({addCart, setAddCart}) => {
           {/* <button className="container-detail--buttons-wishes">
             Lista de Deseos
           </button> */}
-          <Link to={`/booking`}>
-            <button onClick={HandlerClick} className="container-detail--buttons-reserve">
-              Reservar
-            </button>
-          </Link>
+          <button onClick={HandlerClick} className="container-detail--buttons-reserve">
+            Reservar
+          </button>
+        
         </div>
       </div>
-    </body>
+    </div>
   );
 };
+
+
+
+ServiceDetail.propTypes = {
+  addCart: PropTypes.arrayOf(PropTypes.number),
+  setAddCart: PropTypes.func
+}
 
 export default ServiceDetail;
