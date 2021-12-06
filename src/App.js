@@ -8,21 +8,24 @@ import Home from './components/home/Home'
  import Booking from './components/booking/Booking'
 import Footer from './components/footer/Footer'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { UserProvider } from './components/context/Users/UserProvider';
 
 function App() {
   const [addCart, setAddCart] = useState([])
   return (
     <>
     <BrowserRouter>
-    <Navbar />   
-    <Routes>      
-      <Route path="/" element={<Home />} />
-      <Route path="/service/:id" element={<ServiceDetail addCart={addCart} setAddCart={setAddCart} />} />
-      <Route path="/booking" element={<Booking addCart={addCart} setAddCart={setAddCart} />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup/>} />
-    </Routes>        
-    <Footer />
+    <UserProvider>
+      <Navbar />   
+      <Routes>      
+        <Route path="/" element={<Home />} />
+        <Route path="/service/:id" element={<ServiceDetail addCart={addCart} setAddCart={setAddCart} />} />
+        <Route path="/booking" element={<Booking addCart={addCart} setAddCart={setAddCart} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup/>} />
+      </Routes>        
+      <Footer />
+    </UserProvider>
     </BrowserRouter>
     </>
 
