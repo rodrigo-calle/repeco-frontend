@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
-import ServiceCard from "./ServiceCard";
-import "./ServiceList.css";
+import ServiceCard from './ServiceCard';
+import './ServiceList.css';
 
 const ServiceList = ({ roomList }) => {
   return (
@@ -25,7 +25,7 @@ ServiceList.propTypes = {
       address: PropTypes.shape({}),
       tags: PropTypes.arrayOf(PropTypes.string),
       price: PropTypes.number,
-    })
+    }),
   ).isRequired,
 };
 

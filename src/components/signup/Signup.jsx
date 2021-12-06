@@ -1,5 +1,5 @@
-import React from "react";
-import "./Signup.css";
+import React from 'react';
+import './Signup.css';
 
 const Signup = () => {
   return (
@@ -21,7 +21,7 @@ const Signup = () => {
               src="https://icongr.am/entypo/facebook-with-circle.svg?size=128&color=ffffff"
               height="25px"
               alt="facebook-repeco-signup"
-            />{" "}
+            />{' '}
             REGÍSTRATE CON FACEBOOK
           </p>
         </button>
@@ -31,7 +31,7 @@ const Signup = () => {
               src="https://icongr.am/simple/google.svg?size=128&color=000000&colored=false"
               height="25px"
               alt="google-repeco-signup"
-            />{" "}
+            />{' '}
             REGÍSTRATE CON GOOGLE
           </p>
         </button>

@@ -1,5 +1,5 @@
-import React from "react";
-import "./BookingResume.css";
+import React from 'react';
+import './BookingResume.css';
 
 const BookingResume = () => {
   return (

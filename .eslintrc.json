@@ -15,8 +15,7 @@
         "react"
     ],
     "rules": {
-      "prettier/prettier": "error",
-      "quotes": [2, "double", { "avoidEscape": true }],
+      "prettier/prettier": ["error", { "singleQuote": true }],
       "array-callback-return": "off",
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
       "react/react-in-jsx-scope": "off",

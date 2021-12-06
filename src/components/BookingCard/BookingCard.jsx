@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import "./BookingCard.css";
-import { getRooms } from "../../data";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import './BookingCard.css';
+import { getRooms } from '../../data';
 
 const BookingCard = ({ addCart, setAddCart }) => {
   const [rooms, setRooms] = useState([]);
@@ -37,7 +37,7 @@ const BookingCard = ({ addCart, setAddCart }) => {
             <p className="bookingCard__type">{roomsel.type}</p>
             <h3 className="bookingCard__title">{roomsel.title}</h3>
             <p className="bookingCard__address">
-              {roomsel.address.street}, {roomsel.address.city},{" "}
+              {roomsel.address.street}, {roomsel.address.city},{' '}
               {roomsel.address.province}, {roomsel.address.country}.
             </p>
             <p className="bookingCard__recomendation">
