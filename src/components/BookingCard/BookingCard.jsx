@@ -10,13 +10,13 @@ const BookingCard = ({ addCart, setAddCart }) => {
     setRooms(getRooms);
   }, []);
 
-  const roomsSelect = rooms.filter((room) =>
-    addCart.find((element) => element === room.id)
-  );
+  const roomsSelect = rooms.filter((room) => {
+    addCart.find((element) => element === room.id);
+  });
 
   const hadlerClick = (roomIdDelete) => {
     const roomsNotDelete = roomsSelect.filter(
-      (room) => room.id !== roomIdDelete
+      (room) => room.id !== roomIdDelete,
     );
     const idRoomsNotDelete = roomsNotDelete.map((room) => room.id);
     setAddCart(idRoomsNotDelete);

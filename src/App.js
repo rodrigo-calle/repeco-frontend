@@ -11,7 +11,7 @@ import Booking from "./components/booking/Booking";
 import Footer from "./components/footer/Footer";
 import { UserProvider } from "./components/context/Users/UserProvider";
 
-function App() {
+const App = () => {
   const [addCart, setAddCart] = useState([]);
   return (
     <BrowserRouter>
@@ -36,6 +36,6 @@ function App() {
       </UserProvider>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
