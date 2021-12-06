@@ -3,30 +3,41 @@ import { useNavigate } from "react-router-dom";
 import getAllUsers from "./dataUsers";
 import "./Login.css";
 
+import { useUserContext } from "../context/Users/UserProvider";
+
 const Login = () => {
   const users = getAllUsers();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [values, setValues] = useState("");
+
+  const { setCompleteName } = useUserContext();
+
   const navigate = useNavigate();
 
   const failInputMessage = () => {
     setValues("Correo y/o contraseña incorrecta");
   };
 
+  // eslint-disable-next-line consistent-return
   const validateLogin = (em, pass) => {
-    return users.find((user) => user.email === em && user.password === pass)
-      ? true
-      : failInputMessage();
+    const validation = users.find(
+      (user) => user.email === em && user.password === pass
+    );
+
+    if (validation) {
+      setCompleteName(`${validation.name} ${validation.lastname}`);
+      // console.log(`${validation.name} ${validation.lastname}`)
+      return true;
+    }
+    failInputMessage();
   };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
 
     if (validateLogin(email, password)) {
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
+      navigate("/");
     }
     // eslint-disable-next-line array-callback-return
     setEmail("");
