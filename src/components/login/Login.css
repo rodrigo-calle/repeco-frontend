@@ -118,7 +118,7 @@ header{
     background-color: #ce4d4d;
     color: #fff;
     font-weight: 600;
-    width: calc(fit-content+20px);
+    width: calc(fit-content);
     text-align: center;
     font-size: 20px;
     
