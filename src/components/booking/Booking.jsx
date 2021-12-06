@@ -6,17 +6,11 @@ import BookingResume from '../BookingResume/BookingResume'
 const Booking = ({addCart,setAddCart}) =>{
 
     return(
-        <div>
+        <div className="body">
             <h1 className="title">Booking Process</h1>    
-            <div className="container">
-                
+            <div className="container">                
                 <BookingCard addCart={addCart} setAddCart={setAddCart} />
-                
-
                 <BookingResume />
-
-                
-
             </div>    
         </div>
     )

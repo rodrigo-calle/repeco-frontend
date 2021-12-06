@@ -24,7 +24,7 @@ const BookingCard = ({addCart, setAddCart}) => {
                 <hr />
 
                 {roomsSelect.map(roomsel => (
-                    <div className="bookingCard">
+                    <div className="bookingCard" key={roomsel.id}>
                         <img src="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg" alt="" className="bookingCard__image" />
                         <div className="bookingCard__description">
                             <p className="bookingCard__type">{roomsel.type}</p>
