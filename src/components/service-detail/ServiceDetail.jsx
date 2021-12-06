@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import { getRoom } from "../../data";
 import "./ServiceDetail.css";
 
-
-const ServiceDetail = ({addCart, setAddCart}) => {
+const ServiceDetail = ({ addCart, setAddCart }) => {
   const navigate = useNavigate();
   const [room, setRoom] = useState({
     id: 0,
@@ -13,29 +12,28 @@ const ServiceDetail = ({addCart, setAddCart}) => {
     title: "",
     description: "",
     images: [],
-    address: 
-    {
+    address: {
       street: "",
       city: "",
       province: "",
       country: "",
-      mapLocation: ""
+      mapLocation: "",
     },
-    tags: [],        
-    price: 0,  
-});
-  const id = parseInt(useParams().id);
+    tags: [],
+    price: 0,
+  });
+  const id = parseInt(useParams().id, 10);
 
   useEffect(() => {
-    window.scrollTo(0, 0)
-    const roominfo = getRoom(id);   
-    setRoom(roominfo);    
-  }, [id])
+    window.scrollTo(0, 0);
+    const roominfo = getRoom(id);
+    setRoom(roominfo);
+  }, [id]);
 
-  const HandlerClick = () =>{
-    setAddCart(addCart.concat(id))
-    navigate(`/booking`)
-  }
+  const HandlerClick = () => {
+    setAddCart(addCart.concat(id));
+    navigate(`/booking`);
+  };
 
   return (
     <div>
@@ -45,31 +43,30 @@ const ServiceDetail = ({addCart, setAddCart}) => {
 
       <div className="container-detail">
         <div className="container_detail__text">
-          <h1 className="container_detail__text-title">
-            {room.title}                  
-          </h1>
+          <h1 className="container_detail__text-title">{room.title}</h1>
           <h3 className="container_detail__text-subtitle">
             Descripción de la habitación
           </h3>
-          <p className="container_detail__text-pharagrap">
-            {room.description} 
-          </p>
+          <p className="container_detail__text-pharagrap">{room.description}</p>
         </div>
         <div className="container-detail__services">
           <div className="container-detail__services--list-container">
-            <ul className="container-detail__services--list-container-list">              
-              {room.tags.map(tag => (
-                <li key={tag} className="container-detail__services--list-container-list--item">
-                <img
-                  src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                  height="27px"
-                  alt=""
-                />
-                {tag}
-              </li>
+            <ul className="container-detail__services--list-container-list">
+              {room.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="container-detail__services--list-container-list--item"
+                >
+                  <img
+                    src="https://icongr.am/clarity/building.svg?size=148&color=000000"
+                    height="27px"
+                    alt=""
+                  />
+                  {tag}
+                </li>
               ))}
             </ul>
-          </div>         
+          </div>
         </div>
         <div className="container-detail--map">
           <iframe
@@ -86,21 +83,22 @@ const ServiceDetail = ({addCart, setAddCart}) => {
           {/* <button className="container-detail--buttons-wishes">
             Lista de Deseos
           </button> */}
-          <button onClick={HandlerClick} className="container-detail--buttons-reserve">
+          <button
+            type="button"
+            onClick={HandlerClick}
+            className="container-detail--buttons-reserve"
+          >
             Reservar
           </button>
-        
         </div>
       </div>
     </div>
   );
 };
 
-
-
 ServiceDetail.propTypes = {
-  addCart: PropTypes.arrayOf(PropTypes.number),
-  setAddCart: PropTypes.func
-}
+  addCart: PropTypes.arrayOf(PropTypes.number).isRequired,
+  setAddCart: PropTypes.func.isRequired,
+};
 
 export default ServiceDetail;

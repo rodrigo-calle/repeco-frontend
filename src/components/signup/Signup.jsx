@@ -12,10 +12,10 @@ const Signup = () => {
           alt="logo-repeco"
         />
         <h1 className="signup-title">REGISTRO A REPECO</h1>
-        <p className="line"></p>
+        <p className="line" />
       </header>
       <div className="signup-container">
-        <button className="signup-container__fb-button">
+        <button type="button" className="signup-container__fb-button">
           <p>
             <img
               src="https://icongr.am/entypo/facebook-with-circle.svg?size=128&color=ffffff"
@@ -25,7 +25,7 @@ const Signup = () => {
             REGÍSTRATE CON FACEBOOK
           </p>
         </button>
-        <button className="signup-container__google-button">
+        <button type="button" className="signup-container__google-button">
           <p>
             <img
               src="https://icongr.am/simple/google.svg?size=128&color=000000&colored=false"
@@ -36,22 +36,28 @@ const Signup = () => {
           </p>
         </button>
         <div className="signup-container__line">
-          <p className="signup-container__line-first"></p>
+          <p className="signup-container__line-first" />
           <p className="signup-container__line-letter">o</p>
-          <p className="signup-container__line-second"></p>
+          <p className="signup-container__line-second" />
         </div>
         <form action="" className="form-container">
-          <label htmlFor="email">Correo electrónico</label>
+          <label htmlFor="email">
+            Correo electrónico
+            <br />
+            <input className="input" type="email" />
+          </label>
           <br />
-          <input className="input" type="email" />
+          <label htmlFor="password">
+            Nueva Contraseña
+            <br />
+            <input className="input" type="password" />
+          </label>
           <br />
-          <label htmlFor="password">Nueva Contraseña</label>
-          <br />
-          <input className="input" type="password" />
-          <br />
-          <label htmlFor="password">Repetir Contraseña</label>
-          <br />
-          <input className="input" type="password" />
+          <label htmlFor="password">
+            Repetir Contraseña
+            <br />
+            <input className="input" type="password" />
+          </label>
           <br />
           <input
             className="form-container__submit"
