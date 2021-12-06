@@ -3,11 +3,16 @@ import { useNavigate  } from 'react-router-dom'
 import { getAllUsers } from "./dataUsers";
 import "./Login.css";
 
+import {useUserContext} from '../context/Users/UserProvider'
+
 const Login = () => {
   const users = getAllUsers()
   const [ email, setEmail] = useState("")
   const [ password, setPassword] = useState("")
   const [ values, setValues] = useState("")
+
+  const { setCompleteName } = useUserContext()
+
   const navigate = useNavigate()
 
   const failInputMessage = () => {
@@ -15,16 +20,23 @@ const Login = () => {
   }
 
   const validateLogin = (em, pass) => {
-    return users.find(user => user.email === em  && user.password === pass)? true : failInputMessage();
+    let validation = users.find(user => user.email === em  && user.password === pass)
+    
+    if(validation){
+      setCompleteName(`${validation.name} ${validation.lastname}`)
+      //console.log(`${validation.name} ${validation.lastname}`)
+      return true
+    }else{
+      failInputMessage()
+    }
+
   }
 
   const handleLoginSubmit = (e) =>{
     e.preventDefault(); 
     
-    if(validateLogin(email, password)){
-      setTimeout(() => {
-        navigate("/") 
-      }, 2000)  
+    if(validateLogin(email, password)){    
+        navigate("/")      
     }
     // eslint-disable-next-line array-callback-return
     setEmail("")
