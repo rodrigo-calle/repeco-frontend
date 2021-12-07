@@ -22,8 +22,9 @@ const BookingResume = () => {
       </div>
       <hr />
       <div className="resume_button-container">
-        {/* // eslint-disable-next-line react/button-has-type */}
-        {/* <button className="resume__button">Procesar Reserva</button> */}
+        <button type="button" className="resume__button">
+          Procesar Reserva
+        </button>
       </div>
       <hr />
       <div className="services">
