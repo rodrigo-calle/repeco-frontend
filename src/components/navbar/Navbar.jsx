@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { useUserContext } from '../context/Users/UserProvider';
+import { useUserContext } from '../../context/Users/UserProvider';
 
 const Navbar = () => {
   const { completeName } = useUserContext();

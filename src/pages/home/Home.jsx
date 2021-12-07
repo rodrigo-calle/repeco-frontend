@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import SearchBar from '../searchBar/SearchBar';
+import SearchBar from '../../components/searchBar/SearchBar';
 import './Home.css';
-import ServiceList from '../reservation/ServiceList';
+import ServiceList from '../../components/reservation/ServiceList';
 import { getRooms } from '../../data';
 
 const Home = () => {
