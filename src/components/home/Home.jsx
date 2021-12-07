@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "../searchBar/SearchBar";
-import "./Home.css";
-import ServiceList from "../reservation/ServiceList";
-import { getRooms } from "../../data";
+import React, { useEffect, useState } from 'react';
+import SearchBar from '../searchBar/SearchBar';
+import './Home.css';
+import ServiceList from '../reservation/ServiceList';
+import { getRooms } from '../../data';
 
 const Home = () => {
   const [rooms, setRooms] = useState([]);

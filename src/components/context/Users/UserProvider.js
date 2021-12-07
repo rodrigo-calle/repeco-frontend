@@ -1,12 +1,12 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext } from 'react';
 // import PropTypes from "prop-types";
 
 const UserContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const UserProvider = ({ children }) => {
-  const initialState = "Login";
+  const initialState = 'Login';
 
   const [completeName, setCompleteName] = useState(initialState);
 
@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
 export const useUserContext = () => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error("useContext  genera error");
+    throw new Error('useContext  genera error');
   }
   return context;
 };

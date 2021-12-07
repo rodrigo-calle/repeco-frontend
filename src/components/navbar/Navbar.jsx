@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
-import { useUserContext } from "../context/Users/UserProvider";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
+import { useUserContext } from '../context/Users/UserProvider';
 
 const Navbar = () => {
   const { completeName } = useUserContext();
@@ -22,14 +22,14 @@ const Navbar = () => {
               {completeName}
             </Link>
           </li>
-          {completeName === "Login" ? (
+          {completeName === 'Login' ? (
             <li className="nav__container__menu__list">
               <Link to="/signup" className="nav__container__menu__list__link">
                 Registrarse
               </Link>
             </li>
           ) : (
-            ""
+            ''
           )}
         </ul>
       </div>

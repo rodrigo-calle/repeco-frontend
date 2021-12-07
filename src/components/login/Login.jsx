@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import getAllUsers from "./dataUsers";
-import "./Login.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import getAllUsers from './dataUsers';
+import './Login.css';
 
-import { useUserContext } from "../context/Users/UserProvider";
+import { useUserContext } from '../context/Users/UserProvider';
 
 const Login = () => {
   const users = getAllUsers();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [values, setValues] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [values, setValues] = useState('');
 
   const { setCompleteName } = useUserContext();
 
   const navigate = useNavigate();
 
   const failInputMessage = () => {
-    setValues("Correo y/o contraseña incorrecta");
+    setValues('Correo y/o contraseña incorrecta');
   };
 
   // eslint-disable-next-line consistent-return
   const validateLogin = (em, pass) => {
     const validation = users.find(
-      (user) => user.email === em && user.password === pass
+      (user) => user.email === em && user.password === pass,
     );
 
     if (validation) {
@@ -37,11 +37,11 @@ const Login = () => {
     e.preventDefault();
 
     if (validateLogin(email, password)) {
-      navigate("/");
+      navigate('/');
     }
     // eslint-disable-next-line array-callback-return
-    setEmail("");
-    setPassword("");
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -65,7 +65,7 @@ const Login = () => {
               src="https://icongr.am/entypo/facebook-with-circle.svg?size=128&color=ffffff"
               height="22px"
               alt="facebook-repeco-login"
-            />{" "}
+            />{' '}
             CONTINUAR CON FACEBOOK
           </p>
         </button>
@@ -75,7 +75,7 @@ const Login = () => {
               src="https://icongr.am/simple/google.svg?size=128&color=000000&colored=false"
               height="20px"
               alt="google-repeco-login"
-            />{" "}
+            />{' '}
             CONTINUAR CON GOOGLE
           </p>
         </button>
@@ -85,7 +85,7 @@ const Login = () => {
           <p className="login-container__line-second" />
         </div>
         <form action="" onSubmit={handleLoginSubmit} className="form-container">
-          <span className="login-container__flash-message">{values}</span>{" "}
+          <span className="login-container__flash-message">{values}</span>{' '}
           <br />
           <label htmlFor="email">
             Correo electrónico

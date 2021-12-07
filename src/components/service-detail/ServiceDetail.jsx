@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
-import { getRoom } from "../../data";
-import "./ServiceDetail.css";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { getRoom } from '../../data';
+import './ServiceDetail.css';
 
 const ServiceDetail = ({ addCart, setAddCart }) => {
   const navigate = useNavigate();
   const [room, setRoom] = useState({
     id: 0,
-    type: "",
-    title: "",
-    description: "",
+    type: '',
+    title: '',
+    description: '',
     images: [],
     address: {
-      street: "",
-      city: "",
-      province: "",
-      country: "",
-      mapLocation: "",
+      street: '',
+      city: '',
+      province: '',
+      country: '',
+      mapLocation: '',
     },
     tags: [],
     price: 0,
