@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Booking.css';
-import BookingCard from '../BookingCard/BookingCard';
-import BookingResume from '../BookingResume/BookingResume';
+import BookingCard from '../../components/BookingCard/BookingCard';
+import BookingResume from '../../components/BookingResume/BookingResume';
 
 const Booking = ({ addCart, setAddCart }) => {
   return (
