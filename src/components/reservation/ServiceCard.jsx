@@ -27,6 +27,10 @@ const ServiceCard = ({ room }) => {
         <p className="card__body__price">
           <i className="fas fa-dollar-sign" /> {room.price}
         </p>
+        <p className="card__body__price">
+          <i className="fas fa-users" /> {`${room.capacity} Persona`}
+          {room.capacity > 1 ? 's' : ''}
+        </p>
         <div className="card__body__footer">
           {/* <button className="card__body__footer__button card__body__footer__button--booking">Lista de Deseos</button>             */}
           <button
@@ -57,6 +61,7 @@ ServiceCard.propTypes = {
     }),
     tags: PropTypes.arrayOf(PropTypes.string),
     price: PropTypes.number,
+    capacity: PropTypes.number,
   }).isRequired,
 };
 
