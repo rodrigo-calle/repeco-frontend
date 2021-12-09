@@ -13,9 +13,6 @@ const Home = () => {
 
   useEffect(() => {
     setRooms(getRooms);
-    fetch('http://localhost:8080/api/rooms')
-      .then((res) => res.json())
-      .then((data) => console.log(data));
   }, []);
 
   return (
