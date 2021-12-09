@@ -6,6 +6,10 @@ import { getRooms } from '../../data';
 
 const Home = () => {
   const [rooms, setRooms] = useState([]);
+  const [searchFields, setSearchFields] = useState({
+    location: '',
+    capacity: 0,
+  });
 
   useEffect(() => {
     setRooms(getRooms);
@@ -17,8 +21,11 @@ const Home = () => {
         <img className="header__image" src="/image/image-header.webp" alt="" />
       </header>
       <div className="container_home">
-        <SearchBar />
-        <ServiceList roomList={rooms} />
+        <SearchBar
+          searchFields={searchFields}
+          setSearchFields={setSearchFields}
+        />
+        <ServiceList roomList={rooms} searchFields={searchFields} />
       </div>
     </div>
   );

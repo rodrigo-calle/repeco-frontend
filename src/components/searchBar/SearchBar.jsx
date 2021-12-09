@@ -1,7 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchBar.css';
 
-const SearchBar = () => {
+const SearchBar = ({ searchFields, setSearchFields }) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setSearchFields((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeSelect = (e) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      capacity: parseInt(e.target.value, 10),
+    }));
+  };
+
   return (
     <div className="search">
       <form className="search__form" action="">
@@ -16,6 +33,8 @@ const SearchBar = () => {
               id="location"
               name="location"
               type="text"
+              value={searchFields.location}
+              onChange={handleChange}
             />
           </div>
         </label>
@@ -61,13 +80,15 @@ const SearchBar = () => {
 
             <select
               className="search__form__label__body__select"
-              id="personas"
-              name="select"
+              id="capacity"
+              name="capacity"
+              onChange={handleChangeSelect}
             >
-              <option value="1persona">1 Persona</option>
-              <option value="2personas">2 Personas</option>
-              <option value="3personas">3 Personas</option>
-              <option value="4personas">4 Personas</option>
+              <option value="0"># Personas</option>
+              <option value="1">1 Persona</option>
+              <option value="2">2 Personas</option>
+              <option value="3">3 Personas</option>
+              <option value="4">4 Personas</option>
             </select>
           </div>
         </label>
@@ -79,6 +100,14 @@ const SearchBar = () => {
       </form>
     </div>
   );
+};
+
+SearchBar.propTypes = {
+  searchFields: PropTypes.shape({
+    location: PropTypes.string,
+    capacity: PropTypes.number,
+  }).isRequired,
+  setSearchFields: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

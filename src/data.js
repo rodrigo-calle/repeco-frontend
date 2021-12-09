@@ -19,6 +19,7 @@ const rooms = [
     },
     tags: ['Estacionamiento', 'Restaurante', 'Permite mascotas'],
     price: 20.0,
+    capacity: 2,
   },
   {
     id: 2,
@@ -40,6 +41,7 @@ const rooms = [
     },
     tags: ['Wi-fi', 'Tour', 'Permite mascotas'],
     price: 40.0,
+    capacity: 3,
   },
   {
     id: 3,
@@ -61,6 +63,7 @@ const rooms = [
     },
     tags: ['Incluye desayuno', 'Tiene piscina', 'Permite mascotas'],
     price: 140.0,
+    capacity: 1,
   },
 ];
 
