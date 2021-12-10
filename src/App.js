@@ -8,7 +8,7 @@ import Signup from './pages/signup/Signup';
 import ServiceDetail from './pages/service-detail/ServiceDetail';
 import Booking from './pages/booking/Booking';
 import Footer from './components/footer/Footer';
-import { UserProvider } from './context/Users/UserProvider';
+import { UserProvider } from './context/UserProvider';
 
 const App = () => {
   return (

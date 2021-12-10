@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './BookingCard.css';
 import { getRooms } from '../../data';
 
-import { useUserContext } from '../../context/Users/UserProvider';
+import { useUserContext } from '../../context/UserProvider';
 
 const BookingCard = () => {
   // llamado del estado del contexto

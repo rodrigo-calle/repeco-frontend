@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getRoom } from '../../data';
 import './ServiceDetail.css';
 
-import { useUserContext } from '../../context/Users/UserProvider';
+import { useUserContext } from '../../context/UserProvider';
 
 const ServiceDetail = () => {
   const { addCart, setAddCart } = useUserContext();
