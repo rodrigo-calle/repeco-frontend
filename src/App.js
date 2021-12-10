@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar';
@@ -12,23 +11,14 @@ import Footer from './components/footer/Footer';
 import { UserProvider } from './context/Users/UserProvider';
 
 const App = () => {
-  const [addCart, setAddCart] = useState([]);
   return (
     <BrowserRouter>
       <UserProvider>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route
-            path="/service/:id"
-            element={
-              <ServiceDetail addCart={addCart} setAddCart={setAddCart} />
-            }
-          />
-          <Route
-            path="/booking"
-            element={<Booking addCart={addCart} setAddCart={setAddCart} />}
-          />
+          <Route path="/service/:id" element={<ServiceDetail />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Routes>

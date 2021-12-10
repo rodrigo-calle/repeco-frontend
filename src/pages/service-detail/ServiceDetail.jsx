@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { getRoom } from '../../data';
 import './ServiceDetail.css';
 
-const ServiceDetail = ({ addCart, setAddCart }) => {
+import { useUserContext } from '../../context/Users/UserProvider';
+
+const ServiceDetail = () => {
+  const { addCart, setAddCart } = useUserContext();
+
   const navigate = useNavigate();
   const [room, setRoom] = useState({
     id: 0,
@@ -94,11 +97,6 @@ const ServiceDetail = ({ addCart, setAddCart }) => {
       </div>
     </div>
   );
-};
-
-ServiceDetail.propTypes = {
-  addCart: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setAddCart: PropTypes.func.isRequired,
 };
 
 export default ServiceDetail;
