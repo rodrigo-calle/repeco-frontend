@@ -5,7 +5,8 @@
 }
 
 .title {
-  margin-left: 20px;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .container {
@@ -14,14 +15,13 @@
 
 @media (min-width: 700px) {
   .title {
-    margin: auto;
     margin-bottom: 20px;
   }
   .container {
     display: grid;
     grid-template-columns: 3fr 1fr;
     max-width: 1200px;
-    margin: auto 10px;
+    margin: 0 auto;
     gap: 20px;
   }
 }
