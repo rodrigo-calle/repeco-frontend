@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import './BookingCard.css';
 import { getRooms } from '../../data';
 
-const BookingCard = ({ addCart, setAddCart }) => {
+import { useUserContext } from '../../context/UserProvider';
+
+const BookingCard = () => {
+  // llamado del estado del contexto
+  const { addCart, setAddCart } = useUserContext();
+
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
@@ -74,11 +78,6 @@ const BookingCard = ({ addCart, setAddCart }) => {
       ))}
     </div>
   );
-};
-
-BookingCard.propTypes = {
-  addCart: PropTypes.arrayOf(PropTypes.number).isRequired,
-  setAddCart: PropTypes.func.isRequired,
 };
 
 export default BookingCard;

@@ -9,10 +9,13 @@ export const UserProvider = ({ children }) => {
   const initialState = 'Login';
 
   const [completeName, setCompleteName] = useState(initialState);
+  const [addCart, setAddCart] = useState([]);
 
   const valuesToPass = {
     completeName,
     setCompleteName,
+    addCart,
+    setAddCart,
   };
 
   return (
@@ -23,7 +26,7 @@ export const UserProvider = ({ children }) => {
 export const useUserContext = () => {
   const context = useContext(UserContext);
   if (context === undefined) {
-    throw new Error('useContext  genera error');
+    throw new Error('useContext genera error');
   }
   return context;
 };
