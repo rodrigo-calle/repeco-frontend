@@ -1,5 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import Navbar from './components/navbar/Navbar';
 import Home from './pages/home/Home';
@@ -12,19 +14,21 @@ import { UserProvider } from './context/UserProvider';
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <UserProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/service/:id" element={<ServiceDetail />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-        <Footer />
-      </UserProvider>
-    </BrowserRouter>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <BrowserRouter>
+        <UserProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/service/:id" element={<ServiceDetail />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+          </Routes>
+          <Footer />
+        </UserProvider>
+      </BrowserRouter>
+    </LocalizationProvider>
   );
 };
 
