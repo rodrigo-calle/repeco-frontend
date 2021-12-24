@@ -140,7 +140,7 @@ const ServiceDetail = () => {
                 size="large"
                 fullWidth
               >
-                Buscar
+                BUSCAR
               </Button>
             </div>
           </form>
