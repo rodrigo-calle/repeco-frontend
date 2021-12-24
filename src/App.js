@@ -9,6 +9,8 @@ import ServiceDetail from './pages/service-detail/ServiceDetail';
 import Booking from './pages/booking/Booking';
 import Footer from './components/footer/Footer';
 import { UserProvider } from './context/UserProvider';
+import ProfileEdit from './components/profileClient/ProfileEdit';
+import PaymentsClient from './components/paymentsClient/PaymentsClient';
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
           <Route path="/booking" element={<Booking />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/user/account/edit" element={<ProfileEdit />} />
+          <Route path="/user/account/payment" element={<PaymentsClient />} />
         </Routes>
         <Footer />
       </UserProvider>
