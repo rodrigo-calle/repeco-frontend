@@ -73,12 +73,87 @@ body {
 
 .dashboard__header {
   background-color: white;
-  padding: 1rem 0rem 1rem 5rem;
+  padding: 1rem 1rem 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.dashboard__header form input {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
 }
 
 .dashboard__accions {
   padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
+
+.dashboard__infocrud {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  box-sizing: border-box;
+  border-radius: 3rem;
+  align-items: center;
+}
+
+.dashboard__titlenumberuser {
+  color: #b8b8b8;
+  font-size: 0.8rem;
+}
+
+.dashboard__addUser button {
+  background-color: #9b156e;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.dashboard__iconuser {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+.dashboard__totaluser {
+  margin-right: 1rem;
+}
+
+.dashboard__numberUser {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.dashboard__crud button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.dashboard__active {
+  border-color: #9b156e;
+  border: none;
+  outline: solid 1px;
+  color: #9b156e;
+  background-color: transparent;
+}
+.dashboard__edit {
+  background-color: #ffe81d;
+  color: black;
+  border: none;
+}
+.dashboard__delete {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+}
+
 .dashboard__table__border {
   background-color: white;
   border-radius: 1rem;
@@ -106,7 +181,7 @@ body {
   background: #eee;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1000px) {
   .adminsystem {
     display: flex;
   }
