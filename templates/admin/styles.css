@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Ubuntu+Mono:wght@700&display=swap');
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+.adminsystem {
+  position: relative;
+}
+.adminsystem__menu {
+  background-color: #9b156e;
+  width: 300px;
+  height: 100vh;
+  transition: all 1s;
+  padding: 1rem;
+  box-sizing: border-box;
+  position: fixed;
+  color: white;
+  font-family: 'Ubuntu Mono', monospace;
+}
+.adminsystem__menu li {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.adminsystem__menu ul {
+  padding-inline-start: 20px;
+  font-size: 1.5rem;
+}
+.adminsystem__menu i {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  margin-right: 1rem;
+}
+.adminsystem__menu--active {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 1.5rem;
+}
+.adminsystem__menu--active i {
+  background: white;
+  color: #9b156d;
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.adminsystem__button-menu {
+  position: absolute;
+  top: 0;
+  right: -60px;
+  background: #9b156e;
+  border: none;
+  color: white;
+}
+
+.adminsystem__button-menu i {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  margin: 0;
+  padding: 0.5rem;
+}
+.adminsystem__menu--oculto {
+  margin-left: -300px;
+}
+.adminsystem__dashboard {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+
+  background-color: #f3f3f3;
+}
+
+.dashboard__header {
+  background-color: white;
+  padding: 1rem 1rem 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.dashboard__header form input {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+
+.dashboard__accions {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.dashboard__infocrud {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  box-sizing: border-box;
+  border-radius: 3rem;
+  align-items: center;
+}
+
+.dashboard__titlenumberuser {
+  color: #b8b8b8;
+  font-size: 0.8rem;
+}
+
+.dashboard__addUser button {
+  background-color: #9b156e;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.dashboard__iconuser {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+.dashboard__totaluser {
+  margin-right: 1rem;
+}
+
+.dashboard__numberUser {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.dashboard__crud button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.dashboard__active {
+  border-color: #9b156e;
+  border: none;
+  outline: solid 1px;
+  color: #9b156e;
+  background-color: transparent;
+}
+.dashboard__edit {
+  background-color: #ffe81d;
+  color: black;
+  border: none;
+}
+.dashboard__delete {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+}
+
+.dashboard__table__border {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow: scroll;
+}
+.dashboard__table {
+  padding: 1rem;
+}
+.dashboard__table th {
+  text-align: left;
+}
+
+.dashboard__table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.dashboard__table th,
+.dashboard__table td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+.dashboard__table tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+@media (min-width: 1000px) {
+  .adminsystem {
+    display: flex;
+  }
+  .adminsystem__menu {
+    position: relative;
+    width: 30%;
+  }
+  .adminsystem__dashboard {
+    width: 100%;
+  }
+  .adminsystem__menu--oculto {
+    margin-left: -30%;
+  }
+}
