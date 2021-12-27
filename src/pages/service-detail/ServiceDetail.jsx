@@ -127,7 +127,7 @@ const ServiceDetail = () => {
                 <Select
                   labelId="capacity"
                   id="demo-simple-select"
-                  label="Personas"
+                  label="Número de Personas"
                   size="small"
                   style={{
                     backgroundColor: 'white',
@@ -171,7 +171,6 @@ const ServiceDetail = () => {
               id="img-02"
               name="image"
               value="first"
-              checked
               onClick={handleClick}
               style={{
                 backgroundImage: `url(https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg)`,

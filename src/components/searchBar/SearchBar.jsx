@@ -105,7 +105,7 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
             labelId="capacity"
             id="demo-simple-select"
             value={searchFields.capacity}
-            label="Personas"
+            label="Número de Personas"
             size="small"
             onChange={handleChangeSelect}
             style={{ backgroundColor: 'white' }}

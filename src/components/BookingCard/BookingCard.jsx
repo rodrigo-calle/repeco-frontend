@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './BookingCard.css';
+import { FormControl, TextField } from '@mui/material';
 import { getRooms } from '../../data';
 
 import { useUserContext } from '../../context/UserProvider';
@@ -45,20 +46,29 @@ const BookingCard = () => {
                 {roomsel.address.street}, {roomsel.address.city},{' '}
                 {roomsel.address.province}, {roomsel.address.country}.
               </p>
-              <p className="bookingCard__recomendation">
-                Esta propiedad tiene una buena ubicación. ¡Las personas le
-                dieron un puntaje de 9,1!
-              </p>
+
               <div className="bookingCard__footer">
                 {roomsel.tags.map((tag) => {
                   return (
-                    <div className="tag__item">
+                    <div className="tag__item" key={tag}>
                       <i className="fa fa-envelope" />
                       <p className="tag__text">{tag}</p>
                     </div>
                   );
                 })}
               </div>
+              <form action="" style={{ marginTop: 20 }}>
+                <FormControl>
+                  <TextField
+                    label="Nombre del Huésped"
+                    color="primary"
+                    variant="outlined"
+                    size="small"
+                    name="location"
+                    style={{ backgroundColor: 'white' }}
+                  />
+                </FormControl>
+              </form>
               <div className="bookingCard__button-container">
                 <button
                   type="button"

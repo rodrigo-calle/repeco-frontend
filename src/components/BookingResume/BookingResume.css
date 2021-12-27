@@ -9,61 +9,45 @@
 }
 
 .resume__title {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 40px;
-  margin-bottom: 0px;
   text-align: center;
 }
 
-.resume__subtotal,
-.resume__igv,
-.resume__total {
-  display: flex;
-  justify-content: space-between;
+.resume__dates-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 70%;
   margin: auto;
-  margin-bottom: 0px;
-  width: 90%;
+  font-size: 14px;
+  line-height: 16px;
 }
 
-.resume__price {
-  color: #d20f0f;
+.resume__date-header {
+  font-weight: 400;
+  margin: 10px auto;
 }
 
-.resume__total {
+.resume__date {
   font-weight: 700;
+  margin: 10px auto;
 }
 
-.resume_button-container {
-  display: flex;
-  justify-content: center;
+.resume__time {
+  font-weight: 300;
+  margin: 10px auto;
 }
 
-.resume__button {
-  font-size: 22px;
-  margin: 20px 0px;
-  padding: 15px 0px;
-  width: 90%;
-  border-radius: 5px;
-  border: none;
-  background-color: #0c8a01;
-  color: #ffffff;
+.resume__days {
+  width: 70%;
+  font-size: 14px;
+  margin: auto;
 }
 
-.services {
-  margin-top: 15px;
+.resume__days-header {
+  font-weight: 400;
 }
 
-.services__description {
-  display: flex;
-  align-items: center;
-  margin-left: 36px;
-  font-size: 18px;
-  color: #524a4a;
-}
-
-.services__description > i {
-  margin-right: 20px;
+.resume__total-days {
+  font-weight: 700;
 }
 
 @media (min-width: 700px) {
