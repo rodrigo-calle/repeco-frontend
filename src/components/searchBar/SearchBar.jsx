@@ -1,8 +1,23 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './SearchBar.css';
+import {
+  FormControl,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { DatePicker } from '@mui/lab';
+import { addDays } from 'date-fns';
 
 const SearchBar = ({ searchFields, setSearchFields }) => {
+  const [checkinDate, setCheckinDate] = useState(null);
+  const [checkoutDate, setCheckoutDate] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -22,76 +37,85 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
   return (
     <div className="search">
       <form className="search__form" action="">
-        <label className="search__form__label" htmlFor="location">
-          <div className="search__form__label__icon">
-            <i className="fas fa-map-marker-alt" />
-          </div>
-          <div className="search__form__label__body">
-            <span className="search__form__label__body__title">Lugar</span>
-            <input
-              className="search__form__label__body__input"
-              id="location"
-              name="location"
-              type="text"
-              value={searchFields.location}
-              onChange={handleChange}
-            />
-          </div>
-        </label>
+        <FormControl fullWidth>
+          <TextField
+            label="Lugar"
+            placeholder="Lugar"
+            color="primary"
+            variant="outlined"
+            size="small"
+            name="location"
+            style={{ backgroundColor: 'white' }}
+            value={searchFields.location}
+            onChange={handleChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <LocationOnIcon color="primary" />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </FormControl>
 
-        <label className="search__form__label" htmlFor="fecha-ida">
-          <div className="search__form__label__icon">
-            <i className="fas fa-calendar-day" />
-          </div>
-          <div className="search__form__label__body">
-            <span className="search__form__label__body__title">
-              Fecha de ida
-            </span>
-            <input
-              className="search__form__label__body__input"
-              id="fecha-ida"
-              type="date"
-            />
-          </div>
-        </label>
-
-        <label className="search__form__label" htmlFor="fecha-regreso">
-          <div className="search__form__label__icon">
-            <i className="fas fa-calendar-day" />
-          </div>
-          <div className="search__form__label__body">
-            <span className="search__form__label__body__title">
-              Fecha de regreso
-            </span>
-            <input
-              className="search__form__label__body__input"
-              id="fecha-regreso"
-              type="date"
-            />
-          </div>
-        </label>
-
-        <label className="search__form__label" htmlFor="personas">
-          <div className="search__form__label__icon">
-            <i className="fas fa-users" />
-          </div>
-          <div className="search__form__label__body">
-            <span className="search__form__label__body__title">Personas</span>
-
-            <select
-              className="search__form__label__body__select"
-              id="capacity"
-              name="capacity"
-              onChange={handleChangeSelect}
-            >
-              <option value="0"># Personas</option>
-              <option value="1">1 Persona</option>
-              <option value="2">2 Personas</option>
-              <option value="3">3 Personas</option>
-              <option value="4">4 Personas</option>
-            </select>
-          </div>
-        </label>
+        <FormControl fullWidth>
+          <DatePicker
+            label="Fecha de Entrada"
+            value={checkinDate}
+            inputFormat="dd/MM/yyyy"
+            minDate={Date.now()}
+            onChange={(newValue) => {
+              setCheckinDate(newValue);
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                className="search__textfield"
+                size="small"
+                color="primary"
+                fullWidth
+                style={{ backgroundColor: 'white' }}
+              />
+            )}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <DatePicker
+            label="Fecha de Salida"
+            value={checkoutDate}
+            minDate={addDays(checkinDate, 1)}
+            onChange={(newValue) => {
+              setCheckoutDate(newValue);
+            }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                className="search__textfield"
+                size="small"
+                fullWidth
+                color="primary"
+                style={{ backgroundColor: 'white' }}
+              />
+            )}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <InputLabel id="capacity">Número de Personas</InputLabel>
+          <Select
+            labelId="capacity"
+            id="demo-simple-select"
+            value={searchFields.capacity}
+            label="Personas"
+            size="small"
+            onChange={handleChangeSelect}
+            style={{ backgroundColor: 'white' }}
+          >
+            <MenuItem value="1">1 Persona</MenuItem>
+            <MenuItem value="2">2 Personas</MenuItem>
+            <MenuItem value="3">3 Personas</MenuItem>
+            <MenuItem value="4">4 Personas</MenuItem>
+          </Select>
+        </FormControl>
 
         <button type="button" className="search__form__submit">
           <i className="fas fa-search" />

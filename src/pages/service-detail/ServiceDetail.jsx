@@ -4,9 +4,16 @@ import { useParams, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 import InputAdornment from '@mui/material/InputAdornment';
-import { Button, TextField } from '@mui/material';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
 import { DatePicker } from '@mui/lab';
-import PeopleIcon from '@mui/icons-material/People';
+
 import './ServiceDetail.css';
 
 import { addDays } from 'date-fns';
@@ -66,6 +73,7 @@ const ServiceDetail = () => {
                 variant="outlined"
                 size="small"
                 placeholder="Lugar"
+                name="location"
                 style={{ backgroundColor: 'white' }}
                 fullWidth
                 InputProps={{
@@ -87,7 +95,6 @@ const ServiceDetail = () => {
                 }}
                 renderInput={(params) => (
                   <TextField
-                    // eslint-disable-next-line react/jsx-props-no-spreading
                     {...params}
                     className="search__textfield"
                     size="small"
@@ -106,7 +113,6 @@ const ServiceDetail = () => {
                 }}
                 renderInput={(params) => (
                   <TextField
-                    // eslint-disable-next-line react/jsx-props-no-spreading
                     {...params}
                     className="search__textfield"
                     size="small"
@@ -116,24 +122,24 @@ const ServiceDetail = () => {
                   />
                 )}
               />
-
-              <TextField
-                className="search__textfield"
-                color="primary"
-                label="Número de Personas"
-                variant="outlined"
-                size="small"
-                placeholder="Número de Personas"
-                fullWidth
-                style={{ backgroundColor: 'white' }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <PeopleIcon />
-                    </InputAdornment>
-                  ),
-                }}
-              />
+              <FormControl fullWidth>
+                <InputLabel id="capacity">Número de Personas</InputLabel>
+                <Select
+                  labelId="capacity"
+                  id="demo-simple-select"
+                  label="Personas"
+                  size="small"
+                  style={{
+                    backgroundColor: 'white',
+                    textAlign: 'start',
+                  }}
+                >
+                  <MenuItem value="1">1 Persona</MenuItem>
+                  <MenuItem value="2">2 Personas</MenuItem>
+                  <MenuItem value="3">3 Personas</MenuItem>
+                  <MenuItem value="4">4 Personas</MenuItem>
+                </Select>
+              </FormControl>
               <Button
                 className="search__button"
                 variant="contained"

@@ -1,0 +1,12 @@
+.rooms-container {
+  margin: 2rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 22rem));
+  justify-content: center;
+}
+@media screen and (min-width: 980px) {
+  .rooms-container {
+    grid-template-columns: repeat(3, minmax(20rem, 22rem));
+  }
+}
