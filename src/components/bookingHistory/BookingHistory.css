@@ -1,0 +1,130 @@
+.booking-container{
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  margin: 25px auto;
+}
+.booking-container__booking-menu, .booking-container__booking-edit{
+  margin: 50px;
+}
+.booking-container__booking-menu{
+  border: 1px solid rgb(218, 218, 218);
+  border-radius: 14px;
+  width: 30%;
+  text-align: center;
+  height: 70vh;
+}
+
+.booking-container__booking-menu--logo{
+  height: 65px;
+}
+.booking-container__booking-menu--user{
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.booking-container__booking-menu--title{
+  font-weight: 600;
+  font-size: 35px;
+  margin: 15px;
+}
+
+.booking-container__booking-edit{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.booking-container__booking-menu--btn-edit{
+  border-bottom: 1px solid rgb(218, 218, 218);
+  margin: 0;
+  text-decoration: none;
+  padding: 17px;
+  cursor: pointer;
+  text-align: left;
+  color: rgb(139, 139, 139);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: rgba(218, 218, 218, 0.404);
+}
+.booking-container__booking-menu--btn-edit__icon-active{
+  height: 18px;
+  margin-right: 18px;
+  margin-left: 18px;
+}
+.booking-container__booking-menu--btn-edit__icon-inactive{
+  height: 18px;
+  margin-right: 18px;
+  margin-left: 15px;
+}
+.activating{
+  border-left: 8px solid #0DC96E;
+  color: #000;
+  background-color: #fff;
+  font-weight: 600;
+}
+.booking-container__booking-edit{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.booking-container__booking-edit--title{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.booking-container__booking-edit--card-container{
+  background-color: #ffffff;
+  margin: 0px 0px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding: 25px 0px;
+  border: thin solid #000;
+  padding-left: 10px;
+}
+.booking-container__booking-edit--card-container__date-filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.table-header{
+  border-bottom: thin solid #000;
+}
+
+.filter-end__date-input, .filter-start__date-input{
+  padding: 10px;
+  border-radius: 14px;
+  margin: 5px;
+}
+
+.booking-container__booking-edit .btn-add-card{
+  padding: 10px 15px;
+  border-radius: 7px;
+  border: thin solid rgb(0, 0, 0);
+  background-color: #fff;
+  width: fit-content;
+  cursor: pointer;
+  display: flex;
+  align-self: flex-end;
+  margin-right: 45px;
+}
+
+.booking-container__booking-edit--table{
+  text-align: center;
+  width: 100%;
+  background-color: #F3F3F3;
+  padding: 20px;
+  border-radius: 14px;
+}
+.booking-container__booking-edit--table .table-header{
+  background-color: #0DC96E;
+}
+.booking-container__booking-edit--table .table-header th{
+  padding: 10px;
+}

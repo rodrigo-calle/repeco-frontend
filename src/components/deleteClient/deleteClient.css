@@ -1,0 +1,112 @@
+.delete-container{
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  margin: 25px auto;
+}
+.delete-container__delete-menu, .delete-container__delete-edit{
+  margin: 50px;
+}
+.delete-container__delete-menu{
+  border: 1px solid rgb(218, 218, 218);
+  border-radius: 14px;
+  width: 30%;
+  text-align: center;
+  height: 70vh;
+}
+
+.delete-container__delete-menu--logo{
+  height: 65px;
+}
+.delete-container__delete-menu--user{
+  font-weight: 600;
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.delete-container__delete-menu--title{
+  font-weight: 600;
+  font-size: 35px;
+  margin: 15px;
+}
+
+.delete-container__delete-edit{
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+}
+.delete-container__delete-menu--btn-edit{
+  border-bottom: 1px solid rgb(218, 218, 218);
+  margin: 0;
+  text-decoration: none;
+  padding: 17px;
+  cursor: pointer;
+  text-align: left;
+  color: rgb(139, 139, 139);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  background-color: rgba(218, 218, 218, 0.404);
+}
+.delete-container__delete-menu--btn-edit__icon-active{
+  height: 18px;
+  margin-right: 18px;
+  margin-left: 18px;
+}
+.delete-container__delete-menu--btn-edit__icon-inactive{
+  height: 18px;
+  margin-right: 18px;
+  margin-left: 15px;
+}
+.activating{
+  border-left: 8px solid #0DC96E;
+  color: #000;
+  background-color: #fff;
+  font-weight: 600;
+}
+.delete-container__delete-edit{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.delete-container__delete-edit--title{
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.delete-container__delete-edit--card-container{
+  background-color: #ffffff;
+  margin: 0px 0px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 14px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding: 25px 0px;
+  border: thin solid #000;
+  padding-left: 10px;
+}
+.delete-container__delete-edit--alert-container{
+  border: thin solid #000;
+  width: 40%;
+  border-radius: 46px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.delete-container__delete-edit--alert-container__message{
+  font-size: 20px;
+  text-align: justify;
+}
+.delete-container__delete-edit--alert-container__button{
+  padding: 15px;
+  width: 90%;
+  font-size: 24px;
+  color: #fff;
+  background-color: #FF3232;
+  border-radius: 36px;
+  border: none;
+  cursor:  pointer;
+}
