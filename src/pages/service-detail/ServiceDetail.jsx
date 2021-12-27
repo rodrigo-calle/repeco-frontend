@@ -1,12 +1,30 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getRoom } from '../../data';
+import SearchIcon from '@mui/icons-material/Search';
+
+import InputAdornment from '@mui/material/InputAdornment';
+import {
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from '@mui/material';
+import { DatePicker } from '@mui/lab';
+
 import './ServiceDetail.css';
 
+import { addDays } from 'date-fns';
+import { getRoom } from '../../data';
 import { useUserContext } from '../../context/UserProvider';
 
 const ServiceDetail = () => {
   const { addCart, setAddCart } = useUserContext();
+  const [checkinDate, setCheckinDate] = useState(null);
+  const [checkoutDate, setCheckoutDate] = useState(null);
+  const [value, setValue] = useState('first');
 
   const navigate = useNavigate();
   const [room, setRoom] = useState({
@@ -38,10 +56,141 @@ const ServiceDetail = () => {
     navigate(`/booking`);
   };
 
+  const handleClick = (event) => {
+    setValue(event.target.value);
+  };
+
   return (
-    <div>
-      <div className="slider">
-        <img src="/image/hotel.jpg" alt="hotel-slider" />
+    <div className="detail-page">
+      <div className="header-detail__search-images">
+        <div className="header-detail__search">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div className="header-detail__search-content">
+              <TextField
+                className="search__textfield"
+                color="primary"
+                label="Lugar"
+                variant="outlined"
+                size="small"
+                placeholder="Lugar"
+                name="location"
+                style={{ backgroundColor: 'white' }}
+                fullWidth
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <SearchIcon />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+
+              <DatePicker
+                label="Fecha de Entrada"
+                value={checkinDate}
+                inputFormat="dd/MM/yyyy"
+                minDate={Date.now()}
+                onChange={(newValue) => {
+                  setCheckinDate(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    className="search__textfield"
+                    size="small"
+                    color="primary"
+                    fullWidth
+                    style={{ backgroundColor: 'white' }}
+                  />
+                )}
+              />
+              <DatePicker
+                label="Fecha de Salida"
+                value={checkoutDate}
+                minDate={addDays(checkinDate, 1)}
+                onChange={(newValue) => {
+                  setCheckoutDate(newValue);
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    className="search__textfield"
+                    size="small"
+                    fullWidth
+                    color="primary"
+                    style={{ backgroundColor: 'white' }}
+                  />
+                )}
+              />
+              <FormControl fullWidth>
+                <InputLabel id="capacity">Número de Personas</InputLabel>
+                <Select
+                  labelId="capacity"
+                  id="demo-simple-select"
+                  label="Personas"
+                  size="small"
+                  style={{
+                    backgroundColor: 'white',
+                    textAlign: 'start',
+                  }}
+                >
+                  <MenuItem value="1">1 Persona</MenuItem>
+                  <MenuItem value="2">2 Personas</MenuItem>
+                  <MenuItem value="3">3 Personas</MenuItem>
+                  <MenuItem value="4">4 Personas</MenuItem>
+                </Select>
+              </FormControl>
+              <Button
+                className="search__button"
+                variant="contained"
+                size="large"
+                fullWidth
+              >
+                BUSCAR
+              </Button>
+            </div>
+          </form>
+        </div>
+        <div className="image-box">
+          {value === 'first' ? (
+            <img
+              className="header-detail__main-image"
+              src="https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg"
+              alt=""
+            />
+          ) : (
+            <img
+              className="header-detail__main-image"
+              src="https://cdna.artstation.com/p/assets/images/images/014/081/626/large/berktan-hatiboglu-modern-render1.jpg?1542377257"
+              alt=""
+            />
+          )}
+          <div className="header-detail__side-images">
+            <input
+              type="radio"
+              id="img-02"
+              name="image"
+              value="first"
+              checked
+              onClick={handleClick}
+              style={{
+                backgroundImage: `url(https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg)`,
+                backgroundSize: '100% 100%',
+              }}
+            />
+            <input
+              type="radio"
+              id="img-02"
+              name="image"
+              value="second"
+              onClick={handleClick}
+              style={{
+                backgroundImage: `url(https://cdna.artstation.com/p/assets/images/images/014/081/626/large/berktan-hatiboglu-modern-render1.jpg?1542377257)`,
+                backgroundSize: '100% 100%',
+              }}
+            />
+          </div>
+        </div>
       </div>
 
       <div className="container-detail">

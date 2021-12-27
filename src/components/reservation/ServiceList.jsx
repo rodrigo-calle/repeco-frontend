@@ -14,17 +14,18 @@ const ServiceList = ({ roomList, searchFields }) => {
     const roomCity = removeAccents(room.address.city);
     const searchLocation = removeAccents(searchFields.location);
 
-    if (searchFields.capacity === 0)
-      return roomCity.toLowerCase().includes(searchLocation.toLowerCase());
+    if (searchFields.capacity > 0) {
+      return (
+        roomCity.toLowerCase().includes(searchLocation.toLowerCase()) &&
+        searchFields.capacity === room.capacity
+      );
+    }
 
-    return (
-      roomCity.toLowerCase().includes(searchLocation.toLowerCase()) &&
-      searchFields.capacity === room.capacity
-    );
+    return roomCity.toLowerCase().includes(searchLocation.toLowerCase());
   });
 
   return (
-    <section>
+    <section className="rooms-container">
       {filterRooms.map((room) => (
         <ServiceCard room={room} key={room.id} />
       ))}
