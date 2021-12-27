@@ -1,75 +1,77 @@
-
-.card{
-    background-color: var(--gris-color);
-    margin-bottom: 1rem;
-    border-radius: 2rem;
+.card {
+  background-color: #f3f3f3;
+  margin-bottom: 1rem;
+  border-radius: 2rem;
+  min-width: 20rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.card__body{
+.card__body {
+  padding: 0 1rem;
+}
+
+.card__body > h3 {
+  margin: 0;
+  margin-top: 0.9rem;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem 2rem 0 0;
+}
+
+.card__price-capacity {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0 auto;
+}
+
+.card__price {
+  text-align: end;
+}
+
+.card__services > p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.card__services > ul {
+  list-style-type: none;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+}
+
+.card__footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card__button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 2rem;
+  color: #f3f3f3;
+  background-color: #0dc96e;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.card__addres {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media screen and (min-width: 600px) {
+  .card {
+    flex-direction: column;
+    min-width: 20rem;
+    position: relative;
+  }
+  .card__body {
     padding: 0 1rem;
+  }
 }
-
-.card__body__title{
-    margin-bottom: 0;
-}
-
-.card__body__subTitle{
-    font-weight: 500;
-    margin: 0;
-}
-
-.card__image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 2rem 2rem 0 0;
-}
-
-.card__body__footer{
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.card__body__footer__button{
-    padding: .5rem 1rem;
-    border: none;
-    border-radius: 2rem;
-    color: #F3F3F3;
-    background-color: var(--green-color);
-    margin: .25rem;
-    cursor: pointer;
-}
-
-.card__body__footer__button--booking{
-    color: var(--blue-color);
-    background-color: transparent;
-    border:solid 1px var(--blue-color);
-}
-
-
-
-@media (min-width:600px) {   
-    .card{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .card__image{
-        border-radius: 2rem 0 0 2rem;
-    }
-    .card__body {
-        padding: 0 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
-}
-
-@media (min-width:768px) {    
-    .card{
-        grid-template-columns: 1fr 2fr;
-    }   
-}
-
-
-
