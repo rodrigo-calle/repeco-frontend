@@ -1,6 +1,8 @@
-.booking-container__resume {
-  margin-top: 30px;
+.booking-container__resume,
+.booking-container__price {
+  margin-top: 10px;
   border: 2px solid #a9a5a5;
+  margin-bottom: 10px;
 }
 
 .booking-container__resume > hr {
@@ -13,12 +15,12 @@
 }
 
 .resume__dates-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 70%;
+  display: flex;
+  width: 80%;
   margin: auto;
   font-size: 14px;
   line-height: 16px;
+  justify-content: space-between;
 }
 
 .resume__date-header {
@@ -36,29 +38,42 @@
   margin: 10px auto;
 }
 
-.resume__days {
-  width: 70%;
+.resume__days,
+.resume__selection {
+  width: 80%;
   font-size: 14px;
   margin: auto;
 }
 
-.resume__days-header {
+.resume__days-header,
+.resumen__selection-header {
   font-weight: 400;
+  margin-bottom: 0;
 }
 
-.resume__total-days {
+.resume__total-days,
+.resume__total-rooms {
   font-weight: 700;
+  margin-top: 5px;
+}
+
+.price__subtotal,
+.price__igv,
+.price__total {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 8px;
+  justify-content: space-between;
+}
+
+.price-container__background {
+  background-color: '#EBF3FF';
 }
 
 @media (min-width: 700px) {
   .booking-container__resume {
-    font-size: 14px;
-  }
-  .resume__button {
-    font-size: 16px;
-  }
-
-  .services__description {
     font-size: 14px;
   }
 }

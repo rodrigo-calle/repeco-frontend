@@ -1,9 +1,10 @@
+import { Button } from '@mui/material';
 import React from 'react';
 import './BookingResume.css';
 
 const BookingResume = () => {
   return (
-    <>
+    <div>
       <div className="booking-container__resume">
         <h3 className="resume__title">RESUMEN DE LA RESERVA</h3>
         <hr />
@@ -24,13 +25,13 @@ const BookingResume = () => {
           <p className="resume__days-header">Duración total de la estancia</p>
           <p className="resume__total-days">2 noches</p>
         </div>
-        <div>
-          <hr />
-          <p>Tu selección</p>
+        <hr />
+        <div className="resume__selection">
+          <p className="resumen__selection-header">Tu selección</p>
           <p className="resume__total-rooms">2 Habitaciones</p>
         </div>
       </div>
-      <div className="booking-container__price">
+      <div className="booking-container__price price-container__background">
         <div className="price__subtotal">
           <p>Sub Total</p>
           <p>S/ 210.00</p>
@@ -44,7 +45,14 @@ const BookingResume = () => {
           <p>S/ 247.80</p>
         </div>
       </div>
-    </>
+      <Button
+        variant="contained"
+        fullWidth
+        style={{ backgroundColor: '#004778' }}
+      >
+        Reservar
+      </Button>
+    </div>
   );
 };
 
