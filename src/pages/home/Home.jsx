@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchBar from '../../components/searchBar/SearchBar';
 import './Home.css';
 import ServiceList from '../../components/reservation/ServiceList';
-import { getRooms } from '../../data';
+import roomService from '../../services/room';
 
 const Home = () => {
   const [rooms, setRooms] = useState([]);
@@ -12,7 +12,15 @@ const Home = () => {
   });
 
   useEffect(() => {
-    setRooms(getRooms);
+    const getRooms = async () => {
+      const response = await roomService.getAllRooms();
+      const data = await response.json();
+      if (response.ok) {
+        setRooms(data);
+      }
+    };
+
+    getRooms();
   }, []);
 
   return (

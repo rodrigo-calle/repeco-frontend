@@ -11,7 +11,7 @@ const ServiceList = ({ roomList, searchFields }) => {
   };
 
   const filterRooms = roomList.filter((room) => {
-    const roomCity = removeAccents(room.address.city);
+    const roomCity = removeAccents(room.hotel.address.city);
     const searchLocation = removeAccents(searchFields.location);
 
     if (searchFields.capacity > 0) {

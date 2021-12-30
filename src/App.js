@@ -10,17 +10,20 @@ import Signup from './pages/signup/Signup';
 import ServiceDetail from './pages/service-detail/ServiceDetail';
 import Booking from './pages/booking/Booking';
 import Footer from './components/footer/Footer';
-import { UserProvider } from './context/UserProvider';
+
+import { AppProvider } from './context/store';
+
 import ProfileEdit from './components/profileClient/ProfileEdit';
 import PaymentsClient from './components/paymentsClient/PaymentsClient';
 import BookingHistory from './components/bookingHistory/BookingHistory';
 import DeleteClient from './components/deleteClient/deleteClient';
 
+
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <BrowserRouter>
-        <UserProvider>
+        <AppProvider>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -37,7 +40,7 @@ const App = () => {
             <Route path="/user/account/delete" element={<DeleteClient />} />
           </Routes>
           <Footer />
-        </UserProvider>
+        </AppProvider>
       </BrowserRouter>
     </LocalizationProvider>
   );

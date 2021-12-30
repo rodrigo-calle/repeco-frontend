@@ -1,10 +1,23 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getUserFromLocalStorage, logout } from '../../context/actions';
+import { useAppDispatch, useAppState } from '../../context/store';
+
 import './Navbar.css';
-import { useUserContext } from '../../context/UserProvider';
 
 const Navbar = () => {
-  const { completeName } = useUserContext();
+  const { user } = useAppState();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const handleCloseSession = () => {
+    logout(dispatch);
+    navigate('/');
+  };
+
+  useEffect(() => {
+    getUserFromLocalStorage(dispatch);
+  }, []);
 
   return (
     <nav>
@@ -17,19 +30,36 @@ const Navbar = () => {
           />
         </Link>
         <ul className="nav__container__menu">
-          <li className="nav__container__menu__list">
-            <Link to="/login" className="nav__container__menu__list__link">
-              {completeName}
-            </Link>
-          </li>
-          {completeName === 'Login' ? (
-            <li className="nav__container__menu__list">
-              <Link to="/signup" className="nav__container__menu__list__link">
-                Registrarse
-              </Link>
-            </li>
+          {user ? (
+            <div className="nav__container__menu">
+              <li className="nav__container__menu__list">
+                <div className="nav__container__menu__list__link">
+                  {`Welcome, ${user.fullName}`}
+                </div>
+              </li>
+              <li className="nav__container__menu__list">
+                <button
+                  type="button"
+                  className="nav__close-session"
+                  onClick={handleCloseSession}
+                >
+                  Cerrar Sesión
+                </button>
+              </li>
+            </div>
           ) : (
-            ''
+            <div className="nav__container__menu">
+              <li className="nav__container__menu__list">
+                <Link to="/login" className="nav__container__menu__list__link">
+                  Login
+                </Link>
+              </li>
+              <li className="nav__container__menu__list">
+                <Link to="/signup" className="nav__container__menu__list__link">
+                  Registrarse
+                </Link>
+              </li>
+            </div>
           )}
         </ul>
       </div>

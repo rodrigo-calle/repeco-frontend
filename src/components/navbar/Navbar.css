@@ -21,6 +21,7 @@ nav {
 .nav__container__menu {
   display: flex;
   list-style: none;
+  align-items: center;
 }
 
 .nav__container__menu__list {
@@ -36,4 +37,20 @@ nav {
   width: 50px;
   border-radius: 50px;
   align-self: center;
+}
+
+.nav__close-session {
+  cursor: pointer;
+  background-color: #cd7f3e;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  align-self: center;
+  text-decoration: none;
+}
+
+.nav__close-session:hover {
+  background-color: white;
+  color: #cd7f3e;
+  text-decoration: none;
 }

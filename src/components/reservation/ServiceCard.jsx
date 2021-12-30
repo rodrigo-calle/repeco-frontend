@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
@@ -51,14 +52,14 @@ const ServiceCard = ({ room }) => {
         </div>
         <p className="card__addres">
           <i className="fas fa-map-marker-alt" />{' '}
-          {`${room.address.street} - ${room.address.city} - ${room.address.province} - ${room.address.country}`}
+          {`${room.hotel.address.street} - ${room.hotel.address.city} - ${room.hotel.address.province} - ${room.hotel.address.country}`}
         </p>
 
         <div className="card__footer">
           <button
             type="button"
             className="card__button"
-            onClick={() => handleClick(room.id)}
+            onClick={() => handleClick(room._id)}
           >
             Go to Detail
           </button>
@@ -70,16 +71,18 @@ const ServiceCard = ({ room }) => {
 
 ServiceCard.propTypes = {
   room: PropTypes.shape({
-    id: PropTypes.number,
+    _id: PropTypes.string,
     type: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
     images: PropTypes.arrayOf(PropTypes.string),
-    address: PropTypes.shape({
-      street: PropTypes.string,
-      city: PropTypes.string,
-      province: PropTypes.string,
-      country: PropTypes.string,
+    hotel: PropTypes.shape({
+      address: PropTypes.shape({
+        street: PropTypes.string,
+        city: PropTypes.string,
+        province: PropTypes.string,
+        country: PropTypes.string,
+      }),
     }),
     tags: PropTypes.arrayOf(PropTypes.string),
     price: PropTypes.number,

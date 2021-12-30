@@ -1,47 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import getAllUsers from './dataUsers';
+import { useAppDispatch } from '../../context/store';
+import { loginUser } from '../../context/actions';
+
 import './Login.css';
 
-import { useUserContext } from '../../context/UserProvider';
-
 const Login = () => {
-  const users = getAllUsers();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [values, setValues] = useState('');
-
-  const { setCompleteName } = useUserContext();
+  const dispatch = useAppDispatch();
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
 
   const navigate = useNavigate();
 
-  const failInputMessage = () => {
-    setValues('Correo y/o contraseña incorrecta');
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  // eslint-disable-next-line consistent-return
-  const validateLogin = (em, pass) => {
-    const validation = users.find(
-      (user) => user.email === em && user.password === pass,
-    );
-
-    if (validation) {
-      setCompleteName(`${validation.name} ${validation.lastname}`);
-      // console.log(`${validation.name} ${validation.lastname}`)
-      return true;
-    }
-    failInputMessage();
-  };
-
-  const handleLoginSubmit = (e) => {
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
 
-    if (validateLogin(email, password)) {
-      navigate('/');
-    }
-    // eslint-disable-next-line array-callback-return
-    setEmail('');
-    setPassword('');
+    loginUser(dispatch, user);
+
+    navigate('/');
   };
 
   return (
@@ -85,17 +71,24 @@ const Login = () => {
           <p className="login-container__line-second" />
         </div>
         <form action="" onSubmit={handleLoginSubmit} className="form-container">
-          <span className="login-container__flash-message">{values}</span>{' '}
+          {/* {errorMessage ? (
+            <span className="login-container__flash-message">
+              {errorMessage}
+            </span>
+          ) : (
+            ''
+          )} */}
           <br />
           <label htmlFor="email">
             Correo electrónico
             <input
-              className="input"
-              onChange={(event) => setEmail(event.target.value)}
-              type="email"
-              placeholder="Ingrese email"
               id="email"
-              value={email}
+              className="input"
+              type="email"
+              name="email"
+              placeholder="Ingrese email"
+              value={user.email}
+              onChange={handleChange}
             />
           </label>
           <br />
@@ -103,12 +96,13 @@ const Login = () => {
             Contraseña
             <br />
             <input
+              id="password"
               className="input"
               type="password"
-              onChange={(event) => setPassword(event.target.value)}
-              value={password}
-              id="password"
+              name="password"
               placeholder="Ingrese contraseña"
+              value={user.password}
+              onChange={handleChange}
             />
           </label>
           <br />
