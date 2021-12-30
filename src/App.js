@@ -10,13 +10,14 @@ import Signup from './pages/signup/Signup';
 import ServiceDetail from './pages/service-detail/ServiceDetail';
 import Booking from './pages/booking/Booking';
 import Footer from './components/footer/Footer';
-import { UserProvider } from './context/UserProvider';
+
+import { AppProvider } from './context/store';
 
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <BrowserRouter>
-        <UserProvider>
+        <AppProvider>
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -26,7 +27,7 @@ const App = () => {
             <Route path="/signup" element={<Signup />} />
           </Routes>
           <Footer />
-        </UserProvider>
+        </AppProvider>
       </BrowserRouter>
     </LocalizationProvider>
   );

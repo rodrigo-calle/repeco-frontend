@@ -1,6 +1,7 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 import InputAdornment from '@mui/material/InputAdornment';
@@ -13,48 +14,58 @@ import {
   TextField,
 } from '@mui/material';
 import { DatePicker } from '@mui/lab';
+import { addDays } from 'date-fns';
+
+import roomService from '../../services/room';
 
 import './ServiceDetail.css';
 
-import { addDays } from 'date-fns';
-import { getRoom } from '../../data';
-import { useUserContext } from '../../context/UserProvider';
+// import { useUserContext } from '../../context/UserProvider';
 
 const ServiceDetail = () => {
-  const { addCart, setAddCart } = useUserContext();
+  //  const { addCart, setAddCart } = useUserContext();
   const [checkinDate, setCheckinDate] = useState(null);
   const [checkoutDate, setCheckoutDate] = useState(null);
   const [value, setValue] = useState('first');
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [room, setRoom] = useState({
-    id: 0,
-    type: '',
+    _id: 0,
     title: '',
     description: '',
     images: [],
-    address: {
-      street: '',
-      city: '',
-      province: '',
-      country: '',
-      mapLocation: '',
-    },
-    tags: [],
+    services: [],
     price: 0,
+    capacity: 0,
+    hotel: {
+      address: {
+        street: '',
+        city: '',
+        province: '',
+        country: '',
+      },
+    },
   });
-  const id = parseInt(useParams().id, 10);
+  const { id } = useParams();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const roominfo = getRoom(id);
-    setRoom(roominfo);
+
+    const getRoomInfo = async () => {
+      const response = await roomService.getRoomById(id);
+      const data = await response.json();
+      if (response.ok) {
+        setRoom(data);
+      }
+    };
+
+    getRoomInfo();
   }, [id]);
 
-  const HandlerClick = () => {
-    setAddCart(addCart.concat(id));
-    navigate(`/booking`);
-  };
+  // const HandlerClick = () => {
+  //   setAddCart(addCart.concat(id));
+  //   navigate(`/booking`);
+  // };
 
   const handleClick = (event) => {
     setValue(event.target.value);
@@ -203,17 +214,13 @@ const ServiceDetail = () => {
         <div className="container-detail__services">
           <div className="container-detail__services--list-container">
             <ul className="container-detail__services--list-container-list">
-              {room.tags.map((tag) => (
+              {room.services.map((service) => (
                 <li
-                  key={tag}
+                  key={service._id}
                   className="container-detail__services--list-container-list--item"
                 >
-                  <img
-                    src="https://icongr.am/clarity/building.svg?size=148&color=000000"
-                    height="27px"
-                    alt=""
-                  />
-                  {tag}
+                  <i className={`${service.serviceUrl} serviceIcon`} />
+                  {`${service.serviceName}`}
                 </li>
               ))}
             </ul>
@@ -234,11 +241,7 @@ const ServiceDetail = () => {
           {/* <button className="container-detail--buttons-wishes">
             Lista de Deseos
           </button> */}
-          <button
-            type="button"
-            onClick={HandlerClick}
-            className="container-detail--buttons-reserve"
-          >
+          <button type="button" className="container-detail--buttons-reserve">
             Reservar
           </button>
         </div>

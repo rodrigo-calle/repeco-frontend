@@ -67,16 +67,18 @@
   border-radius: 34px;
 }
 .container_detail__text {
-  padding-left: 40px;
-  padding-top: 40px;
-  padding-right: 40px;
+  padding: 40px 40px 0 40px;
 }
 .container_detail__text-pharagrap {
   margin-top: 15px;
 }
 .container-detail__services {
-  padding: 40px;
+  padding: 0 40px;
   width: calc(100%-40px);
+}
+
+.serviceIcon {
+  margin-right: 10px;
 }
 .container-detail__services--list-container {
   display: inline-block;
