@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://kit.fontawesome.com/bc19bca430.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="adminsystem">
+    <div class="adminsystem__menu">
+      <h1>REPECO</h1>
+      <ul>
+        <li class="adminsystem__menu--active"><i class="fas fa-cube"></i> Dashboard</li>
+        <li><i class="fas fa-dollar-sign"></i> Finanzas</li>
+        <li><i class="fas fa-chart-pie"></i> Estadísticas</li>
+        <li><i class="far fa-envelope"></i> Correos</li>
+        <li><i class="fas fa-cog"></i> Ajustes</li>
+      </ul>
+      <button class="adminsystem__button-menu"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="adminsystem__dashboard">
+      <header class="dashboard__header" >
+        <h1>System Users</h1>
+        <form action="">
+          <input type="text" placeholder="Buscar usuarios">
+        </form>
+      </header>
+      <section class="dashboard__accions">
+        <div class="dashboard__addUser">
+          <button class=""><i class="fas fa-plus"></i> Nuevo Usuario</button>
+        </div>
+        <div class="dashboard__infocrud">
+          <i class="far fa-user dashboard__iconuser"></i>
+          <div class="dashboard__totaluser">
+            <span class="dashboard__titlenumberuser">Total de Usuarios</span>
+            <div class="dashboard__numberUser">
+              100.000
+            </div>
+          </div>
+          <div class="dashboard__barra"></div>
+          <div class="dashboard__crud">
+            <button class="dashboard__active">Activar</button>
+            <button class="dashboard__edit">Editar</button>
+            <button class="dashboard__delete">Eliminar</button>
+          </div>
+
+        </div>
+      </section>
+      <div class="dashboard__table">
+        <div class="dashboard__table__border">
+          <table>
+            <thead>
+              <tr>
+                <th><input type="checkbox"></th>
+                <th>id</th>
+                <th>Fecha de registro</th>
+                <th>Nombre de hospedaje</th>
+                <th>Duseño de hospedaje</th>
+                <th>Location</th>
+                <th>N° Total Reservas</th>
+                <th>N° Reservas Mensuales</th>
+                <th>Ganacia Mensual</th>
+                <th>Ganacias totales</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><input type="checkbox"></th>
+                <td>#0001</td>
+                <td>04/08/20
+                  12:34 AM</td>
+                <td>Nombre
+                  Hospedaje</td>
+                <td>Nombre
+                  Apellido</td>
+                <td>N° Av. City</td>
+                <td>120</td>
+                <td>15</td>
+                <td>S/.400.00</td>
+                <td>S/.10000.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

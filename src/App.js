@@ -13,6 +13,12 @@ import Footer from './components/footer/Footer';
 
 import { AppProvider } from './context/store';
 
+import ProfileEdit from './components/profileClient/ProfileEdit';
+import PaymentsClient from './components/paymentsClient/PaymentsClient';
+import BookingHistory from './components/bookingHistory/BookingHistory';
+import DeleteClient from './components/deleteClient/deleteClient';
+
+
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -25,6 +31,13 @@ const App = () => {
             <Route path="/booking" element={<Booking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/user/account/edit" element={<ProfileEdit />} />
+            <Route path="/user/account/payment" element={<PaymentsClient />} />
+            <Route
+              path="/user/account/booking-history"
+              element={<BookingHistory />}
+            />
+            <Route path="/user/account/delete" element={<DeleteClient />} />
           </Routes>
           <Footer />
         </AppProvider>
