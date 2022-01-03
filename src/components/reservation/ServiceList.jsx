@@ -36,19 +36,36 @@ const ServiceList = ({ roomList, searchFields }) => {
 ServiceList.propTypes = {
   roomList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
-      type: PropTypes.string,
+      _id: PropTypes.string,
+      title: PropTypes.string,
       description: PropTypes.string,
-      images: PropTypes.arrayOf(PropTypes.string),
-      address: PropTypes.shape({
-        street: PropTypes.string,
-        city: PropTypes.string,
-        province: PropTypes.string,
-        country: PropTypes.string,
-      }),
-      tags: PropTypes.arrayOf(PropTypes.string),
+      images: PropTypes.arrayOf(
+        PropTypes.shape({
+          imageName: PropTypes.string,
+          imageUrl: PropTypes.string,
+        }),
+      ),
+      services: PropTypes.arrayOf(
+        PropTypes.shape({
+          serviceName: PropTypes.string,
+          serviceUrl: PropTypes.string,
+        }),
+      ),
       price: PropTypes.number,
       capacity: PropTypes.number,
+      hotel: PropTypes.shape({
+        address: PropTypes.shape({
+          street: PropTypes.string,
+          city: PropTypes.string,
+          province: PropTypes.string,
+          country: PropTypes.string,
+        }),
+        name: PropTypes.string,
+        category: PropTypes.string,
+        phone: PropTypes.string,
+        email: PropTypes.string,
+        user: PropTypes.string,
+      }),
     }),
   ).isRequired,
   searchFields: PropTypes.shape({

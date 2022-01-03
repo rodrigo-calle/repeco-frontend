@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 import InputAdornment from '@mui/material/InputAdornment';
@@ -17,18 +17,16 @@ import { DatePicker } from '@mui/lab';
 import { addDays } from 'date-fns';
 
 import roomService from '../../services/room';
+import userService from '../../services/user';
 
 import './ServiceDetail.css';
 
-// import { useUserContext } from '../../context/UserProvider';
-
 const ServiceDetail = () => {
-  //  const { addCart, setAddCart } = useUserContext();
   const [checkinDate, setCheckinDate] = useState(null);
   const [checkoutDate, setCheckoutDate] = useState(null);
   const [value, setValue] = useState('first');
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [room, setRoom] = useState({
     _id: 0,
     title: '',
@@ -48,6 +46,19 @@ const ServiceDetail = () => {
   });
   const { id } = useParams();
 
+  const handleClickImages = (event) => {
+    setValue(event.target.value);
+  };
+
+  const handleClickAddToCart = async () => {
+    const response = await userService.updateUserCart(id);
+    if (response.ok) {
+      navigate('/booking');
+    } else {
+      navigate('/login');
+    }
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
@@ -61,15 +72,6 @@ const ServiceDetail = () => {
 
     getRoomInfo();
   }, [id]);
-
-  // const HandlerClick = () => {
-  //   setAddCart(addCart.concat(id));
-  //   navigate(`/booking`);
-  // };
-
-  const handleClick = (event) => {
-    setValue(event.target.value);
-  };
 
   return (
     <div className="detail-page">
@@ -182,7 +184,7 @@ const ServiceDetail = () => {
               id="img-02"
               name="image"
               value="first"
-              onClick={handleClick}
+              onClick={handleClickImages}
               style={{
                 backgroundImage: `url(https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg)`,
                 backgroundSize: '100% 100%',
@@ -193,7 +195,7 @@ const ServiceDetail = () => {
               id="img-02"
               name="image"
               value="second"
-              onClick={handleClick}
+              onClick={handleClickImages}
               style={{
                 backgroundImage: `url(https://cdna.artstation.com/p/assets/images/images/014/081/626/large/berktan-hatiboglu-modern-render1.jpg?1542377257)`,
                 backgroundSize: '100% 100%',
@@ -241,7 +243,11 @@ const ServiceDetail = () => {
           {/* <button className="container-detail--buttons-wishes">
             Lista de Deseos
           </button> */}
-          <button type="button" className="container-detail--buttons-reserve">
+          <button
+            type="button"
+            className="container-detail--buttons-reserve"
+            onClick={handleClickAddToCart}
+          >
             Reservar
           </button>
         </div>
