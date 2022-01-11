@@ -5,12 +5,13 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   SET_LOADING,
+  SET_SEARCH_FIELDS,
 } from './constants';
 
 import authService from '../services/auth';
 
 export const loginUser = async (dispatch, user) => {
-  dispatch({ type: LOGIN_USER, payload: true });
+  dispatch({ type: SET_LOADING, payload: true });
 
   try {
     const response = await authService.loginAccount(user);
@@ -41,4 +42,8 @@ export const getUserFromLocalStorage = (dispatch) => {
     const decoded = jwt_decode(token);
     dispatch({ type: GET_USER_FROM_LOCALSTORAGE, payload: decoded });
   }
+};
+
+export const setSearchFieldsForm = (dispatch, form) => {
+  dispatch({ type: SET_SEARCH_FIELDS, payload: form });
 };

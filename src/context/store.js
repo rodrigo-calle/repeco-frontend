@@ -4,6 +4,7 @@ import {
   LOGOUT_USER,
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
+  SET_SEARCH_FIELDS,
 } from './constants';
 
 const AppStateContext = createContext();
@@ -12,6 +13,7 @@ const AppDispatchContext = createContext();
 const initialState = {
   isLoading: false,
   user: null,
+  searchFieldsForm: null,
 };
 function AppReducer(state, action) {
   switch (action.type) {
@@ -36,6 +38,12 @@ function AppReducer(state, action) {
       return {
         ...state,
         user: action.payload,
+      };
+    }
+    case SET_SEARCH_FIELDS: {
+      return {
+        ...state,
+        searchFields: action.payload,
       };
     }
     default:
