@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 
 import InputAdornment from '@mui/material/InputAdornment';
@@ -22,9 +22,10 @@ import userService from '../../services/user';
 import './ServiceDetail.css';
 
 const ServiceDetail = () => {
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
-  const [value, setValue] = useState('first');
+  const [valueImage, setValueImage] = useState('first');
+
+  const location = useLocation();
+  const paramsQuery = new URLSearchParams(location.search);
 
   const navigate = useNavigate();
   const [room, setRoom] = useState({
@@ -44,14 +45,56 @@ const ServiceDetail = () => {
       },
     },
   });
+
+  const [searchFields, setSearchFields] = useState({
+    location: '',
+    capacity: '',
+    checkIn: '',
+    checkOut: '',
+  });
   const { id } = useParams();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setSearchFields((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleChangeSelect = (e) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      capacity: parseInt(e.target.value, 10),
+    }));
+  };
+
+  const handleCheckOutDateSelect = (value) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      checkOut: value,
+    }));
+  };
+
+  const handleCheckInDateSelect = (value) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      checkIn: value,
+    }));
+  };
+
   const handleClickImages = (event) => {
-    setValue(event.target.value);
+    setValueImage(event.target.value);
   };
 
   const handleClickAddToCart = async () => {
-    const response = await userService.updateUserCart(id);
+    const response = await userService.updateUserCart(
+      id,
+      searchFields.checkIn,
+      searchFields.checkOut,
+    );
+
     if (response.ok) {
       navigate('/booking');
     } else {
@@ -67,6 +110,13 @@ const ServiceDetail = () => {
       const data = await response.json();
       if (response.ok) {
         setRoom(data);
+        setSearchFields((prev) => ({
+          ...prev,
+          location: data.hotel.address.city,
+          capacity: data.capacity,
+          checkIn: paramsQuery.get('checkIn'),
+          checkOut: paramsQuery.get('checkOut'),
+        }));
       }
     };
 
@@ -87,7 +137,9 @@ const ServiceDetail = () => {
                 size="small"
                 placeholder="Lugar"
                 name="location"
+                onChange={handleChange}
                 style={{ backgroundColor: 'white' }}
+                value={searchFields.location}
                 fullWidth
                 InputProps={{
                   startAdornment: (
@@ -100,12 +152,10 @@ const ServiceDetail = () => {
 
               <DatePicker
                 label="Fecha de Entrada"
-                value={checkinDate}
+                value={searchFields.checkIn}
                 inputFormat="dd/MM/yyyy"
                 minDate={Date.now()}
-                onChange={(newValue) => {
-                  setCheckinDate(newValue);
-                }}
+                onChange={(newValue) => handleCheckInDateSelect(newValue)}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -119,10 +169,11 @@ const ServiceDetail = () => {
               />
               <DatePicker
                 label="Fecha de Salida"
-                value={checkoutDate}
-                minDate={addDays(checkinDate, 1)}
+                value={searchFields.checkOut}
+                inputFormat="dd/MM/yyyy"
+                minDate={addDays(searchFields.checkIn, 1)}
                 onChange={(newValue) => {
-                  setCheckoutDate(newValue);
+                  handleCheckOutDateSelect(newValue);
                 }}
                 renderInput={(params) => (
                   <TextField
@@ -140,8 +191,10 @@ const ServiceDetail = () => {
                 <Select
                   labelId="capacity"
                   id="demo-simple-select"
+                  value={searchFields.capacity}
                   label="Número de Personas"
                   size="small"
+                  onChange={handleChangeSelect}
                   style={{
                     backgroundColor: 'white',
                     textAlign: 'start',
@@ -165,7 +218,7 @@ const ServiceDetail = () => {
           </form>
         </div>
         <div className="image-box">
-          {value === 'first' ? (
+          {valueImage === 'first' ? (
             <img
               className="header-detail__main-image"
               src="https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg"

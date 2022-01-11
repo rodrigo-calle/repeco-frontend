@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 import './ServiceCard.css';
 
-const ServiceCard = ({ room }) => {
+const ServiceCard = ({ room, searchFields }) => {
   const navigate = useNavigate();
-
+  const params = new URLSearchParams(searchFields);
+  console.log('paramscard', params.get('checkIn'));
   const handleClick = (id) => {
-    navigate(`/service/${id}`);
+    navigate(`/service/${id}?${params.toString()}`);
   };
 
   return (
@@ -88,6 +89,7 @@ ServiceCard.propTypes = {
     price: PropTypes.number,
     capacity: PropTypes.number,
   }).isRequired,
+  searchFields: PropTypes.shape({}).isRequired,
 };
 
 export default ServiceCard;

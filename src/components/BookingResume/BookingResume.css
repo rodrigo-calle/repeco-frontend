@@ -14,6 +14,17 @@
   text-align: center;
 }
 
+.resume__room-title {
+  width: 80%;
+  margin: auto;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
 .resume__dates-container {
   display: flex;
   width: 80%;
