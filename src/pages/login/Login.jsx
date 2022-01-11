@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useAppDispatch } from '../../context/store';
-// import { loginUser } from '../../context/actions';
-// linea añadida
-import authService from '../../services/auth';
+import { useAppDispatch } from '../../context/store';
+import { loginUser } from '../../context/actions';
+
 import './Login.css';
 
 const Login = () => {
-  const [hasError, setHasError] = useState(null);
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -26,25 +24,9 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    // console.log(user);
-    // const data = await response.json();
+    loginUser(dispatch, user);
 
-    // if (response.ok) {
-    //   return data;
-    // }
-    // return data;
-    try {
-      const response = await authService.loginAccount(user);
-      const data = await response.json();
-      if (response.ok) {
-        localStorage.setItem('token', data.token);
-        await navigate('/user/account/edit');
-      } else {
-        setHasError(data.message);
-      }
-    } catch (error) {
-      setHasError(error);
-    }
+    navigate('/user/account/edit');
   };
 
   return (
@@ -95,7 +77,6 @@ const Login = () => {
           ) : (
             ''
           )} */}
-          {hasError ? <p className="login-error">{hasError}</p> : null}
           <br />
           <label htmlFor="email">
             Correo electrónico
