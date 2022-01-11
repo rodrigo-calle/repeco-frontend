@@ -54,3 +54,7 @@ nav {
   color: #cd7f3e;
   text-decoration: none;
 }
+
+.nav__container__menu__list .logout-btn {
+  cursor: pointer;
+}

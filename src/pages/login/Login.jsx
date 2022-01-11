@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch } from '../../context/store';
-import { loginUser } from '../../context/actions';
-
+// import { useAppDispatch } from '../../context/store';
+// import { loginUser } from '../../context/actions';
+// linea añadida
+import authService from '../../services/auth';
 import './Login.css';
 
 const Login = () => {
-  const dispatch = useAppDispatch();
+  const [hasError, setHasError] = useState(null);
+  // const dispatch = useAppDispatch();
   const [user, setUser] = useState({
     email: '',
     password: '',
@@ -24,10 +26,25 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
+    // console.log(user);
+    // const data = await response.json();
 
-    loginUser(dispatch, user);
-
-    navigate('/');
+    // if (response.ok) {
+    //   return data;
+    // }
+    // return data;
+    try {
+      const response = await authService.loginAccount(user);
+      const data = await response.json();
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        await navigate('/user/account/edit');
+      } else {
+        setHasError(data.message);
+      }
+    } catch (error) {
+      setHasError(error);
+    }
   };
 
   return (
@@ -70,7 +87,7 @@ const Login = () => {
           <p className="login-container__line-letter">o</p>
           <p className="login-container__line-second" />
         </div>
-        <form action="" onSubmit={handleLoginSubmit} className="form-container">
+        <form onSubmit={handleLoginSubmit} className="form-container">
           {/* {errorMessage ? (
             <span className="login-container__flash-message">
               {errorMessage}
@@ -78,6 +95,7 @@ const Login = () => {
           ) : (
             ''
           )} */}
+          {hasError ? <p className="login-error">{hasError}</p> : null}
           <br />
           <label htmlFor="email">
             Correo electrónico
