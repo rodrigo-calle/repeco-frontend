@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchBar.css';
 import {
@@ -15,9 +15,6 @@ import { DatePicker } from '@mui/lab';
 import { addDays } from 'date-fns';
 
 const SearchBar = ({ searchFields, setSearchFields }) => {
-  const [checkinDate, setCheckinDate] = useState(null);
-  const [checkoutDate, setCheckoutDate] = useState(null);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -31,6 +28,20 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
     setSearchFields((prev) => ({
       ...prev,
       capacity: parseInt(e.target.value, 10),
+    }));
+  };
+
+  const handleCheckOutDateSelect = (value) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      checkOut: value,
+    }));
+  };
+
+  const handleCheckInDateSelect = (value) => {
+    setSearchFields((prev) => ({
+      ...prev,
+      checkIn: value,
     }));
   };
 
@@ -61,12 +72,11 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
         <FormControl fullWidth>
           <DatePicker
             label="Fecha de Entrada"
-            value={checkinDate}
+            value={searchFields.checkIn}
+            name="checkIn"
             inputFormat="dd/MM/yyyy"
             minDate={Date.now()}
-            onChange={(newValue) => {
-              setCheckinDate(newValue);
-            }}
+            onChange={(newValue) => handleCheckInDateSelect(newValue)}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -82,11 +92,11 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
         <FormControl fullWidth>
           <DatePicker
             label="Fecha de Salida"
-            value={checkoutDate}
-            minDate={addDays(checkinDate, 1)}
-            onChange={(newValue) => {
-              setCheckoutDate(newValue);
-            }}
+            value={searchFields.checkOut}
+            name="checkOut"
+            inputFormat="dd/MM/yyyy"
+            minDate={addDays(searchFields.checkIn, 1)}
+            onChange={(newValue) => handleCheckOutDateSelect(newValue)}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -110,6 +120,7 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
             onChange={handleChangeSelect}
             style={{ backgroundColor: 'white' }}
           >
+            <MenuItem value="0">All</MenuItem>
             <MenuItem value="1">1 Persona</MenuItem>
             <MenuItem value="2">2 Personas</MenuItem>
             <MenuItem value="3">3 Personas</MenuItem>
@@ -117,7 +128,7 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
           </Select>
         </FormControl>
 
-        <button type="button" className="search__form__submit">
+        <button type="submit" className="search__form__submit">
           <i className="fas fa-search" />
           Buscar
         </button>
@@ -130,6 +141,8 @@ SearchBar.propTypes = {
   searchFields: PropTypes.shape({
     location: PropTypes.string,
     capacity: PropTypes.number,
+    checkIn: PropTypes.instanceOf(Date),
+    checkOut: PropTypes.instanceOf(Date),
   }).isRequired,
   setSearchFields: PropTypes.func.isRequired,
 };

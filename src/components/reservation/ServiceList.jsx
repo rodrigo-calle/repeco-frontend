@@ -27,7 +27,7 @@ const ServiceList = ({ roomList, searchFields }) => {
   return (
     <section className="rooms-container">
       {filterRooms.map((room) => (
-        <ServiceCard room={room} key={room.id} />
+        <ServiceCard room={room} key={room.id} searchFields={searchFields} />
       ))}
     </section>
   );
