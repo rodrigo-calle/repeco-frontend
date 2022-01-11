@@ -18,7 +18,6 @@ import PaymentsClient from './components/paymentsClient/PaymentsClient';
 import BookingHistory from './components/bookingHistory/BookingHistory';
 import DeleteClient from './components/deleteClient/deleteClient';
 
-
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>

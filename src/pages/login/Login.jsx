@@ -24,10 +24,9 @@ const Login = () => {
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
-
     loginUser(dispatch, user);
 
-    navigate('/');
+    navigate('/user/account/edit');
   };
 
   return (
@@ -70,7 +69,7 @@ const Login = () => {
           <p className="login-container__line-letter">o</p>
           <p className="login-container__line-second" />
         </div>
-        <form action="" onSubmit={handleLoginSubmit} className="form-container">
+        <form onSubmit={handleLoginSubmit} className="form-container">
           {/* {errorMessage ? (
             <span className="login-container__flash-message">
               {errorMessage}
