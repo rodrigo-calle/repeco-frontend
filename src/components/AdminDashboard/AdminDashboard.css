@@ -1,0 +1,123 @@
+.AdminDashboard__dashboard {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+}
+
+.AdminDashboard__header {
+  background-color: white;
+  padding: 1rem 1rem 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.AdminDashboard__header form input {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border-width: 1px;
+}
+
+.AdminDashboard__accions {
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.AdminDashboard__infocrud {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem 2rem;
+  box-sizing: border-box;
+  border-radius: 3rem;
+  align-items: center;
+}
+
+.AdminDashboard__titlenumberuser {
+  color: #b8b8b8;
+  font-size: 0.8rem;
+}
+
+.AdminDashboard__addUser button {
+  background-color: #9b156e;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+.AdminDashboard__iconuser {
+  font-size: 3rem;
+  margin-right: 1rem;
+}
+
+.AdminDashboard__totaluser {
+  margin-right: 1rem;
+}
+
+.AdminDashboard__numberUser {
+  font-weight: 800;
+  font-size: 1.4rem;
+}
+
+.AdminDashboard__crud button {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin: 0.2rem 0.2rem;
+}
+
+.AdminDashboard__active {
+  border-color: #9b156e;
+  border: none;
+  outline: solid 1px;
+  color: #9b156e;
+  background-color: transparent;
+}
+.AdminDashboard__edit {
+  background-color: #ffe81d;
+  color: black;
+  border: none;
+}
+.AdminDashboard__delete {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+}
+
+.AdminDashboard__table__border {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  overflow: scroll;
+}
+.AdminDashboard__table {
+  padding: 1rem;
+}
+.AdminDashboard__table th {
+  text-align: left;
+}
+
+.AdminDashboard__table table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.AdminDashboard__table th,
+.AdminDashboard__table td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+.AdminDashboard__table tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+@media (min-width: 1000px) {
+  .AdminDashboard__dashboard {
+    width: 100%;
+  }
+}
