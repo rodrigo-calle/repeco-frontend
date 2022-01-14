@@ -1,7 +1,52 @@
 import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import './ProfileEdit.css';
+import { useAppState } from '../../context/store';
+import userService from '../../services/user';
 
 const ProfileEdit = () => {
+  const { user } = useAppState();
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [dataUser, setDataUser] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    document: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    console.log(dataUser);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const values = {};
+    Object.entries(dataUser).forEach(([key, value]) => {
+      if (value !== '') {
+        values[key] = value;
+      }
+    });
+
+    try {
+      const response = await userService.updateUser(values);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.log('error');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="profile-container">
       <div className="profile-container__profile-menu">
@@ -11,9 +56,15 @@ const ProfileEdit = () => {
           src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
           alt="logo-repeco"
         />
-        <p className="profile-container__profile-menu--user">
-          Nombre y Apellido{' '}
-        </p>{' '}
+        {user ? (
+          <p className="profile-container__profile-menu--user">
+            {user.fullName}
+          </p>
+        ) : (
+          <p className="profile-container__profile-menu--user">
+            Nombre Completo
+          </p>
+        )}
         <p className="profile-container__profile-menu--btn-edit editing">
           <img
             className="profile-container__profile-menu--btn-edit__icon-active"
@@ -33,29 +84,38 @@ const ProfileEdit = () => {
           />
           Pagos{' '}
         </Link>{' '}
-        <p className="profile-container__profile-menu--btn-edit bookings">
+        <Link
+          to="/user/account/booking-history"
+          className="profile-container__profile-menu--btn-edit bookings"
+        >
           <img
             className="profile-container__profile-menu--btn-edit__icon-inactive"
             src="/image/icons/booking_inactive.png"
             alt="edit-icon"
           />
           Mis Reservas{' '}
-        </p>{' '}
-        <p className="profile-container__profile-menu--btn-edit delete-account">
+        </Link>{' '}
+        <Link
+          to="/user/account/delete"
+          className="profile-container__profile-menu--btn-edit delete-account"
+        >
           <img
             className="profile-container__profile-menu--btn-edit__icon-inactive"
             src="/image/icons/remove_user_inactive.png"
             alt="edit-icon"
           />
           Anular Cuenta{' '}
-        </p>{' '}
+        </Link>{' '}
       </div>{' '}
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title">
           {' '}
           Editar Perfil{' '}
         </p>{' '}
-        <form className="profile-container__profile-edit--form">
+        <form
+          onSubmit={handleSubmit}
+          className="profile-container__profile-edit--form"
+        >
           <div className="form-colum one-colum">
             <label
               htmlFor="email"
@@ -65,8 +125,11 @@ const ProfileEdit = () => {
               <br />
               <input
                 className="profile-container__profile-edit--form__input"
+                name="email"
                 type="email"
                 id="email"
+                value={dataUser.email}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />
@@ -79,7 +142,10 @@ const ProfileEdit = () => {
               <input
                 className="profile-container__profile-edit--form__input"
                 type="password"
+                name="password"
                 id="new-password"
+                value={dataUser.password}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />
@@ -91,8 +157,11 @@ const ProfileEdit = () => {
               <br />
               <input
                 className="profile-container__profile-edit--form__input"
+                name="passwordConfirm"
                 type="password"
                 id="confirm-password"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
               />
             </label>{' '}
             <br />
@@ -107,7 +176,10 @@ const ProfileEdit = () => {
               <input
                 className="profile-container__profile-edit--form__input"
                 type="text"
+                name="firstName"
                 id="name"
+                value={dataUser.firstName}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />
@@ -119,8 +191,11 @@ const ProfileEdit = () => {
               <br />
               <input
                 id="lastname"
+                name="lastName"
                 className="profile-container__profile-edit--form__input"
                 type="text"
+                value={dataUser.lastName}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />
@@ -133,7 +208,10 @@ const ProfileEdit = () => {
               <input
                 className="profile-container__profile-edit--form__input"
                 type="text"
+                name="document"
                 id="document"
+                value={dataUser.document}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />
@@ -146,7 +224,10 @@ const ProfileEdit = () => {
               <input
                 className="profile-container__profile-edit--form__input"
                 type="text"
+                name="phone"
                 id="phone"
+                value={dataUser.phone}
+                onChange={handleChange}
               />
             </label>{' '}
             <br />

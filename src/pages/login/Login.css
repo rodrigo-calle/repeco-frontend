@@ -3,9 +3,9 @@ header{
  }
  .login-title{
      text-align: center;
- 
+
  }
- 
+
  .line{
      border-bottom: 1px solid #000;
      width: 100%;
@@ -21,9 +21,9 @@ header{
     border-radius: 46px;
     border: 3px solid #D4CBCB ;
     text-align: center;
-    margin: 40px auto; 
-    padding: 35px 0px;  
-} 
+    margin: 40px auto;
+    padding: 35px 0px;
+}
 
 .login-container__line-letter{
     margin: 0 3px;
@@ -49,7 +49,7 @@ header{
 .login-container__fb-button p, .login-container__google-button p{
    margin: auto auto;
    width: fit-content;
-   
+
 }
 .login-container__fb-button p img, .login-container__google-button p img{
     vertical-align: bottom;
@@ -60,7 +60,7 @@ header{
     height: 48px;
     border: 3px solid #8b8a8a ;
     background-color: #fff;
-    border-radius: 36px; 
+    border-radius: 36px;
     cursor: pointer;
     font-weight: 600;
     margin-top: 15px ;
@@ -84,7 +84,7 @@ header{
     margin: 20px auto;
 }
 .login-container__line p{
-    display: inline-block;    
+    display: inline-block;
 }
 
 .login-container__line-first, .login-container__line-second{
@@ -94,11 +94,11 @@ header{
 
 .form-container input{
     width: 450px;
-    height: 48px; 
+    height: 48px;
     border-radius: 36px;
     border: 2px solid #D4CBCB;
     margin-top: 10px;
-    margin-bottom: 10px;    
+    margin-bottom: 10px;
     text-align: center;
     font-size: 20px;
 }
@@ -121,10 +121,19 @@ header{
     width: fit-content;
     text-align: center;
     font-size: 20px;
-    
+
 }
 
-
+.form-container .login-error{
+  background-color: #ce4d4d;
+  color: #fff;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+  width: 100%;
+}
 @media screen and (max-width: 580px) {
     .login-container{
         width: 80%;
@@ -132,7 +141,7 @@ header{
         flex-direction: column;
     }
     .login-container__fb-button, .login-container__google-button{
-        width: 90%;    
+        width: 90%;
         margin: 0px auto;
     }
     .login-container__fb-button{
@@ -162,10 +171,10 @@ header{
 
     .form-container .input{
         width: 90%;
-        
+
     }
     .form-container .form-container__submit{
         width: 90%;
     }
- 
+
 }

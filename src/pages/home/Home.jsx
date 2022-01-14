@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addDays } from 'date-fns';
 import SearchBar from '../../components/searchBar/SearchBar';
 import './Home.css';
 import ServiceList from '../../components/reservation/ServiceList';
@@ -9,6 +10,8 @@ const Home = () => {
   const [searchFields, setSearchFields] = useState({
     location: '',
     capacity: 0,
+    checkIn: addDays(Date.now(), 0),
+    checkOut: addDays(Date.now(), 1),
   });
 
   useEffect(() => {

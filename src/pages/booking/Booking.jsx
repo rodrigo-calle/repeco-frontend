@@ -5,7 +5,7 @@ import BookingResume from '../../components/BookingResume/BookingResume';
 import userService from '../../services/user';
 
 const Booking = () => {
-  const [cartRooms, setCartRooms] = useState();
+  const [cartRooms, setCartRooms] = useState([]);
 
   useEffect(() => {
     const getRoomsFromUserCart = async () => {
@@ -20,7 +20,7 @@ const Booking = () => {
     <div className="body">
       <h1 className="title">Booking Process</h1>
       <div className="container">
-        <BookingCard cartRooms={cartRooms} />
+        <BookingCard cartRooms={cartRooms} setCartRooms={setCartRooms} />
         <BookingResume cartRooms={cartRooms} />
       </div>
     </div>
