@@ -34,22 +34,28 @@ const PaymentsClient = () => {
           />
           Pagos
         </p>
-        <p className="payment-container__payment-menu--btn-edit bookings">
+        <Link
+          to="/user/account/booking-history"
+          className="payment-container__payment-menu--btn-edit bookings"
+        >
           <img
             className="payment-container__payment-menu--btn-edit__icon-inactive"
             src="/image/icons/booking_inactive.png"
             alt="edit-icon"
           />
           Mis Reservas
-        </p>
-        <p className="payment-container__payment-menu--btn-edit delete-account">
+        </Link>
+        <Link
+          to="/user/account/delete"
+          className="payment-container__payment-menu--btn-edit delete-account"
+        >
           <img
             className="payment-container__payment-menu--btn-edit__icon-inactive"
             src="/image/icons/remove_user_inactive.png"
             alt="edit-icon"
           />
           Anular Cuenta
-        </p>
+        </Link>
       </div>
       <div className="payment-container__payment-edit">
         <p className="payment-container__payment-edit--title"> Pagos </p>

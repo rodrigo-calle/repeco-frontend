@@ -17,6 +17,7 @@ import ProfileEdit from './components/profileClient/ProfileEdit';
 import PaymentsClient from './components/paymentsClient/PaymentsClient';
 import BookingHistory from './components/bookingHistory/BookingHistory';
 import DeleteClient from './components/deleteClient/deleteClient';
+import Profile from './components/profileClient/Profile';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
             <Route path="/booking" element={<Booking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/user/account/" element={<Profile />} />
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
             <Route

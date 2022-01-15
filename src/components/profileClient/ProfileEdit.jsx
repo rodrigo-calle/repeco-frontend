@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
+// import axios from 'axios';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+
 import { useAppState } from '../../context/store';
 import userService from '../../services/user';
 
 const ProfileEdit = () => {
   const { user } = useAppState();
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  // const [file, setFile] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: '',
     password: '',
@@ -16,14 +21,30 @@ const ProfileEdit = () => {
     document: '',
   });
 
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: 'dwat1o60y',
+    },
+  });
+  const myAvatar = cld.image('m2jxrpwok0hd4yqmpkc3');
+
+  useEffect(async () => {
+    const res = await userService.getUserProfile();
+    console.log(res.json());
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataUser((prev) => ({
       ...prev,
       [name]: value,
     }));
-    console.log(dataUser);
+    // console.log(dataUser);
   };
+
+  // const onChangeAvatar = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,11 +72,15 @@ const ProfileEdit = () => {
     <div className="profile-container">
       <div className="profile-container__profile-menu">
         <p className="profile-container__profile-menu--title"> REPECO </p>{' '}
-        <img
+        <AdvancedImage
+          className="profile-container__profile-menu--logo"
+          cldImg={myAvatar}
+        />
+        {/* <img
           className="profile-container__profile-menu--logo"
           src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
           alt="logo-repeco"
-        />
+        /> */}
         {user ? (
           <p className="profile-container__profile-menu--user">
             {user.fullName}
@@ -165,6 +190,21 @@ const ProfileEdit = () => {
               />
             </label>{' '}
             <br />
+            <label
+              className="profile-container__profile-edit--form__label"
+              htmlFor="password-confirm"
+            >
+              Foto de Perfil:
+              <br />
+              <input
+                className="profile-container__profile-edit--form__input upload-avatar"
+                name="file"
+                type="file"
+                id="file"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+              />
+            </label>{' '}
           </div>{' '}
           <div className="form-colum one-colum">
             <label

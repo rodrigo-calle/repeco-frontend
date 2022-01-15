@@ -46,14 +46,17 @@ const BookingHistory = () => {
           />
           Mis Reservas
         </p>
-        <p className="booking-container__booking-menu--btn-edit delete-account">
+        <Link
+          to="/user/account/delete"
+          className="booking-container__booking-menu--btn-edit delete-account"
+        >
           <img
             className="booking-container__booking-menu--btn-edit__icon-inactive"
             src="/image/icons/remove_user_inactive.png"
             alt="edit-icon"
           />
           Anular Cuenta
-        </p>
+        </Link>
       </div>
       <div className="booking-container__booking-edit">
         <p className="booking-container__booking-edit--title"> Mis Reservas</p>

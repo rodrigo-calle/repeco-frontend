@@ -13,6 +13,17 @@ const updateUser = (data) => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const deletUser = () => {
+  const payload = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/users/delete`, payload);
+};
+
 const updateUserCart = (id, checkIn, checkOut) => {
   const token = localStorage.getItem('token');
   const payload = {
@@ -76,6 +87,7 @@ const user = {
   updateUser,
   getUserProfile,
   deleteItemFromUserCart,
+  deletUser,
 };
 
 export default user;

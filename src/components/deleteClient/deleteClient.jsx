@@ -1,9 +1,34 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import './deleteClient.css';
+import { useAppState, useAppDispatch } from '../../context/store';
+import userService from '../../services/user';
+import { logout } from '../../context/actions';
 
 const DeleteClient = () => {
+  const { user } = useAppState();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
+  const deleteButtonHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await userService.deletUser();
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        alert('Tu usuario ha sido eliminado');
+        logout(dispatch);
+        navigate('/');
+      } else {
+        console.log('error');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="delete-container">
       <div className="delete-container__delete-menu">
@@ -13,7 +38,15 @@ const DeleteClient = () => {
           src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
           alt="logo-repeco"
         />
-        <p className="delete-container__delete-menu--user">Nombre y Apellido</p>
+        {user ? (
+          <p className="profile-container__profile-menu--user">
+            {user.fullName}
+          </p>
+        ) : (
+          <p className="profile-container__profile-menu--user">
+            Nombre Completo
+          </p>
+        )}
         <Link
           to="/user/account/edit"
           className="delete-container__delete-menu--btn-edit "
@@ -36,14 +69,17 @@ const DeleteClient = () => {
           />
           Pagos
         </Link>
-        <p className="delete-container__delete-menu--btn-edit deletes ">
+        <Link
+          to="/user/account/booking-history"
+          className="delete-container__delete-menu--btn-edit deletes "
+        >
           <img
             className="delete-container__delete-menu--btn-edit__icon-inactive"
             src="/image/icons/booking_inactive.png"
             alt="edit-icon"
           />
           Mis Reservas
-        </p>
+        </Link>
         <p className="delete-container__delete-menu--btn-edit delete-account activating">
           <img
             className="delete-container__delete-menu--btn-edit__icon-inactive"
@@ -63,6 +99,7 @@ const DeleteClient = () => {
           <button
             className="delete-container__delete-edit--alert-container__button"
             type="button"
+            onClick={deleteButtonHandler}
           >
             Confirmar
           </button>
