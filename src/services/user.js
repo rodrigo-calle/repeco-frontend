@@ -46,6 +46,19 @@ const deleteItemFromUserCart = (room) => {
   return fetch(`${URL_BASE}/api/users/cartitem/`, payload);
 };
 
+const deleteCartUser = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(`${URL_BASE}/api/users/cart/`, payload);
+};
+
 const getUserCart = () => {
   const token = localStorage.getItem('token');
   const payload = {
@@ -76,6 +89,7 @@ const user = {
   updateUser,
   getUserProfile,
   deleteItemFromUserCart,
+  deleteCartUser,
 };
 
 export default user;

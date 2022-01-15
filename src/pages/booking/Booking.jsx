@@ -21,7 +21,7 @@ const Booking = () => {
       <h1 className="title">Booking Process</h1>
       <div className="container">
         <BookingCard cartRooms={cartRooms} setCartRooms={setCartRooms} />
-        <BookingResume cartRooms={cartRooms} />
+        <BookingResume cartRooms={cartRooms} setCartRooms={setCartRooms} />
       </div>
     </div>
   );
