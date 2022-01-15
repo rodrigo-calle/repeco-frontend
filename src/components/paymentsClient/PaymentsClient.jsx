@@ -1,62 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import MenuProfile from '../menuProfile/MenuProfile';
 import './PaymentsClient.css';
 
 const PaymentsClient = () => {
   return (
     <div className="payment-container">
-      <div className="payment-container__payment-menu">
-        <p className="payment-container__payment-menu--title"> REPECO </p>
-        <img
-          className="payment-container__payment-menu--logo"
-          src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
-          alt="logo-repeco"
-        />
-        <p className="payment-container__payment-menu--user">
-          Nombre y Apellido
-        </p>
-        <Link
-          to="/user/account/edit"
-          className="payment-container__payment-menu--btn-edit "
-        >
-          <img
-            className="payment-container__payment-menu--btn-edit__icon-active"
-            src="/image/icons/edit_inactive.png"
-            alt="edit-icon"
-          />
-          Editar Perfil
-        </Link>
-        <p className="payment-container__payment-menu--btn-edit activating">
-          <img
-            className="payment-container__payment-menu--btn-edit__icon-active"
-            src="/image/icons/card_inactive.png"
-            alt="edit-icon"
-          />
-          Pagos
-        </p>
-        <Link
-          to="/user/account/booking-history"
-          className="payment-container__payment-menu--btn-edit bookings"
-        >
-          <img
-            className="payment-container__payment-menu--btn-edit__icon-inactive"
-            src="/image/icons/booking_inactive.png"
-            alt="edit-icon"
-          />
-          Mis Reservas
-        </Link>
-        <Link
-          to="/user/account/delete"
-          className="payment-container__payment-menu--btn-edit delete-account"
-        >
-          <img
-            className="payment-container__payment-menu--btn-edit__icon-inactive"
-            src="/image/icons/remove_user_inactive.png"
-            alt="edit-icon"
-          />
-          Anular Cuenta
-        </Link>
-      </div>
+      <MenuProfile />
       <div className="payment-container__payment-edit">
         <p className="payment-container__payment-edit--title"> Pagos </p>
         <p className="payment-container__payment-edit--subtitle">

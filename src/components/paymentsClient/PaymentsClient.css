@@ -4,6 +4,9 @@
   width: 85%;
   margin: 25px auto;
 }
+.payment-container div{
+  margin: 50px;
+}
 .payment-container__payment-menu, .payment-container__payment-edit{
   margin: 50px;
 }

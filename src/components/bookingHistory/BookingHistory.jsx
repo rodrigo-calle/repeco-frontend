@@ -1,63 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import MenuProfile from '../menuProfile/MenuProfile';
 
 import './BookingHistory.css';
 
 const BookingHistory = () => {
   return (
     <div className="booking-container">
-      <div className="booking-container__booking-menu">
-        <p className="booking-container__booking-menu--title"> REPECO </p>
-        <img
-          className="booking-container__booking-menu--logo"
-          src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
-          alt="logo-repeco"
-        />
-        <p className="booking-container__booking-menu--user">
-          Nombre y Apellido
-        </p>
-        <Link
-          to="/user/account/edit"
-          className="booking-container__booking-menu--btn-edit "
-        >
-          <img
-            className="booking-container__booking-menu--btn-edit__icon-active"
-            src="/image/icons/edit_inactive.png"
-            alt="edit-icon"
-          />
-          Editar Perfil
-        </Link>
-        <Link
-          to="/user/account/payment"
-          className="booking-container__booking-menu--btn-edit "
-        >
-          <img
-            className="booking-container__booking-menu--btn-edit__icon-inactive"
-            src="/image/icons/card_inactive.png"
-            alt="edit-icon"
-          />
-          Pagos
-        </Link>
-        <p className="booking-container__booking-menu--btn-edit bookings activating">
-          <img
-            className="booking-container__booking-menu--btn-edit__icon-inactive"
-            src="/image/icons/book_active.png"
-            alt="edit-icon"
-          />
-          Mis Reservas
-        </p>
-        <Link
-          to="/user/account/delete"
-          className="booking-container__booking-menu--btn-edit delete-account"
-        >
-          <img
-            className="booking-container__booking-menu--btn-edit__icon-inactive"
-            src="/image/icons/remove_user_inactive.png"
-            alt="edit-icon"
-          />
-          Anular Cuenta
-        </Link>
-      </div>
+      <MenuProfile />
       <div className="booking-container__booking-edit">
         <p className="booking-container__booking-edit--title"> Mis Reservas</p>
         <div className="booking-container__booking-edit--card-container">

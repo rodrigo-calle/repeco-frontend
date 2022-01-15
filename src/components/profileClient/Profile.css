@@ -1,0 +1,10 @@
+.profile-data p{
+  font-size: 20px;
+  font-weight: 600;
+  margin: 25px 0px;
+}
+.profile-data p span{
+  font-weight: 400;
+  margin-left: 20px;
+  width: 50%;
+}
