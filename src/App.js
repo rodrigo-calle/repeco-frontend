@@ -18,6 +18,7 @@ import PaymentsClient from './components/paymentsClient/PaymentsClient';
 import BookingHistory from './components/bookingHistory/BookingHistory';
 import DeleteClient from './components/deleteClient/deleteClient';
 import UserAdmin from './pages/userAdmin/Adminsystem';
+import UserHotel from './pages/UserHotel/UserHotel';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
+            <Route path="/userHotel" element={<UserHotel />} />
             <Route
               path="/user/account/booking-history"
               element={<BookingHistory />}
