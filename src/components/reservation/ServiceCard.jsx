@@ -7,7 +7,7 @@ import './ServiceCard.css';
 const ServiceCard = ({ room, searchFields }) => {
   const navigate = useNavigate();
   const params = new URLSearchParams(searchFields);
-  console.log('paramscard', params.get('checkIn'));
+
   const handleClick = (id) => {
     navigate(`/service/${id}?${params.toString()}`);
   };

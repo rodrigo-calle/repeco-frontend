@@ -108,7 +108,7 @@ const ServiceDetail = () => {
     const getRoomInfo = async () => {
       const response = await roomService.getRoomById(id);
       const data = await response.json();
-      console.log('data', data);
+
       if (response.ok) {
         setRoom(data);
         setSearchFields((prev) => ({
