@@ -26,7 +26,7 @@ const Login = () => {
     e.preventDefault();
     loginUser(dispatch, user);
 
-    navigate('/user/account/edit');
+    navigate('/');
   };
 
   return (
