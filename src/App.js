@@ -18,6 +18,10 @@ import ProfileEdit from './components/profileClient/ProfileEdit';
 import PaymentsClient from './components/paymentsClient/PaymentsClient';
 import Profile from './components/profileClient/Profile';
 import UserAdmin from './pages/userAdmin/Adminsystem';
+import UserHotel from './pages/UserHotel/UserHotel';
+import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+import Stadistics from './components/Stadistics/Stadistics';
+import CreateRoom from './components/CreateRoom/CreateRoom';
 
 const App = () => {
   return (
@@ -35,6 +39,11 @@ const App = () => {
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
+            <Route path="/userHotel" element={<UserHotel />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="stadistics" element={<Stadistics />} />
+              <Route path="createroom" element={<CreateRoom />} />
+            </Route>
             <Route
               path="/user/account/booking-history"
               element={<BookingHistory />}

@@ -1,7 +1,14 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable */
 import './AdminDashboard.css';
+import { Link, useOutletContext } from 'react-router-dom';
 
-const AdminDashboard = ({ data }) => {
+const AdminDashboard = () => {
+  const [data] = useOutletContext();
+
+  const HandleNewRoom = () => {
+    alert('nuevo cuarto');
+  };
+
   console.log(data);
   return (
     <div className="AdminDashboard">
@@ -14,17 +21,18 @@ const AdminDashboard = ({ data }) => {
         </header>
         <section className="AdminDashboard__accions">
           <div className="AdminDashboard__addUser">
-            <button type="button" className="">
-              <i className="fas fa-plus" /> Nuevo Hotel
-            </button>
+            <Link className="button" to="createroom">
+              {' '}
+              <i className="fas fa-plus" /> Nuevo Cuarto{' '}
+            </Link>
           </div>
           <div className="AdminDashboard__infocrud">
             <i className="far fa-user AdminDashboard__iconuser" />
             <div className="AdminDashboard__totaluser">
               <span className="AdminDashboard__titlenumberuser">
-                Total de Hoteles
+                Número de Habitaciones
               </span>
-              <div className="AdminDashboard__numberUser">100.000</div>
+              <div className="AdminDashboard__numberUser">{data?.length}</div>
             </div>
             <div className="AdminDashboard__barra" />
             <div className="AdminDashboard__crud">
@@ -48,35 +56,26 @@ const AdminDashboard = ({ data }) => {
                   <th>
                     <input type="checkbox" />
                   </th>
-                  <th>Duseño de hospedaje</th>
-                  <th>Teléfono</th>
-                  <th>Nombre de hospedaje</th>
-                  <th>Location</th>
-                  <th>N° de Habitaciones</th>
-                  <th>N° Reservas</th>
-                  <th>Ganacia Mensual</th>
-                  <th>Ganacias totales</th>
+                  <th>Titulo</th>
+                  <th>Description</th>
+                  <th>Precio</th>
+                  <th>Servicios</th>
                 </tr>
               </thead>
               <tbody>
-                {data?.map((hotel) => (
-                  <tr>
+                {data?.map((room) => (
+                  <tr key={room._id}>
                     <th scope="row">
                       <input type="checkbox" />
                     </th>
+                    <td>{room.title}</td>
+                    <td>{room.description}</td>
+                    <td>{room.price}</td>
                     <td>
-                      {hotel.user?.firstName} {hotel.user?.lastName}
+                      {room.services?.map((service) => (
+                        <span>{service.serviceName}</span>
+                      ))}
                     </td>
-                    <td>{hotel.user?.phone}</td>
-                    <td>{hotel.name}</td>
-                    <td>
-                      {hotel.address.country}, {hotel.address.city},{' '}
-                      {hotel.address.province}, {hotel.address.street}{' '}
-                    </td>
-                    <td>{hotel.rooms.length}</td>
-                    <td>15</td>
-                    <td>S/.400.00</td>
-                    <td>S/.10000.00</td>
                   </tr>
                 ))}
               </tbody>

@@ -94,15 +94,27 @@ const getUserProfile = () => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const getUserHotelRomms = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/users/rooms/`, payload);
+};
+
 const user = {
   updateUserCart,
   getUserCart,
   updateUser,
   getUserProfile,
   deleteItemFromUserCart,
+  getUserHotelRomms,
   deletUser,
   deleteCartUser,
-
 };
 
 export default user;
