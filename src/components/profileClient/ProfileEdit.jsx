@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
-import { useAppState } from '../../context/store';
 import userService from '../../services/user';
+import MenuProfile from '../menuProfile/MenuProfile';
 
 const ProfileEdit = () => {
-  const { user } = useAppState();
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  // const [file, setFile] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: '',
     password: '',
@@ -16,14 +15,23 @@ const ProfileEdit = () => {
     document: '',
   });
 
+  useEffect(async () => {
+    await userService.getUserProfile();
+    // console.log(res.json());
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataUser((prev) => ({
       ...prev,
       [name]: value,
     }));
-    console.log(dataUser);
+    // console.log(dataUser);
   };
+
+  // const onChangeAvatar = (e) => {
+  //   setFile(e.target.files[0]);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,64 +57,7 @@ const ProfileEdit = () => {
 
   return (
     <div className="profile-container">
-      <div className="profile-container__profile-menu">
-        <p className="profile-container__profile-menu--title"> REPECO </p>{' '}
-        <img
-          className="profile-container__profile-menu--logo"
-          src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
-          alt="logo-repeco"
-        />
-        {user ? (
-          <p className="profile-container__profile-menu--user">
-            {user.fullName}
-          </p>
-        ) : (
-          <p className="profile-container__profile-menu--user">
-            Nombre Completo
-          </p>
-        )}
-        <p className="profile-container__profile-menu--btn-edit editing">
-          <img
-            className="profile-container__profile-menu--btn-edit__icon-active"
-            src="/image/icons/edit_active.png"
-            alt="edit-icon"
-          />
-          Editar Perfil{' '}
-        </p>{' '}
-        <Link
-          to="/user/account/payment"
-          className="profile-container__profile-menu--btn-edit payment"
-        >
-          <img
-            className="profile-container__profile-menu--btn-edit__icon-inactive"
-            src="/image/icons/card_inactive.png"
-            alt="edit-icon"
-          />
-          Pagos{' '}
-        </Link>{' '}
-        <Link
-          to="/user/account/booking-history"
-          className="profile-container__profile-menu--btn-edit bookings"
-        >
-          <img
-            className="profile-container__profile-menu--btn-edit__icon-inactive"
-            src="/image/icons/booking_inactive.png"
-            alt="edit-icon"
-          />
-          Mis Reservas{' '}
-        </Link>{' '}
-        <Link
-          to="/user/account/delete"
-          className="profile-container__profile-menu--btn-edit delete-account"
-        >
-          <img
-            className="profile-container__profile-menu--btn-edit__icon-inactive"
-            src="/image/icons/remove_user_inactive.png"
-            alt="edit-icon"
-          />
-          Anular Cuenta{' '}
-        </Link>{' '}
-      </div>{' '}
+      <MenuProfile />
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title">
           {' '}
@@ -165,6 +116,21 @@ const ProfileEdit = () => {
               />
             </label>{' '}
             <br />
+            <label
+              className="profile-container__profile-edit--form__label"
+              htmlFor="password-confirm"
+            >
+              Foto de Perfil:
+              <br />
+              <input
+                className="profile-container__profile-edit--form__input upload-avatar"
+                name="file"
+                type="file"
+                id="file"
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
+              />
+            </label>{' '}
           </div>{' '}
           <div className="form-colum one-colum">
             <label

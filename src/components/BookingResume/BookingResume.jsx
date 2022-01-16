@@ -1,9 +1,13 @@
+/* eslint-disable no-underscore-dangle */
 import { Button } from '@mui/material';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BookingResume.css';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
+import reserveService from '../../services/reserve';
+import invoiceService from '../../services/invoice';
+import userService from '../../services/user';
 
 const BookingResume = ({ cartRooms }) => {
   const calcSubTotal = () => {
@@ -24,8 +28,41 @@ const BookingResume = ({ cartRooms }) => {
     return result.toFixed(2);
   };
 
-  const handleClick = () => {
-    console.log('cartRoom', cartRooms);
+  const handleClick = async () => {
+    const rooms = [];
+    cartRooms.map((cart) => {
+      const reserve = {
+        room: cart.room._id,
+        checkIn: cart.checkIn,
+        checkOut: cart.checkOut,
+      };
+
+      rooms.push(cart.room._id);
+
+      const createReserves = async () => {
+        const response = await reserveService.createReserve(reserve);
+        const data = await response.json();
+        console.log(data);
+      };
+
+      createReserves();
+      return reserve;
+    });
+
+    const invoice = {
+      subtotal: calcSubTotal(),
+      igv: calcIgv(),
+      totalPrice: calcTotal(),
+      rooms,
+    };
+
+    const response = await invoiceService.createInvoice(invoice);
+    const data = await response.json();
+    console.log('invoice', data);
+
+    const userCartResponse = await userService.deleteCartUser();
+    const userData = await userCartResponse.json();
+    console.log('user', userData);
   };
 
   return (
@@ -145,10 +182,6 @@ BookingResume.propTypes = {
       }),
     }),
   ).isRequired,
-  searchFields: PropTypes.shape({
-    location: PropTypes.string,
-    capacity: PropTypes.number,
-  }).isRequired,
 };
 
 export default BookingResume;

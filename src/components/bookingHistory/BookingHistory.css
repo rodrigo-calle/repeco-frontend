@@ -4,6 +4,15 @@
   width: 85%;
   margin: 25px auto;
 }
+.booking-container div{
+  margin: 50px;
+}
+
+.booking-container__booking-edit--card-container div{
+  height: fit-content;
+  margin: 0px;
+}
+
 .booking-container__booking-menu, .booking-container__booking-edit{
   margin: 50px;
 }

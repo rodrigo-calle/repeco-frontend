@@ -4,6 +4,9 @@
   width: 85%;
   margin: 25px auto;
 }
+.delete-container div{
+  margin: 50px;
+}
 .delete-container__delete-menu, .delete-container__delete-edit{
   margin: 50px;
 }

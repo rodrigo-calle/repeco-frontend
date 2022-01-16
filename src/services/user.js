@@ -13,6 +13,17 @@ const updateUser = (data) => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const deletUser = () => {
+  const payload = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/users/delete`, payload);
+};
+
 const updateUserCart = (id, checkIn, checkOut) => {
   const token = localStorage.getItem('token');
   const payload = {
@@ -44,6 +55,19 @@ const deleteItemFromUserCart = (room) => {
   };
 
   return fetch(`${URL_BASE}/api/users/cartitem/`, payload);
+};
+
+const deleteCartUser = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  return fetch(`${URL_BASE}/api/users/cart/`, payload);
 };
 
 const getUserCart = () => {
@@ -89,6 +113,8 @@ const user = {
   getUserProfile,
   deleteItemFromUserCart,
   getUserHotelRomms,
+  deletUser,
+  deleteCartUser,
 };
 
 export default user;

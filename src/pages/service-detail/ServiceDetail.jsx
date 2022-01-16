@@ -94,6 +94,9 @@ const ServiceDetail = () => {
       searchFields.checkIn,
       searchFields.checkOut,
     );
+    if (response.status === 412) {
+      console.log('lastname failed');
+    }
 
     if (response.ok) {
       navigate('/booking');
@@ -108,7 +111,7 @@ const ServiceDetail = () => {
     const getRoomInfo = async () => {
       const response = await roomService.getRoomById(id);
       const data = await response.json();
-      console.log('data', data);
+
       if (response.ok) {
         setRoom(data);
         setSearchFields((prev) => ({
