@@ -22,9 +22,22 @@ const getRoomById = (id) => {
   return fetch(`${URL_BASE}/api/rooms/${id}`, payload);
 };
 
+const getRommsByHotel = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/rooms/hotel/`, payload);
+};
+
 const room = {
   getAllRooms,
   getRoomById,
+  getRommsByHotel,
 };
 
 export default room;

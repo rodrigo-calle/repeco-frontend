@@ -73,7 +73,7 @@ const AdminDashboard = () => {
                     <td>{room.price}</td>
                     <td>
                       {room.services?.map((service) => (
-                        <span>{service.serviceName}</span>
+                        <span>{service.serviceName}, </span>
                       ))}
                     </td>
                   </tr>
