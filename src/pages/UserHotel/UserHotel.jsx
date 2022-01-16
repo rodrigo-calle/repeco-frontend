@@ -2,7 +2,7 @@ import './UserHotel.css';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
-import user from '../../services/user';
+import roomService from '../../services/room';
 
 const linkmenu = [
   {
@@ -21,8 +21,9 @@ const UserHotel = () => {
   const [data, useData] = useState(null);
   useEffect(async () => {
     const getallDataUser = async () => {
-      const response = await user.getUserHotelRomms();
+      const response = await roomService.getRommsByHotel();
       const payload = await response.json();
+      console.log('payload', payload);
       useData(payload);
     };
     getallDataUser();
