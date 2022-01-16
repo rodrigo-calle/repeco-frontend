@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './HamburgerMenu.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -22,8 +23,9 @@ const HamburgerMenu = ({ menu }) => {
         <h1>REPECO</h1>
         <ul>
           {menu.map((link) => (
-            <li>
-              <i className={link.icon} /> {link.title}
+            <li key={link.title}>
+              <i className={link.icon} />
+              <Link to={link.url}>{link.title}</Link>
             </li>
           ))}
         </ul>

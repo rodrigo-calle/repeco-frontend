@@ -1,4 +1,8 @@
-.UserHotel .HamburgerMenu__menu {
+/* .UserHotel {
+  display: flex;
+} */
+
+.HamburgerMenu__menu {
   background-color: #159b9b;
 }
 
@@ -6,7 +10,7 @@
   color: #159b9b;
 }
 
-.UserHotel .AdminDashboard__addUser button {
+.UserHotel .AdminDashboard__addUser .button {
   background-color: #159b9b;
 }
 

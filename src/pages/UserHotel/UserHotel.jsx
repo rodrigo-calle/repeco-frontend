@@ -1,38 +1,37 @@
 import './UserHotel.css';
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import HamburgerMenu from '../../components/HamburgerMenu/HamburgerMenu';
-import AdminDashboard from '../../components/AdminDashboard/AdminDashboard';
-// import { useAppState } from '../../context/store';
-import hotel from '../../services/hotel';
+import user from '../../services/user';
 
 const linkmenu = [
   {
     title: 'Dashboard',
-    link: '/habitaciones',
+    url: '',
     icon: 'fas fa-cube',
   },
   {
     title: 'Estadisticas',
-    link: '/Estadisticas',
+    url: 'stadistics',
     icon: 'fas fa-chart-pie',
   },
 ];
 
 const UserHotel = () => {
-  const [hotels, useHotels] = useState(null);
+  const [data, useData] = useState(null);
   useEffect(async () => {
-    const getallHotels = async () => {
-      const response = await hotel.getAllHotel();
-      const data = await response.json();
-      useHotels(data);
+    const getallDataUser = async () => {
+      const response = await user.getUserHotelRomms();
+      const payload = await response.json();
+      useData(payload);
     };
-    getallHotels();
+    getallDataUser();
   }, []);
 
   return (
     <div className="UserHotel">
       <HamburgerMenu menu={linkmenu} />
-      <AdminDashboard data={hotels} />
+      <Outlet context={[data, useData]} />
     </div>
   );
 };

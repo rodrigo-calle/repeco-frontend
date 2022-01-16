@@ -42,7 +42,7 @@
   font-size: 0.8rem;
 }
 
-.AdminDashboard__addUser button {
+.AdminDashboard__addUser .button {
   background-color: #9b156e;
   color: white;
   border: none;
