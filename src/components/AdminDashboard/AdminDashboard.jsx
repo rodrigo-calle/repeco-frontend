@@ -5,10 +5,6 @@ import { Link, useOutletContext } from 'react-router-dom';
 const AdminDashboard = () => {
   const [data] = useOutletContext();
 
-  const HandleNewRoom = () => {
-    alert('nuevo cuarto');
-  };
-
   console.log(data);
   return (
     <div className="AdminDashboard">
@@ -73,7 +69,7 @@ const AdminDashboard = () => {
                     <td>{room.price}</td>
                     <td>
                       {room.services?.map((service) => (
-                        <span>{service.serviceName}, </span>
+                        <span key={service._id}>{service.serviceName}, </span>
                       ))}
                     </td>
                   </tr>
