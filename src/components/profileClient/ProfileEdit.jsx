@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
+// import { useNavigate} from 'react-router-dom';
 import userService from '../../services/user';
 import MenuProfile from '../menuProfile/MenuProfile';
 
 const ProfileEdit = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [message, setMessage] = useState(false);
   // const [file, setFile] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: '',
@@ -14,6 +16,7 @@ const ProfileEdit = () => {
     phone: '',
     document: '',
   });
+  // const navigate = useNavigate();
 
   useEffect(async () => {
     await userService.getUserProfile();
@@ -44,9 +47,13 @@ const ProfileEdit = () => {
 
     try {
       const response = await userService.updateUser(values);
+      console.log(response);
+
       if (response.ok) {
         const data = await response.json();
         console.log(data);
+        // navigate('/user/account');
+        setMessage(true);
       } else {
         console.log('error');
       }
@@ -57,6 +64,11 @@ const ProfileEdit = () => {
 
   return (
     <div className="profile-container">
+      {message ? (
+        <div role="alertdialog" style={{ backgroundColor: '#93ff33' }}>
+          Datos de usuario actualizado
+        </div>
+      ) : null}
       <MenuProfile />
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title">
