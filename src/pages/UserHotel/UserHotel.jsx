@@ -23,7 +23,6 @@ const UserHotel = () => {
     const getallDataUser = async () => {
       const response = await roomService.getRommsByHotel();
       const payload = await response.json();
-      console.log('payload', payload);
       useData(payload);
     };
     getallDataUser();
