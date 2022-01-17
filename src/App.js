@@ -22,6 +22,7 @@ import UserHotel from './pages/UserHotel/UserHotel';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Stadistics from './components/Stadistics/Stadistics';
 import CreateRoom from './components/CreateRoom/CreateRoom';
+import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
             <Route path="/booking" element={<Booking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/invoice/:id" element={<InvoiceDetail />} />
             <Route path="/user/account/" element={<Profile />} />
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
