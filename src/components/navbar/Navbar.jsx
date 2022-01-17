@@ -1,7 +1,6 @@
 // eslint-disable-next-line camelcase
-// import jwt_decode from 'jwt-decode';
+
 import { BiLogOut } from 'react-icons/bi';
-// import { AiOutlineCaretDown } from 'react-icons/ai';
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserFromLocalStorage, logout } from '../../context/actions';
@@ -10,9 +9,6 @@ import { useAppDispatch, useAppState } from '../../context/store';
 import './Navbar.css';
 
 const Navbar = () => {
-  // const token = localStorage.getItem('token');
-  // const decoded = jwt_decode(token);
-  // console.log(decoded);
   const { user } = useAppState();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -46,27 +42,12 @@ const Navbar = () => {
                   </div>
                 </li>
                 <li className="nav__container__menu__list">
-                  {/* <button
-              type="button"
-              className="nav__close-session"
-              onClick={handleCloseSession}
-            >
-              Cerrar Sesión
-            </button> */}
                   <BiLogOut
                     onClick={handleCloseSession}
                     size="25px"
                     className="logout-btn"
                     title="cerrar sesión"
                   />
-                  {/* <div className="button-menu">
-                    <AiOutlineCaretDown
-                      onClick={handleCloseSession}
-                      size="18px"
-                      className="logout-btn"
-                      title="Menú"
-                    />
-                  </div> */}
                 </li>
               </div>
             ) : (
