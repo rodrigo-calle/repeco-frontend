@@ -1,4 +1,4 @@
-.AdminDashboard__dashboard {
+.AdminDashboard {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   background-color: #f3f3f3;
@@ -117,7 +117,7 @@
 }
 
 @media (min-width: 1000px) {
-  .AdminDashboard__dashboard {
+  .AdminDashboard {
     width: 100%;
   }
 }

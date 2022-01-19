@@ -10,33 +10,31 @@ const HamburgerMenu = ({ menu }) => {
     setIsClick(!isClick);
   };
 
-  let style = 'HamburgerMenu__menu';
+  let style = 'HamburgerMenu';
   if (isClick) {
-    style = 'HamburgerMenu__menu HamburgerMenu__menu--oculto';
+    style = 'HamburgerMenu HamburgerMenu--oculto';
   } else {
-    style = 'HamburgerMenu__menu';
+    style = 'HamburgerMenu';
   }
 
   return (
-    <div className="HamburgerMenu">
-      <div className={style}>
-        <h1>REPECO</h1>
-        <ul>
-          {menu?.map((link) => (
-            <li key={link.title}>
-              <i className={link.icon} />
-              <Link to={link.url}>{link.title}</Link>
-            </li>
-          ))}
-        </ul>
-        <button
-          type="button"
-          onClick={handlerClick}
-          className="HamburgerMenu__button-menu"
-        >
-          <i className="fas fa-bars" />
-        </button>
-      </div>
+    <div className={style}>
+      <h1>REPECO</h1>
+      <ul>
+        {menu?.map((link) => (
+          <li key={link.title}>
+            <i className={link.icon} />
+            <Link to={link.url}>{link.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <button
+        type="button"
+        onClick={handlerClick}
+        className="HamburgerMenu__button-menu"
+      >
+        <i className="fas fa-bars" />
+      </button>
     </div>
   );
 };
