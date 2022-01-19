@@ -4,8 +4,6 @@ import { Link, useOutletContext } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const [data] = useOutletContext();
-
-  console.log(data);
   return (
     <div className="AdminDashboard">
       <header className="AdminDashboard__header">
