@@ -1,5 +1,16 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
+const createUser = (data) => {
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  return fetch(`${URL_BASE}/api/users/`, payload);
+};
+
 const updateUser = (data) => {
   const payload = {
     method: 'PATCH',
@@ -102,6 +113,7 @@ const user = {
   deleteItemFromUserCart,
   deletUser,
   deleteCartUser,
+  createUser,
 };
 
 export default user;

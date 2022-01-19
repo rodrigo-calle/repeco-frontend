@@ -1,7 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Signup.css';
+import userService from '../../services/user';
 
 const Signup = () => {
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [dataUser, setDataUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handlePassCOnfirm = (e) => {
+    const confirmPass = e.target.value;
+    setPasswordConfirm(confirmPass);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log('confirm pass', passwordConfirm);
+      console.log('data de usuario', dataUser);
+      if (passwordConfirm === dataUser.password) {
+        const response = await userService.createUser(dataUser);
+        console.log(response);
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+        }
+      } else {
+        console.log('Passwords no coinciden');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <>
       <header>
@@ -40,23 +80,41 @@ const Signup = () => {
           <p className="signup-container__line-letter">o</p>
           <p className="signup-container__line-second" />
         </div>
-        <form action="" className="form-container">
+        <form onSubmit={handleSubmit} className="form-container">
           <label htmlFor="email">
             Correo electrónico
             <br />
-            <input className="input" type="email" />
+            <input
+              className="input"
+              type="email"
+              value={dataUser.email}
+              name="email"
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label htmlFor="password">
             Nueva Contraseña
             <br />
-            <input className="input" type="password" />
+            <input
+              className="input"
+              type="password"
+              name="password"
+              value={dataUser.password}
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label htmlFor="password">
             Repetir Contraseña
             <br />
-            <input className="input" type="password" />
+            <input
+              className="input"
+              type="password"
+              name="passwordConfirm"
+              value={passwordConfirm}
+              onChange={handlePassCOnfirm}
+            />
           </label>
           <br />
           <input
