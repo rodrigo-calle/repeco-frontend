@@ -13,6 +13,13 @@
   align-items: center;
 }
 
+.CreateRoom__form {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
 @media (min-width: 1000px) {
   .CreateRoom {
     width: 100%;
