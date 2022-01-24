@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import './Profile.css';
 import userService from '../../services/user';
-import MenuProfile from '../menuProfile/MenuProfile';
 
 const Profile = () => {
   const [client, setClient] = useState({
@@ -25,7 +24,6 @@ const Profile = () => {
   // console.log(client.firstName);
   return (
     <div className="profile-container">
-      <MenuProfile />
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title"> Perfil </p>{' '}
         <div className="profile-data">

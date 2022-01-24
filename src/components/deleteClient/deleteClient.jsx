@@ -5,7 +5,6 @@ import './deleteClient.css';
 import { useAppDispatch } from '../../context/store';
 import userService from '../../services/user';
 import { logout } from '../../context/actions';
-import MenuProfile from '../menuProfile/MenuProfile';
 
 const DeleteClient = () => {
   const dispatch = useAppDispatch();
@@ -31,7 +30,6 @@ const DeleteClient = () => {
 
   return (
     <div className="delete-container">
-      <MenuProfile />
       <div className="delete-container__delete-edit">
         <p className="delete-container__delete-edit--title"> Anular Cuenta</p>
         <div className="delete-container__delete-edit--alert-container">

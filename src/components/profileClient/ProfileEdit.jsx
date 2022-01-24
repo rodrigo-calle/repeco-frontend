@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
-// import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import userService from '../../services/user';
-import MenuProfile from '../menuProfile/MenuProfile';
 
 const ProfileEdit = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [message, setMessage] = useState(false);
+  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState({});
   // const [file, setFile] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: '',
@@ -16,12 +17,22 @@ const ProfileEdit = () => {
     phone: '',
     document: '',
   });
-  // const navigate = useNavigate();
 
-  useEffect(async () => {
-    await userService.getUserProfile();
-    // console.log(res.json());
-  }, []);
+  useEffect(() => {
+    const showUser = async () => {
+      try {
+        const response = await userService.getUserProfile();
+        if (response.ok) {
+          const data = await response.json();
+          setCurrentUser(data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    showUser();
+    // console.log(currentUser);
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,9 +60,13 @@ const ProfileEdit = () => {
       const response = await userService.updateUser(values);
       // console.log(response);
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
+        setTimeout(() => {
+          navigate('/user/account/profile');
+        }, 1500);
+        // const data = await response.json();
+        // console.log(data);
         // navigate('/user/account');
+
         setMessage(true);
       } else {
         console.log('error');
@@ -68,13 +83,13 @@ const ProfileEdit = () => {
           Datos de usuario actualizado
         </div>
       ) : null}
-      <MenuProfile />
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title">
           {' '}
           Editar Perfil{' '}
         </p>{' '}
         <form
+          id="profile-edit"
           onSubmit={handleSubmit}
           className="profile-container__profile-edit--form"
         >
@@ -90,6 +105,7 @@ const ProfileEdit = () => {
                 name="email"
                 type="email"
                 id="email"
+                placeholder={currentUser.email}
                 value={dataUser.email}
                 onChange={handleChange}
               />
@@ -154,6 +170,7 @@ const ProfileEdit = () => {
                 className="profile-container__profile-edit--form__input"
                 type="text"
                 name="firstName"
+                placeholder={currentUser.firstName}
                 id="name"
                 value={dataUser.firstName}
                 onChange={handleChange}
@@ -172,8 +189,24 @@ const ProfileEdit = () => {
                 className="profile-container__profile-edit--form__input"
                 type="text"
                 value={dataUser.lastName}
+                placeholder={currentUser.lastName}
                 onChange={handleChange}
               />
+            </label>{' '}
+            <br />
+            <label
+              className="profile-container__profile-edit--form__label"
+              htmlFor="phone"
+            >
+              Typo de documento:
+              <br />
+              <select form="profile-edit" className="document-select">
+                <option defaultValue nselectable="true">
+                  Seleccionar una opción
+                </option>
+                <option value="estrangeria">Carnet de estragería</option>
+                <option value="dni"> DNI</option>
+              </select>
             </label>{' '}
             <br />
             <label
@@ -188,6 +221,7 @@ const ProfileEdit = () => {
                 name="document"
                 id="document"
                 value={dataUser.document}
+                placeholder={currentUser.document}
                 onChange={handleChange}
               />
             </label>{' '}
@@ -204,6 +238,7 @@ const ProfileEdit = () => {
                 name="phone"
                 id="phone"
                 value={dataUser.phone}
+                placeholder={currentUser.phone}
                 onChange={handleChange}
               />
             </label>{' '}

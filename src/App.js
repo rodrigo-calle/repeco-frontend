@@ -25,6 +25,7 @@ import CreateRoom from './components/CreateRoom/CreateRoom';
 import VerifyAccount from './components/verifyAccount/VerifyAccount';
 import VerifySendMessage from './components/verifyAccount/VerifySendMessage';
 import TokenExpired from './components/verifyAccount/TokenExpired';
+import MenuProfile from './components/menuProfile/MenuProfile';
 
 const App = () => {
   return (
@@ -38,9 +39,14 @@ const App = () => {
             <Route path="/booking" element={<Booking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/user/account/" element={<Profile />} />
-            <Route path="/user/account/edit" element={<ProfileEdit />} />
-            <Route path="/user/account/payment" element={<PaymentsClient />} />
+            <Route path="/user/account/" element={<MenuProfile />}>
+              <Route path="profile" element={<Profile />} />
+              <Route path="edit" element={<ProfileEdit />} />
+              <Route path="payment" element={<PaymentsClient />} />
+              <Route path="booking-history" element={<BookingHistory />} />
+              <Route path="delete" element={<DeleteClient />} />
+            </Route>
+
             <Route path="/userAdmin" element={<UserAdmin />} />
             <Route path="/userHotel" element={<UserHotel />}>
               <Route index element={<AdminDashboard />} />
@@ -53,11 +59,6 @@ const App = () => {
               element={<VerifySendMessage />}
             />
             <Route path="/user/token-expired" element={<TokenExpired />} />
-            <Route
-              path="/user/account/booking-history"
-              element={<BookingHistory />}
-            />
-            <Route path="/user/account/delete" element={<DeleteClient />} />
           </Routes>
           <Footer />
         </AppProvider>

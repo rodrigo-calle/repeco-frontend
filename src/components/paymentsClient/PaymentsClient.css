@@ -6,6 +6,7 @@
 }
 .payment-container div{
   margin: 50px;
+  margin-top: 0px;
 }
 .payment-container__payment-menu, .payment-container__payment-edit{
   margin: 50px;
