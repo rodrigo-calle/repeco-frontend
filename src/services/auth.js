@@ -28,9 +28,21 @@ const loginAccount = ({ email, password }) => {
   return fetch(`${URL_BASE}/auth/local/login`, payload);
 };
 
+const confirmAccount = ({ hash }) => {
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ hash }),
+  };
+  return fetch(`${URL_BASE}/auth/local/confirm-account`, payload);
+};
+
 const auth = {
   loginAccount,
   registerAccount,
+  confirmAccount,
   // forgotPassword,
 };
 

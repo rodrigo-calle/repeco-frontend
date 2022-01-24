@@ -105,6 +105,16 @@ const getUserProfile = () => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const confirmAccount = (hash) => {
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(`${URL_BASE}/auth/local/confirm-account/${hash}`, payload);
+};
+
 const user = {
   updateUserCart,
   getUserCart,
@@ -114,6 +124,7 @@ const user = {
   deletUser,
   deleteCartUser,
   createUser,
+  confirmAccount,
 };
 
 export default user;

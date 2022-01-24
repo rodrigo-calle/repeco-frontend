@@ -6,9 +6,15 @@ import {
   LOGOUT_USER,
   SET_LOADING,
   SET_SEARCH_FIELDS,
+  // VERIFY_USER,
 } from './constants';
 
 import authService from '../services/auth';
+
+// export const verifyAccount = async () => {
+//   localStorage.setItem('token', data.token);
+//   const decoded = jwt_decode(data.token);
+// }
 
 export const loginUser = async (dispatch, user) => {
   dispatch({ type: SET_LOADING, payload: true });

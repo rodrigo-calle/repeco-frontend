@@ -22,6 +22,9 @@ import UserHotel from './pages/UserHotel/UserHotel';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Stadistics from './components/Stadistics/Stadistics';
 import CreateRoom from './components/CreateRoom/CreateRoom';
+import VerifyAccount from './components/verifyAccount/VerifyAccount';
+import VerifySendMessage from './components/verifyAccount/VerifySendMessage';
+import TokenExpired from './components/verifyAccount/TokenExpired';
 
 const App = () => {
   return (
@@ -44,6 +47,12 @@ const App = () => {
               <Route path="stadistics" element={<Stadistics />} />
               <Route path="createroom" element={<CreateRoom />} />
             </Route>
+            <Route path="/user/activate/:hash" element={<VerifyAccount />} />
+            <Route
+              path="/user/activate/message"
+              element={<VerifySendMessage />}
+            />
+            <Route path="/user/token-expired" element={<TokenExpired />} />
             <Route
               path="/user/account/booking-history"
               element={<BookingHistory />}

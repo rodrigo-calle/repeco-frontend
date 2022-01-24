@@ -1,11 +1,11 @@
 nav {
-  /* background-color: var(--red-color); */
-  background: rgb(8, 6, 121);
+  background-color: #0DC96E;
+  /* background: rgb(8, 6, 121);
   background: radial-gradient(
     circle,
     rgba(8, 6, 121, 0.9472163865546218) 0%,
     rgba(71, 123, 205, 0.969625350140056) 100%
-  );
+  ); */
 }
 
 .nav__container {
@@ -103,4 +103,12 @@ nav {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+
+.toogle-btn{
+  border-radius: 50%;
+  background-color: #286347;
+  cursor: pointer;
+  padding: 3px;
 }

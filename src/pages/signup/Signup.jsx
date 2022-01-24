@@ -1,13 +1,24 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Signup.css';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import userService from '../../services/user';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Signup = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [open, setOpen] = useState(false);
   const [dataUser, setDataUser] = useState({
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,26 +36,43 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      console.log('confirm pass', passwordConfirm);
-      console.log('data de usuario', dataUser);
       if (passwordConfirm === dataUser.password) {
         const response = await userService.createUser(dataUser);
-        console.log(response);
         if (response.ok) {
-          const data = await response.json();
-          console.log(data);
+          navigate('/user/activate/message');
         }
       } else {
-        console.log('Passwords no coinciden');
+        setOpen(true);
       }
     } catch (err) {
       console.log(err);
     }
   };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
     <>
       <header>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          // style={{ height: '100%' }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            ¡Contraseñas no coinciden!
+          </Alert>
+        </Snackbar>
         <img
           className="logo-repeco"
           src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
