@@ -22,7 +22,7 @@ const HamburgerMenu = ({ menu }) => {
       <h1>REPECO</h1>
       <ul>
         {menu?.map((link) => (
-          <li key={link.title}>
+          <li className="HamburgerMenu__link" key={link.title}>
             <i className={link.icon} />
             <Link to={link.url}>{link.title}</Link>
           </li>
