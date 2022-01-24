@@ -47,8 +47,7 @@ const ProfileEdit = () => {
 
     try {
       const response = await userService.updateUser(values);
-      console.log(response);
-
+      // console.log(response);
       if (response.ok) {
         const data = await response.json();
         console.log(data);

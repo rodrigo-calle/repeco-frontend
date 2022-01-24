@@ -1,5 +1,16 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
+const createUser = (data) => {
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  };
+  return fetch(`${URL_BASE}/api/users/`, payload);
+};
+
 const updateUser = (data) => {
   const payload = {
     method: 'PATCH',
@@ -94,6 +105,16 @@ const getUserProfile = () => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const confirmAccount = (hash) => {
+  const payload = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+  return fetch(`${URL_BASE}/auth/local/confirm-account/${hash}`, payload);
+};
+
 const user = {
   updateUserCart,
   getUserCart,
@@ -102,6 +123,8 @@ const user = {
   deleteItemFromUserCart,
   deletUser,
   deleteCartUser,
+  createUser,
+  confirmAccount,
 };
 
 export default user;

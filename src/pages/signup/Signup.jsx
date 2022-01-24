@@ -1,10 +1,78 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Signup.css';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import userService from '../../services/user';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const Signup = () => {
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [open, setOpen] = useState(false);
+  const [dataUser, setDataUser] = useState({
+    email: '',
+    password: '',
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDataUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handlePassCOnfirm = (e) => {
+    const confirmPass = e.target.value;
+    setPasswordConfirm(confirmPass);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      if (passwordConfirm === dataUser.password) {
+        const response = await userService.createUser(dataUser);
+        if (response.ok) {
+          navigate('/user/activate/message');
+        }
+      } else {
+        setOpen(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <>
       <header>
+        <Snackbar
+          open={open}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          // style={{ height: '100%' }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            ¡Contraseñas no coinciden!
+          </Alert>
+        </Snackbar>
         <img
           className="logo-repeco"
           src="https://icongr.am/devicon/couchdb-plain.svg?size=128&color=000000"
@@ -40,23 +108,41 @@ const Signup = () => {
           <p className="signup-container__line-letter">o</p>
           <p className="signup-container__line-second" />
         </div>
-        <form action="" className="form-container">
+        <form onSubmit={handleSubmit} className="form-container">
           <label htmlFor="email">
             Correo electrónico
             <br />
-            <input className="input" type="email" />
+            <input
+              className="input"
+              type="email"
+              value={dataUser.email}
+              name="email"
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label htmlFor="password">
             Nueva Contraseña
             <br />
-            <input className="input" type="password" />
+            <input
+              className="input"
+              type="password"
+              name="password"
+              value={dataUser.password}
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label htmlFor="password">
             Repetir Contraseña
             <br />
-            <input className="input" type="password" />
+            <input
+              className="input"
+              type="password"
+              name="passwordConfirm"
+              value={passwordConfirm}
+              onChange={handlePassCOnfirm}
+            />
           </label>
           <br />
           <input

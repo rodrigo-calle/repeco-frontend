@@ -6,3 +6,4 @@ export const GET_ALL_JOBS = '@repecto/all-jobs';
 export const GET_JOB = '@repecto/get-job';
 export const SET_LOADING = '@repecto/loading';
 export const SET_SEARCH_FIELDS = '@repeco/loading';
+export const VERIFY_USER = '@repeco/verify-user';

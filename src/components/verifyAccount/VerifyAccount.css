@@ -1,0 +1,52 @@
+.container-verification{
+  width: fit-content;
+  height: fit-content;
+  border: thin solid #0DC96E;
+  border-radius: 44px;
+  margin: 50px auto;
+  display: grid;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 120px;
+
+}
+
+.container-verification .litle-message{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.container-verification .welcome-message{
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.container-verification  .verification-image{
+  height: 200px;
+  width: 200px;
+  margin: 10px auto;
+}
+
+.container-verification button{
+  background-color: #0DC96E;
+  width: 279px;
+  height: 53px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 44px;
+  border: none;
+  margin: 10px auto;
+  cursor: pointer;
+}
+
+.container-verification button:hover{
+  color: #0DC96E;
+  background-color: #fff;
+  border: thin solid #0DC96E;
+  transition-duration: .5s;
+}

@@ -5,6 +5,7 @@ import {
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
   SET_SEARCH_FIELDS,
+  VERIFY_USER,
 } from './constants';
 
 const AppStateContext = createContext();
@@ -46,6 +47,13 @@ function AppReducer(state, action) {
         searchFields: action.payload,
       };
     }
+    case VERIFY_USER: {
+      return {
+        ...state,
+        searchFields: action.payload,
+      };
+    }
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`);
   }

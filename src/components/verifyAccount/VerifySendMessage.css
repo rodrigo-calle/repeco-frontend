@@ -1,0 +1,33 @@
+.send-email-verification{
+  width: fit-content;
+  height: fit-content;
+  border: thin solid #0DC96E;
+  border-radius: 44px;
+  margin: 50px auto;
+  display: grid;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 120px;
+
+}
+
+.send-email-verification .litle-message{
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.send-email-verification .welcome-message{
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.send-email-verification  .verification-image{
+  height: 200px;
+  width: 200px;
+  margin: 10px auto;
+}
+
