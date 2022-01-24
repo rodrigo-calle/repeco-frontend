@@ -23,6 +23,7 @@ import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Stadistics from './components/Stadistics/Stadistics';
 import CreateRoom from './components/CreateRoom/CreateRoom';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
+import PaymentProcess from './pages/paymentProcess/PaymentProcess';
 
 const App = () => {
   return (
@@ -37,6 +38,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/invoice/:id" element={<InvoiceDetail />} />
+            <Route path="/payment" element={<PaymentProcess />} />
             <Route path="/user/account/" element={<Profile />} />
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
