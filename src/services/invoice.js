@@ -10,7 +10,7 @@ const createInvoice = (invoice) => {
     body: JSON.stringify(invoice),
   };
 
-  return fetch(`${URL_BASE}/api/invoices/`, payload);
+  return fetch(`${URL_BASE}/api/invoices/payment`, payload);
 };
 
 const reserve = {
