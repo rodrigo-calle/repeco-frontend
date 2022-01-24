@@ -1,12 +1,10 @@
 import React from 'react';
-import MenuProfile from '../menuProfile/MenuProfile';
 
 import './BookingHistory.css';
 
 const BookingHistory = () => {
   return (
     <div className="booking-container">
-      <MenuProfile />
       <div className="booking-container__booking-edit">
         <p className="booking-container__booking-edit--title"> Mis Reservas</p>
         <div className="booking-container__booking-edit--card-container">

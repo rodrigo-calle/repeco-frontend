@@ -1,11 +1,9 @@
 import React from 'react';
-import MenuProfile from '../menuProfile/MenuProfile';
 import './PaymentsClient.css';
 
 const PaymentsClient = () => {
   return (
     <div className="payment-container">
-      <MenuProfile />
       <div className="payment-container__payment-edit">
         <p className="payment-container__payment-edit--title"> Pagos </p>
         <p className="payment-container__payment-edit--subtitle">

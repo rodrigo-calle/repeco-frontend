@@ -68,3 +68,9 @@
   margin-left: 15px;
 }
 
+.container-user-profile {
+ display: flex;
+ flex-direction: row;
+ width: 85%;
+ margin: 45px auto;
+}
