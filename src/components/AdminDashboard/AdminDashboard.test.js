@@ -114,9 +114,6 @@ function Home (){
 }
 
 test('Admin dashboard show data', () => {
-
-
-
   render(
   <BrowserRouter>
     <Routes>
