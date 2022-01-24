@@ -1,0 +1,109 @@
+.payment-process-container {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.margin-top {
+  margin-top: 2rem;
+}
+
+.payment-method-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 90%;
+  text-align: center;
+  margin: auto;
+
+  align-items: center;
+  height: 60vh;
+}
+.card-container {
+  width: 90%;
+
+  align-items: center;
+  height: 50vh;
+  margin: 30px auto;
+}
+
+.card-form {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.card-title {
+  text-align: center;
+  font-size: 32px;
+}
+
+.card-information__button {
+  grid-column: span 2;
+  text-align: end;
+}
+
+.card-information__button--prev {
+  text-align: start;
+}
+
+.card-information__button--continue {
+  text-align: end;
+}
+
+.checkout-title {
+  text-align: center;
+  margin: 30px auto;
+}
+
+@media (min-width: 850px) {
+  .checkout-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (min-width: 950px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
+    gap: 30px;
+  }
+
+  .payment-method-container {
+    width: 80%;
+    gap: 30px;
+  }
+
+  .card-title {
+    text-align: center;
+    font-size: 22px;
+  }
+
+  .payment-method-buttons {
+    margin: auto;
+    width: 70%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-container {
+    width: 75%;
+  }
+
+  .card-title {
+    font-size: 26px;
+  }
+
+  .payment-method-buttons {
+    margin: auto;
+    width: 60%;
+  }
+
+  .checkout-container {
+    margin: auto;
+    width: 80%;
+    gap: 30px;
+    grid-template-columns: 3fr 1fr;
+  }
+}

@@ -26,6 +26,8 @@ import VerifyAccount from './components/verifyAccount/VerifyAccount';
 import VerifySendMessage from './components/verifyAccount/VerifySendMessage';
 import TokenExpired from './components/verifyAccount/TokenExpired';
 import MenuProfile from './components/menuProfile/MenuProfile';
+import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
+import PaymentProcess from './pages/paymentProcess/PaymentProcess';
 
 const App = () => {
   return (
@@ -46,7 +48,10 @@ const App = () => {
               <Route path="booking-history" element={<BookingHistory />} />
               <Route path="delete" element={<DeleteClient />} />
             </Route>
-
+            <Route path="/invoice/:id" element={<InvoiceDetail />} />
+            <Route path="/payment" element={<PaymentProcess />} />
+            <Route path="/user/account/" element={<Profile />} />
+            <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
             <Route path="/userHotel" element={<UserHotel />}>
               <Route index element={<AdminDashboard />} />

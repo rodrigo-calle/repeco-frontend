@@ -1,12 +1,12 @@
-/* .UserHotel {
-  display: flex;
-} */
+.UserHotel {
+  position: relative;
+}
 
-.HamburgerMenu__menu {
+.HamburgerMenu {
   background-color: #159b9b;
 }
 
-.UserHotel .HamburgerMenu__menu--active i {
+.UserHotel .HamburgerMenu--active i {
   color: #159b9b;
 }
 
@@ -16,4 +16,10 @@
 
 .UserHotel .HamburgerMenu__button-menu {
   background-color: #159b9b;
+}
+
+@media (min-width: 1000px) {
+  .UserHotel {
+    display: flex;
+  }
 }
