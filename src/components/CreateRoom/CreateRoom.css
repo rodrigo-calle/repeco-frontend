@@ -1,0 +1,27 @@
+.CreateRoom {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+}
+
+.CreateRoom__header {
+  background-color: white;
+  padding: 1rem 1rem 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.CreateRoom__form {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+@media (min-width: 1000px) {
+  .CreateRoom {
+    width: 100%;
+  }
+}
