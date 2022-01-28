@@ -7,7 +7,9 @@
 }
 
 .profile-container__profile-menu--logo{
-  height: 65px;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
 }
 .profile-container__profile-menu--user{
   font-weight: 600;

@@ -1,14 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage } from '@cloudinary/react';
 import { useAppState } from '../../context/store';
+import userService from '../../services/user';
 
 import './MenuProfile.css';
 
 const MenuProfile = () => {
   const [itemSelect, setItemSelect] = useState('');
   const { user } = useAppState();
+  const [client, setClient] = useState({
+    email: '',
+    password: '',
+    firstName: '',
+    lastName: '',
+    phone: '',
+    document: '',
+    avatar: '',
+  });
+
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await userService.getUserProfile();
+      const data = await res.json();
+      setClient(data);
+    };
+    getUser();
+  }, client);
+
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dwat1o60y',
@@ -22,7 +42,8 @@ const MenuProfile = () => {
     setItemSelect('edit');
   };
 
-  const myAvatar = cld.image('m2jxrpwok0hd4yqmpkc3');
+  // const myAvatar = cld.image('m2jxrpwok0hd4yqmpkc3');
+  const myAvatar = cld.image(client.avatar);
   return (
     <div className="container-user-profile">
       <div className="profile-container__profile-menu">
