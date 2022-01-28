@@ -205,38 +205,6 @@ const ProfileEdit = () => {
               className="profile-container__profile-edit--form__label"
               htmlFor="phone"
             >
-              Typo de documento:
-              <br />
-              <select form="profile-edit" className="document-select">
-                <option defaultValue nselectable="true">
-                  Seleccionar una opción
-                </option>
-                <option value="estrangeria">Carnet de estragería</option>
-                <option value="dni"> DNI</option>
-              </select>
-            </label>{' '}
-            <br />
-            <label
-              className="profile-container__profile-edit--form__label"
-              htmlFor="document"
-            >
-              Documento de Identidad:
-              <br />
-              <input
-                className="profile-container__profile-edit--form__input"
-                type="text"
-                name="document"
-                id="document"
-                value={dataUser.document}
-                placeholder={currentUser.document}
-                onChange={handleChange}
-              />
-            </label>{' '}
-            <br />
-            <label
-              className="profile-container__profile-edit--form__label"
-              htmlFor="phone"
-            >
               Telefono:
               <br />
               <input
