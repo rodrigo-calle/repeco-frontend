@@ -36,27 +36,8 @@ const getRommsByHotel = () => {
   return fetch(`${URL_BASE}/api/rooms/hotel/`, payload);
 };
 
-// const postRooms = (data) => {
-//   const token = localStorage.getItem('token');
-//   const payload = {
-//     method: 'POST',
-//     mode: 'no-cors',
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//     body: data,
-//   };
-//   return fetch(`${URL_BASE}/api/rooms/`, payload);
-// };
-
 const postRooms = (datos) => {
   const token = localStorage.getItem('token');
-  // const payload = {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  //   data: datos,
-  // };
   return axios({
     method: 'post',
     url: `${URL_BASE}/api/rooms/`,
@@ -66,7 +47,6 @@ const postRooms = (datos) => {
       Authorization: `Bearer ${token}`,
     },
   });
-  // return axios.post(`${URL_BASE}/api/rooms/`, payload);
 };
 
 const room = {

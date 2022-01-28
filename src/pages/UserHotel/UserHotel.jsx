@@ -18,12 +18,12 @@ const linkmenu = [
 ];
 
 const UserHotel = () => {
-  const [data, useData] = useState(null);
+  const [data, setData] = useState(null);
   useEffect(async () => {
     const getallDataUser = async () => {
       const response = await roomService.getRommsByHotel();
       const payload = await response.json();
-      useData(payload);
+      setData(payload);
     };
     getallDataUser();
   }, []);
@@ -31,7 +31,7 @@ const UserHotel = () => {
   return (
     <div className="UserHotel">
       <HamburgerMenu menu={linkmenu} />
-      <Outlet context={[data, useData]} />
+      <Outlet context={[data, setData]} />
     </div>
   );
 };

@@ -56,6 +56,14 @@ const CreateRoom = () => {
   };
 
   const [services, setServices] = React.useState(aditionalServices);
+
+  const handleCheckboxChange = (index) => {
+    const change = services.find((service, i) => i === index);
+    change.isSelected = !change.isSelected;
+    const newArr = services.map((elem, i) => (index === i ? change : elem));
+    setServices(newArr);
+  };
+
   const [created, setCreated] = React.useState(false);
 
   const handleChange = (event) => {
@@ -67,7 +75,6 @@ const CreateRoom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = values;
     const selecteds = services.filter((service) => service.isSelected === true);
     const serviceClean = selecteds.map((selected) => {
       delete selected.isSelected;
@@ -93,13 +100,6 @@ const CreateRoom = () => {
     } else {
       setCreated(false);
     }
-  };
-
-  const handleCheckboxChange = (index) => {
-    const change = services.find((service, i) => i === index);
-    change.isSelected = !change.isSelected;
-    const newArr = services.map((elem, i) => (index === i ? change : elem));
-    setServices(newArr);
   };
 
   return (
