@@ -15,9 +15,15 @@
 
 .CreateRoom__form {
   display: block;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
   padding: 1rem;
+}
+
+.CreateRoom__confirm {
+  text-align: center;
+  color: #159b9b;
 }
 
 @media (min-width: 1000px) {

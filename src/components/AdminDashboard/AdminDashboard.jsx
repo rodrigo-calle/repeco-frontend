@@ -29,9 +29,9 @@ const AdminDashboard = () => {
           </div>
           <div className="AdminDashboard__barra" />
           <div className="AdminDashboard__crud">
-            <button type="button" className="AdminDashboard__active">
+            {/* <button type="button" className="AdminDashboard__active">
               Activar
-            </button>
+            </button> */}
             <button type="button" className="AdminDashboard__edit">
               Editar
             </button>
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
             <thead>
               <tr>
                 <th>
-                  <input type="checkbox" />
+                  <input type="checkbox" disabled />
                 </th>
                 <th>Titulo</th>
                 <th>Description</th>

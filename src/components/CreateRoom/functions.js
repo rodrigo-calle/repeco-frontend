@@ -69,13 +69,11 @@ const aditionalService = [
     isSelected: false,
     serviceUrl: 'fas fa-baby',
   },
-
   {
     serviceName: 'Parqueadero',
     isSelected: false,
     serviceUrl: 'fas fa-parking',
   },
-
   {
     serviceName: '24 horas',
     isSelected: false,
