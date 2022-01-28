@@ -3,7 +3,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-
+import room from '../../services/room';
 import NumberFormat from 'react-number-format';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -45,13 +45,18 @@ const CreateRoom = () => {
   const [values, setValues] = React.useState({
     title: '',
     description: '',
-    images: [],
-    services: [],
     capacity: 0,
     price: '0',
   });
 
+  const [files, setFiles] = React.useState(null);
+
+  const handleChangeFiles = (e) => {
+    setFiles(e.target.files);
+  };
+
   const [services, setServices] = React.useState(aditionalServices);
+  const [created, setCreated] = React.useState(false);
 
   const handleChange = (event) => {
     setValues({
@@ -60,7 +65,7 @@ const CreateRoom = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const data = values;
     const selecteds = services.filter((service) => service.isSelected === true);
@@ -68,8 +73,26 @@ const CreateRoom = () => {
       delete selected.isSelected;
       return selected;
     });
-    data.services = serviceClean;
-    console.log(data);
+    const serviceString = JSON.stringify(serviceClean);
+    const formData = new FormData();
+    formData.append('file', values.title);
+    formData.append('file', values.description);
+    formData.append('file', values.capacity);
+    formData.append('file', values.price);
+    formData.append('file', serviceString);
+    for (const myfile of files) {
+      formData.append('file', myfile);
+    }
+    const result = await room.postRooms(formData);
+    confirm(result);
+  };
+
+  const confirm = (result) => {
+    if (result.statusText === 'Created') {
+      setCreated(true);
+    } else {
+      setCreated(false);
+    }
   };
 
   const handleCheckboxChange = (index) => {
@@ -77,10 +100,6 @@ const CreateRoom = () => {
     change.isSelected = !change.isSelected;
     const newArr = services.map((elem, i) => (index === i ? change : elem));
     setServices(newArr);
-  };
-
-  const handleImagesChange = (event) => {
-    console.log(event.target.files);
   };
 
   return (
@@ -98,6 +117,7 @@ const CreateRoom = () => {
             variant="outlined"
             name="title"
             value={values.title}
+            required
           />
         </div>
         <TextField
@@ -109,6 +129,7 @@ const CreateRoom = () => {
           onChange={handleChange}
           name="description"
           value={values.description}
+          required
         />
         <div>
           <TextField
@@ -122,6 +143,7 @@ const CreateRoom = () => {
             InputLabelProps={{
               shrink: true,
             }}
+            required
           />
         </div>
 
@@ -136,6 +158,7 @@ const CreateRoom = () => {
             InputProps={{
               inputComponent: NumberFormatCustom,
             }}
+            required
           />
         </div>
 
@@ -158,15 +181,16 @@ const CreateRoom = () => {
         </div>
 
         <label htmlFor="uploadfotos">
-          {/* <Input
+          <Input
             sx={{ m: 2 }}
             accept="image/*"
             id="uploadfotos"
             multiple
-            name="images"
-            onChange={handleChange}
+            name="file"
+            onChange={handleChangeFiles}
             value={values.images}
             type="file"
+            required
           />
           <Button
             sx={{ m: 2 }}
@@ -175,13 +199,7 @@ const CreateRoom = () => {
             endIcon={<PhotoCameraIcon />}
           >
             Fotos del Cuarto
-          </Button> */}
-          <input
-            type="file"
-            onChange={handleImagesChange}
-            multiple
-            id="uploadfotos"
-          />
+          </Button>
         </label>
         <div>
           <label htmlFor="submitbutton">
@@ -191,6 +209,9 @@ const CreateRoom = () => {
           </label>
         </div>
       </form>
+      {created ? (
+        <h3 className="CreateRoom__confirm"> Habitación creada con Exito</h3>
+      ) : null}
     </div>
   );
 };
