@@ -28,7 +28,6 @@ import TokenExpired from './components/verifyAccount/TokenExpired';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
 
-
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
