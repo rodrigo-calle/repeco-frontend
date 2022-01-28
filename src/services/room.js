@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
 const getAllRooms = () => {
@@ -34,10 +36,24 @@ const getRommsByHotel = () => {
   return fetch(`${URL_BASE}/api/rooms/hotel/`, payload);
 };
 
+const postRooms = (datos) => {
+  const token = localStorage.getItem('token');
+  return axios({
+    method: 'post',
+    url: `${URL_BASE}/api/rooms/`,
+    data: datos,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 const room = {
   getAllRooms,
   getRoomById,
   getRommsByHotel,
+  postRooms,
 };
 
 export default room;

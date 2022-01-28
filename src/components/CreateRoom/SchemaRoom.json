@@ -1,0 +1,38 @@
+
+{
+    "title":"Paraiso cama doble",
+    "description":"Habitación con cama doble, cada una es de plaza y media, cuenta con vista al mar y vista a la naturaleza, tiene baño propio.",
+    "images":[
+        {
+            "imageName":"Paraiso1",
+            "imageUrl":"https://images.com/paraiso1.jgp"
+        },
+        {
+            "imageName":"Paraiso2",
+            "imageUrl":"https://images.com/paraiso2.jgp"
+        }
+    ],
+    "services":[
+        {
+            "serviceName":"agua caliente",
+            "serviceUrl":"fas fa-shower"
+        },
+        {
+            "serviceName":"Wi-fi",
+            "serviceUrl":"fas fa-wifi"
+        },
+        {
+            "serviceName":"Admite mascotas",
+            "serviceUrl":"fas fa-paw"
+        },
+        {
+            "serviceName":"Desayuno Incluido",
+            "serviceUrl":"fas fa-coffee"
+        }
+    ],
+    "price":50,
+    "capacity":2,
+    "hotel":"61e2faf6ae8df7a4b0245ef7"
+
+}
+

@@ -1,8 +1,4 @@
 .HamburgerMenu {
-  position: relative;
-}
-
-.HamburgerMenu__menu {
   background-color: #9b156e;
   width: 300px;
   height: 100vh;
@@ -12,27 +8,34 @@
   position: fixed;
   color: white;
   font-family: 'Ubuntu Mono', monospace;
+  z-index: 1;
 }
-.HamburgerMenu__menu li {
+.HamburgerMenu li {
   display: block;
   margin-bottom: 0.5rem;
 }
-.HamburgerMenu__menu ul {
+.HamburgerMenu ul {
   padding-inline-start: 20px;
   font-size: 1.5rem;
 }
-.HamburgerMenu__menu i {
+
+.HamburgerMenu__link a {
+  text-decoration: none;
+  color: white;
+}
+
+.HamburgerMenu i {
   font-size: 2rem;
   width: 2rem;
   height: 2rem;
   text-align: center;
   margin-right: 1rem;
 }
-.HamburgerMenu__menu--active {
+.HamburgerMenu--active {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 1.5rem;
 }
-.HamburgerMenu__menu--active i {
+.HamburgerMenu--active i {
   background: white;
   color: #9b156d;
   padding: 0.5rem;
@@ -56,6 +59,16 @@
   margin: 0;
   padding: 0.5rem;
 }
-.HamburgerMenu__menu--oculto {
+.HamburgerMenu--oculto {
   margin-left: -300px;
+}
+
+@media (min-width: 1000px) {
+  .HamburgerMenu {
+    position: relative;
+    width: 30%;
+  }
+  .HamburgerMenu--oculto {
+    margin-left: -30%;
+  }
 }
