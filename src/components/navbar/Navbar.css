@@ -1,11 +1,11 @@
 nav {
-  background-color: #0DC96E;
-  /* background: rgb(8, 6, 121);
+  /* background-color: #0DC96E; */
+  background: rgb(8, 6, 121);
   background: radial-gradient(
     circle,
     rgba(8, 6, 121, 0.9472163865546218) 0%,
     rgba(71, 123, 205, 0.969625350140056) 100%
-  ); */
+  );
 }
 
 .nav__container {
@@ -59,7 +59,7 @@ nav {
   cursor: pointer;
 }
 
-.nav__container__menu__list .button-menu{
+.nav__container__menu__list .button-menu {
   background-color: #071a54;
   border-radius: 50%;
   height: 30px;
@@ -70,7 +70,7 @@ nav {
   cursor: pointer;
 }
 
-.menu-list{
+.menu-list {
   width: 250px;
   background: rgb(0, 85, 165);
   position: absolute;
@@ -82,7 +82,7 @@ nav {
   flex-direction: column;
 }
 
-.menu-list .item-menu-toogle{
+.menu-list .item-menu-toogle {
   color: #fff;
   display: flex;
   width: 90%;
@@ -92,7 +92,7 @@ nav {
   align-items: center;
 }
 
-.menu-list .item-menu-toogle .icon-menu-list{
+.menu-list .item-menu-toogle .icon-menu-list {
   background-color: #071a54;
   border-radius: 50%;
   height: 25px;
@@ -105,8 +105,7 @@ nav {
   cursor: pointer;
 }
 
-
-.toogle-btn{
+.toogle-btn {
   border-radius: 50%;
   background-color: #286347;
   cursor: pointer;
