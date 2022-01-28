@@ -15,8 +15,8 @@ const DeleteClient = () => {
     try {
       const response = await userService.deletUser();
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
+        // const data = await response.json();
+        // console.log(data);
         alert('Tu usuario ha sido eliminado');
         logout(dispatch);
         navigate('/');

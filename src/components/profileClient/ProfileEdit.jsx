@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import userService from '../../services/user';
 
 const ProfileEdit = () => {
@@ -8,6 +9,7 @@ const ProfileEdit = () => {
   const [message, setMessage] = useState(false);
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({});
+  const [avatar, setAvatar] = useState(null);
   // const [file, setFile] = useState(null);
   const [dataUser, setDataUser] = useState({
     email: '',
@@ -16,6 +18,7 @@ const ProfileEdit = () => {
     lastName: '',
     phone: '',
     document: '',
+    avatar: '',
   });
 
   useEffect(() => {
@@ -32,7 +35,7 @@ const ProfileEdit = () => {
     };
     showUser();
     // console.log(currentUser);
-  });
+  }, avatar);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,10 +46,6 @@ const ProfileEdit = () => {
     // console.log(dataUser);
   };
 
-  // const onChangeAvatar = (e) => {
-  //   setFile(e.target.files[0]);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const values = {};
@@ -56,16 +55,23 @@ const ProfileEdit = () => {
       }
     });
 
+    if (avatar) {
+      const formData = new FormData();
+      formData.append('file', avatar);
+
+      const result = await axios.post(
+        'http://localhost:8080/api/uploads/file',
+        formData,
+      );
+      values.avatar = result.data.public_id;
+    }
+
     try {
       const response = await userService.updateUser(values);
-      // console.log(response);
       if (response.ok) {
         setTimeout(() => {
           navigate('/user/account/profile');
         }, 1500);
-        // const data = await response.json();
-        // console.log(data);
-        // navigate('/user/account');
 
         setMessage(true);
       } else {
@@ -151,11 +157,12 @@ const ProfileEdit = () => {
               <br />
               <input
                 className="profile-container__profile-edit--form__input upload-avatar"
-                name="file"
                 type="file"
+                name="file"
                 id="file"
+                accept="image/*"
                 value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                onChange={(e) => setAvatar(e.target.files[0])}
               />
             </label>{' '}
           </div>{' '}
