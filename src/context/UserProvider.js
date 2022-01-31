@@ -9,12 +9,15 @@ export const UserProvider = ({ children }) => {
 
   const [completeName, setCompleteName] = useState(initialState);
   const [addCart, setAddCart] = useState([]);
+  const [updateData, setUpdateData] = useState({});
 
   const valuesToPass = {
     completeName,
     setCompleteName,
     addCart,
     setAddCart,
+    updateData,
+    setUpdateData,
   };
 
   return (

@@ -6,6 +6,7 @@ import {
   GET_USER_FROM_LOCALSTORAGE,
   SET_SEARCH_FIELDS,
   VERIFY_USER,
+  CHANGE_VALUES,
 } from './constants';
 
 const AppStateContext = createContext();
@@ -51,6 +52,12 @@ function AppReducer(state, action) {
       return {
         ...state,
         searchFields: action.payload,
+      };
+    }
+    case CHANGE_VALUES: {
+      return {
+        ...state,
+        changes: action.payload,
       };
     }
 

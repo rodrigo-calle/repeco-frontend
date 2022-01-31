@@ -8,3 +8,20 @@
   margin-left: 20px;
   width: 50%;
 }
+
+.active-profile-btn{
+  border-bottom: 1px solid rgb(218, 218, 218);
+  margin: 0;
+  padding: 17px;
+  cursor: pointer;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  border-top: 1px solid rgb(218, 218, 218);
+  border-left: 8px solid #0DC96E;
+  color: #000;
+  background-color: #fff;
+  font-weight: 600;
+}

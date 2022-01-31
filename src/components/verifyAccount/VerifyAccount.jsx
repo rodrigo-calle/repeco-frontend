@@ -1,15 +1,23 @@
-import React, { useEffect } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import userService from '../../services/user';
 import { useAppDispatch } from '../../context/store';
 import { getUserFromLocalStorage } from '../../context/actions';
 
 import './VerifyAccount.css';
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 const VerifyAccount = () => {
   const dispatch = useAppDispatch();
   const { hash } = useParams();
   const navigate = useNavigate();
+  const [err, setErr] = useState(false);
 
   useEffect(async () => {
     const verify = async () => {
@@ -17,41 +25,46 @@ const VerifyAccount = () => {
         const response = await userService.confirmAccount(hash);
         if (response.ok) {
           const data = await response.json();
-          // console.log('dataaa', data);
           localStorage.setItem('token', data.token);
-          // const decoded = jwt_decode(data.token);
           getUserFromLocalStorage(dispatch);
-          // dispatch({ type: GET_USER_FROM_LOCALSTORAGE, payload: decoded });
-          // console.log('cuenta verificada');
         }
         if (response.ok !== true) {
           await navigate('/user/token-expired');
-          // console.log('cuenta no verificada');
-          // mandar a página 404
         }
-      } catch (err) {
-        console.log(err.message);
+      } catch (error) {
+        setErr(false);
       }
     };
 
-    // obtener token de userParams
-    // llamar a la api para verificar el token
-    // si el token es valido
-    // setear el estado de la app a true
-    // si el token es invalido
     verify();
   }, []);
+
   const buttonHandle = () => {
     navigate('/');
+  };
 
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    // const decoded = jwt_decode(token);
-    // dispatch({ type: GET_USER_FROM_LOCALSTORAGE, payload: decoded });
-    // }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setErr(false);
   };
   return (
     <div className="container-verification">
+      <Snackbar
+        open={err}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // style={{ height: '100%' }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          Ha ocurrido un error, por favor intentelo más tarde
+        </Alert>
+      </Snackbar>
       <p className="litle-message">¡Email Confirmado!</p>
       <p className="welcome-message">¡BIENVENIDO A REPECO!</p>
       <img

@@ -4,6 +4,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import Navbar from './components/navbar/Navbar';
+// import NavbarOne from './components/navbar/NavbarOne';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
@@ -28,12 +29,14 @@ import TokenExpired from './components/verifyAccount/TokenExpired';
 import MenuProfile from './components/menuProfile/MenuProfile';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
+import NotFound from './pages/404/NotFound';
 
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <BrowserRouter>
         <AppProvider>
+          {/* <NavbarOne /> */}
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -64,6 +67,8 @@ const App = () => {
               element={<VerifySendMessage />}
             />
             <Route path="/user/token-expired" element={<TokenExpired />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </AppProvider>
