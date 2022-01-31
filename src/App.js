@@ -27,6 +27,7 @@ import VerifySendMessage from './components/verifyAccount/VerifySendMessage';
 import TokenExpired from './components/verifyAccount/TokenExpired';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
+import UpdateRoom from './components/UpdateRoom/UpdateRoom';
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
               <Route index element={<AdminDashboard />} />
               <Route path="stadistics" element={<Stadistics />} />
               <Route path="createroom" element={<CreateRoom />} />
+              <Route path="updateroom/:id" element={<UpdateRoom />} />
             </Route>
             <Route path="/user/activate/:hash" element={<VerifyAccount />} />
             <Route

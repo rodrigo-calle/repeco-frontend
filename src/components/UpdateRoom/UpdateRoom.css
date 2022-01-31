@@ -1,0 +1,33 @@
+.UpdateRoom {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  background-color: #f3f3f3;
+}
+
+.UpdateRoom__header {
+  background-color: white;
+  padding: 1rem 1rem 1rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.UpdateRoom__form {
+  display: block;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 1rem;
+}
+
+.UpdateRoom__confirm {
+  text-align: center;
+  color: #159b9b;
+}
+
+@media (min-width: 1000px) {
+  .UpdateRoom {
+    width: 100%;
+  }
+}
