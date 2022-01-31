@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Signup.css';
 import Snackbar from '@mui/material/Snackbar';
@@ -13,6 +13,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 const Signup = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [open, setOpen] = useState(false);
+  const [err, setErr] = useState(false);
   const [dataUser, setDataUser] = useState({
     email: '',
     password: '',
@@ -44,8 +45,8 @@ const Signup = () => {
       } else {
         setOpen(true);
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      setErr(true);
     }
   };
   const handleClose = (event, reason) => {
@@ -56,6 +57,16 @@ const Signup = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const getUser = async () => {
+      const res = await userService.getUserProfile();
+      // const data = await res.json();
+      if (!res) {
+        navigate('/');
+      }
+    };
+    getUser();
+  });
   return (
     <>
       <header>
@@ -71,6 +82,20 @@ const Signup = () => {
         >
           <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
             ¡Contraseñas no coinciden!
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={err}
+          autoHideDuration={6000}
+          onClose={handleClose}
+          // style={{ height: '100%' }}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+            Ha ocurrido un error por favor intentarlo más tarde
           </Alert>
         </Snackbar>
         <img

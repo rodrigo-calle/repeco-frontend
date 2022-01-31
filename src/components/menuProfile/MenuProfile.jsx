@@ -27,7 +27,7 @@ const MenuProfile = () => {
       setClient(data);
     };
     getUser();
-  }, client);
+  }, []);
 
   const cld = new Cloudinary({
     cloud: {
@@ -66,7 +66,7 @@ const MenuProfile = () => {
           to="/user/account/profile"
           className={
             itemSelect === 'profile'
-              ? 'profile-container__profile-menu--btn-edit-active'
+              ? 'profile-container__profile-menu--btn-edit-active '
               : 'profile-container__profile-menu--btn-editc'
           }
           onClick={activeProfile}

@@ -7,7 +7,17 @@ nav {
     rgba(71, 123, 205, 0.969625350140056) 100%
   );
 }
-
+.MuiPaper-root{
+  margin-top: 27px;
+}
+.MuiPaper-root ul{
+  margin-top: 8px;
+}
+.user-avatar-btn{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
 .nav__container {
   display: flex;
   justify-content: space-between;
@@ -22,6 +32,7 @@ nav {
   display: flex;
   list-style: none;
   align-items: center;
+  margin: 0;
 }
 
 .nav__container__menu__list {
