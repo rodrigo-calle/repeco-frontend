@@ -1,5 +1,5 @@
 /* eslint-disable */
-import * as React from 'react';
+import { useState, forwardRef } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -12,15 +12,13 @@ import SendIcon from '@mui/icons-material/Send';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import aditionalServices from '../CreateRoom/functions';
 import { useParams } from 'react-router-dom';
+import Loading from '../loading/loading';
 
 const Input = styled('input')({
   display: 'none',
 });
 
-const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
-  props,
-  ref,
-) {
+const NumberFormatCustom = forwardRef(function NumberFormatCustom(props, ref) {
   const { onChange, ...other } = props;
 
   return (
@@ -43,14 +41,14 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 });
 
 const UpdateRoom = () => {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     title: '',
     description: '',
     capacity: 0,
     price: '0',
   });
 
-  const [files, setFiles] = React.useState(null);
+  const [files, setFiles] = useState(null);
 
   const { id } = useParams();
 
@@ -58,7 +56,7 @@ const UpdateRoom = () => {
     setFiles(e.target.files);
   };
 
-  const [services, setServices] = React.useState(aditionalServices);
+  const [services, setServices] = useState(aditionalServices);
 
   const handleCheckboxChange = (index) => {
     const change = services.find((service, i) => i === index);
@@ -67,7 +65,8 @@ const UpdateRoom = () => {
     setServices(newArr);
   };
 
-  // const [created, setCreated] = React.useState(false);
+  const [created, setCreated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setValues({
@@ -93,20 +92,20 @@ const UpdateRoom = () => {
     for (const myfile of files) {
       formData.append('file', myfile);
     }
-
-    console.log(formData, id);
-
+    setLoading(true);
     const result = await room.updateRoom(formData, id);
-    // confirm(result);
+    console.log(result);
+    confirm(result);
   };
 
-  // const confirm = (result) => {
-  //   if (result.statusText === 'Created') {
-  //     setCreated(true);
-  //   } else {
-  //     setCreated(false);
-  //   }
-  // };
+  const confirm = (result) => {
+    if (result.statusText === 'Created') {
+      setCreated(true);
+      setLoading(false);
+    } else {
+      setCreated(false);
+    }
+  };
 
   return (
     <div className="UpdateRoom">
@@ -215,9 +214,10 @@ const UpdateRoom = () => {
           </label>
         </div>
       </form>
-      {/* {created ? (
+      {created ? (
         <h3 className="UpdateRoom__confirm"> Habitación Actualizada</h3>
-      ) : null} */}
+      ) : null}
+      {loading ? <Loading /> : null}
     </div>
   );
 };

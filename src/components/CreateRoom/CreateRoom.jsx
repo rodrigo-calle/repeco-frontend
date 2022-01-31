@@ -1,5 +1,5 @@
 /* eslint-disable */
-import * as React from 'react';
+import { useState, forwardRef } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,15 +11,13 @@ import './CreateRoom.css';
 import SendIcon from '@mui/icons-material/Send';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import aditionalServices from './functions';
+import Loading from '../loading/loading';
 
 const Input = styled('input')({
   display: 'none',
 });
 
-const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
-  props,
-  ref,
-) {
+const NumberFormatCustom = forwardRef(function NumberFormatCustom(props, ref) {
   const { onChange, ...other } = props;
 
   return (
@@ -42,20 +40,20 @@ const NumberFormatCustom = React.forwardRef(function NumberFormatCustom(
 });
 
 const CreateRoom = () => {
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
     title: '',
     description: '',
     capacity: 0,
     price: '0',
   });
 
-  const [files, setFiles] = React.useState(null);
+  const [files, setFiles] = useState(null);
 
   const handleChangeFiles = (e) => {
     setFiles(e.target.files);
   };
 
-  const [services, setServices] = React.useState(aditionalServices);
+  const [services, setServices] = useState(aditionalServices);
 
   const handleCheckboxChange = (index) => {
     const change = services.find((service, i) => i === index);
@@ -64,7 +62,8 @@ const CreateRoom = () => {
     setServices(newArr);
   };
 
-  const [created, setCreated] = React.useState(false);
+  const [created, setCreated] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setValues({
@@ -90,6 +89,7 @@ const CreateRoom = () => {
     for (const myfile of files) {
       formData.append('file', myfile);
     }
+    setLoading(true);
     const result = await room.postRooms(formData);
     confirm(result);
   };
@@ -97,6 +97,7 @@ const CreateRoom = () => {
   const confirm = (result) => {
     if (result.statusText === 'Created') {
       setCreated(true);
+      setLoading(false);
     } else {
       setCreated(false);
     }
@@ -212,6 +213,7 @@ const CreateRoom = () => {
       {created ? (
         <h3 className="CreateRoom__confirm"> Habitación creada con Exito</h3>
       ) : null}
+      {loading ? <Loading /> : null}
     </div>
   );
 };
