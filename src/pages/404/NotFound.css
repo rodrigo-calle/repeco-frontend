@@ -1,0 +1,86 @@
+.notFound-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #000;
+  flex-direction: row;
+  height: fit-content;
+}
+.notFound-container div{
+  width: 50%;
+  padding: 50px;
+}
+.description-404{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.description-404 div{
+  margin: 0 auto;
+  width: fit-content;
+  height: fit-content;
+}
+.description-404 div p{
+  margin: 0;
+}
+.title-not-found{
+  color: #3E7AE5;
+  font-size: 144px;
+  font-weight: bold;
+}
+.subtitle-notFound{
+  font-weight: bold;
+  font-size: 32px;
+}
+.description-notFound{
+  font-size: 32px;
+}
+
+.notFound-container .image-404 img{
+  height: 50%;
+  height: 500px;
+}
+.description-404 div button{
+  background-color: #3E7AE5;
+  font-size: 32px;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  color: #fff ;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 880px) {
+
+  .notFound-container{
+    flex-direction: column;
+  }
+  .notFound-container .image-404 {
+    display: none;
+  }
+  .notFound-container .description-404{
+    padding: 0px;
+    width: 100%;
+  }
+  .description-404 div{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+  }
+
+  .description-404 div p{
+    margin: 8px 0px;
+    font-size: 28px;
+  }
+
+  .description-404 div .title-not-found{
+    color: #3E7AE5;
+    font-size: 90px;
+    font-weight: bold;
+  }
+ }
