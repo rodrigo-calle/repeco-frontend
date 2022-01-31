@@ -18,14 +18,16 @@ const linkmenu = [
 ];
 
 const UserHotel = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   useEffect(async () => {
-    const getallDataUser = async () => {
+    const getAllDataUser = async () => {
       const response = await roomService.getRommsByHotel();
       const payload = await response.json();
-      setData(payload);
+      if (response.ok) {
+        setData(payload);
+      }
     };
-    getallDataUser();
+    getAllDataUser();
   }, []);
 
   return (

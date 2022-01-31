@@ -28,6 +28,7 @@
     "react-number-format": "^4.9.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "4.0.3",
+    "recharts": "^2.1.8",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
