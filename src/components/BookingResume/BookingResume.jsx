@@ -4,12 +4,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BookingResume.css';
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 import { es } from 'date-fns/locale';
-import reserveService from '../../services/reserve';
-import invoiceService from '../../services/invoice';
-import userService from '../../services/user';
 
 const BookingResume = ({ cartRooms }) => {
+  const navigate = useNavigate();
   const calcSubTotal = () => {
     const result = cartRooms
       .map((cart) => cart.room.price)
@@ -28,41 +27,8 @@ const BookingResume = ({ cartRooms }) => {
     return result.toFixed(2);
   };
 
-  const handleClick = async () => {
-    const rooms = [];
-    cartRooms.map((cart) => {
-      const reserve = {
-        room: cart.room._id,
-        checkIn: cart.checkIn,
-        checkOut: cart.checkOut,
-      };
-
-      rooms.push(cart.room._id);
-
-      const createReserves = async () => {
-        const response = await reserveService.createReserve(reserve);
-        const data = await response.json();
-        console.log(data);
-      };
-
-      createReserves();
-      return reserve;
-    });
-
-    const invoice = {
-      subtotal: calcSubTotal(),
-      igv: calcIgv(),
-      totalPrice: calcTotal(),
-      rooms,
-    };
-
-    const response = await invoiceService.createInvoice(invoice);
-    const data = await response.json();
-    console.log('invoice', data);
-
-    const userCartResponse = await userService.deleteCartUser();
-    const userData = await userCartResponse.json();
-    console.log('user', userData);
+  const handleClick = () => {
+    navigate('/payment');
   };
 
   return (

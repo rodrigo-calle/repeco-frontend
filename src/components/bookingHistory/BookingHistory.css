@@ -6,6 +6,7 @@
 }
 .booking-container div{
   margin: 50px;
+  margin-top: 0px;
 }
 
 .booking-container__booking-edit--card-container div{

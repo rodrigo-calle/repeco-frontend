@@ -5,6 +5,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import Navbar from './components/navbar/Navbar';
+// import NavbarOne from './components/navbar/NavbarOne';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
@@ -26,16 +27,19 @@ import CreateRoom from './components/CreateRoom/CreateRoom';
 import VerifyAccount from './components/verifyAccount/VerifyAccount';
 import VerifySendMessage from './components/verifyAccount/VerifySendMessage';
 import TokenExpired from './components/verifyAccount/TokenExpired';
+import MenuProfile from './components/menuProfile/MenuProfile';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
 import UpdateRoom from './components/UpdateRoom/UpdateRoom';
 import Access from './components/Access/Access';
+import NotFound from './pages/404/NotFound';
 
 const App = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <BrowserRouter>
         <AppProvider>
+          {/* <NavbarOne /> */}
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -43,11 +47,17 @@ const App = () => {
             <Route path="/booking" element={<Booking />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/user/account/" element={<MenuProfile />}>
+              <Route path="profile" element={<Profile />} />
+              <Route path="edit" element={<ProfileEdit />} />
+              <Route path="payment" element={<PaymentsClient />} />
+              <Route path="booking-history" element={<BookingHistory />} />
+              <Route path="delete" element={<DeleteClient />} />
+            </Route>
             <Route path="/invoice/:id" element={<InvoiceDetail />} />
             <Route path="/payment" element={<PaymentProcess />} />
             <Route path="/user/account/" element={<Profile />} />
             <Route path="/user/account/edit" element={<ProfileEdit />} />
-            <Route path="/user/account/payment" element={<PaymentsClient />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
             <Route
               path="/userHotel"
@@ -68,11 +78,8 @@ const App = () => {
               element={<VerifySendMessage />}
             />
             <Route path="/user/token-expired" element={<TokenExpired />} />
-            <Route
-              path="/user/account/booking-history"
-              element={<BookingHistory />}
-            />
-            <Route path="/user/account/delete" element={<DeleteClient />} />
+
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </AppProvider>

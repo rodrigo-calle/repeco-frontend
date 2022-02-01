@@ -1,13 +1,29 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 import './ProfileEdit.css';
-// import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import userService from '../../services/user';
-import MenuProfile from '../menuProfile/MenuProfile';
+import { getUserFromLocalStorage } from '../../context/actions';
+import { useAppDispatch } from '../../context/store';
+
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 const ProfileEdit = () => {
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [message, setMessage] = useState(false);
-  // const [file, setFile] = useState(null);
+  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState({});
+  const [avatar, setAvatar] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [incomplete, setIncomplete] = useState(false);
+  const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
   const [dataUser, setDataUser] = useState({
     email: '',
     password: '',
@@ -15,13 +31,27 @@ const ProfileEdit = () => {
     lastName: '',
     phone: '',
     document: '',
+    avatar: '',
   });
-  // const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+  const showUser = async () => {
+    try {
+      const response = await userService.getUserProfile();
+      if (response.ok) {
+        const data = await response.json();
+        setCurrentUser(data);
+      }
+    } catch (error) {
+      setErr(true);
+    }
+  };
 
-  useEffect(async () => {
-    await userService.getUserProfile();
-    // console.log(res.json());
-  }, []);
+  useEffect(() => {
+    setLoading(true);
+    showUser();
+    setLoading(false);
+    // console.log(currentUser);
+  }, [token]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,12 +62,9 @@ const ProfileEdit = () => {
     // console.log(dataUser);
   };
 
-  // const onChangeAvatar = (e) => {
-  //   setFile(e.target.files[0]);
-  // };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const values = {};
     Object.entries(dataUser).forEach(([key, value]) => {
       if (value !== '') {
@@ -45,36 +72,115 @@ const ProfileEdit = () => {
       }
     });
 
+    if (avatar) {
+      const formData = new FormData();
+      formData.append('file', avatar);
+
+      const result = await axios.post(
+        'http://localhost:8080/api/uploads/file',
+        formData,
+      );
+      values.avatar = result.data.public_id;
+    }
+
     try {
       const response = await userService.updateUser(values);
-      // console.log(response);
-      if (response.ok) {
+      if (Object.keys(values).length === 0) {
+        setIncomplete(true);
+      } else if (response.ok) {
         const data = await response.json();
-        console.log(data);
-        // navigate('/user/account');
-        setMessage(true);
+        localStorage.setItem('token', data.token);
+        getUserFromLocalStorage(dispatch);
+        setConfirm(true);
+        setTimeout(() => {
+          navigate('/user/account/profile');
+        }, 1500);
       } else {
-        console.log('error');
+        setOpen(true);
       }
     } catch (error) {
-      console.log(error);
+      setErr(true);
     }
   };
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+    setConfirm(false);
+    setIncomplete(false);
+    setErr(false);
+  };
+  if (loading) {
+    return <p className="loader">Data is loading...</p>;
+  }
 
   return (
     <div className="profile-container">
-      {message ? (
-        <div role="alertdialog" style={{ backgroundColor: '#93ff33' }}>
-          Datos de usuario actualizado
-        </div>
-      ) : null}
-      <MenuProfile />
+      <Snackbar
+        open={err}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // style={{ height: '100%' }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          Ha ocurrido un error, por favor intentelo más tarde
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // style={{ height: '100%' }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          ¡Contraseñas no coinciden!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={confirm}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // style={{ height: '100%' }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          !Datos actualizado!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={incomplete}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        // style={{ height: '100%' }}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <Alert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+          ¡Completar minimo un campo!
+        </Alert>
+      </Snackbar>
       <div className="profile-container__profile-edit">
         <p className="profile-container__profile-edit--title">
           {' '}
           Editar Perfil{' '}
         </p>{' '}
         <form
+          id="profile-edit"
           onSubmit={handleSubmit}
           className="profile-container__profile-edit--form"
         >
@@ -90,6 +196,7 @@ const ProfileEdit = () => {
                 name="email"
                 type="email"
                 id="email"
+                placeholder={currentUser.email}
                 value={dataUser.email}
                 onChange={handleChange}
               />
@@ -135,11 +242,11 @@ const ProfileEdit = () => {
               <br />
               <input
                 className="profile-container__profile-edit--form__input upload-avatar"
-                name="file"
                 type="file"
+                name="file"
                 id="file"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+                accept="image/*"
+                onChange={(e) => setAvatar(e.target.files[0])}
               />
             </label>{' '}
           </div>{' '}
@@ -154,6 +261,7 @@ const ProfileEdit = () => {
                 className="profile-container__profile-edit--form__input"
                 type="text"
                 name="firstName"
+                placeholder={currentUser.firstName}
                 id="name"
                 value={dataUser.firstName}
                 onChange={handleChange}
@@ -172,22 +280,7 @@ const ProfileEdit = () => {
                 className="profile-container__profile-edit--form__input"
                 type="text"
                 value={dataUser.lastName}
-                onChange={handleChange}
-              />
-            </label>{' '}
-            <br />
-            <label
-              className="profile-container__profile-edit--form__label"
-              htmlFor="document"
-            >
-              Documento de Identidad:
-              <br />
-              <input
-                className="profile-container__profile-edit--form__input"
-                type="text"
-                name="document"
-                id="document"
-                value={dataUser.document}
+                placeholder={currentUser.lastName}
                 onChange={handleChange}
               />
             </label>{' '}
@@ -204,6 +297,7 @@ const ProfileEdit = () => {
                 name="phone"
                 id="phone"
                 value={dataUser.phone}
+                placeholder={currentUser.phone}
                 onChange={handleChange}
               />
             </label>{' '}

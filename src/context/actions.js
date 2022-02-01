@@ -6,6 +6,7 @@ import {
   LOGOUT_USER,
   SET_LOADING,
   SET_SEARCH_FIELDS,
+  // CHANGE_VALUES,
   // VERIFY_USER,
 } from './constants';
 
@@ -53,3 +54,7 @@ export const getUserFromLocalStorage = (dispatch) => {
 export const setSearchFieldsForm = (dispatch, form) => {
   dispatch({ type: SET_SEARCH_FIELDS, payload: form });
 };
+
+// export const changeValues = (dispatch) => {
+//   dispatch()
+// };
