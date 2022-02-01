@@ -1,4 +1,5 @@
 import './App.css';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -28,6 +29,7 @@ import TokenExpired from './components/verifyAccount/TokenExpired';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
 import UpdateRoom from './components/UpdateRoom/UpdateRoom';
+import Access from './components/Access/Access';
 
 const App = () => {
   return (
@@ -47,7 +49,14 @@ const App = () => {
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/user/account/payment" element={<PaymentsClient />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
-            <Route path="/userHotel" element={<UserHotel />}>
+            <Route
+              path="/userHotel"
+              element={
+                <Access roleUser="hotel">
+                  <UserHotel />
+                </Access>
+              }
+            >
               <Route index element={<AdminDashboard />} />
               <Route path="stadistics" element={<Stadistics />} />
               <Route path="createroom" element={<CreateRoom />} />
