@@ -113,7 +113,7 @@ const UpdateRoom = () => {
         <h1>Editar room</h1>
       </div>
       <form onSubmit={handleSubmit} className="UpdateRoom__form" action="">
-        <div>
+        <div className="UpdateRoom__typeparameter">
           <TextField
             sx={{ m: 2 }}
             onChange={handleChange}
@@ -124,19 +124,19 @@ const UpdateRoom = () => {
             value={values.title}
             required
           />
-        </div>
-        <TextField
-          sx={{ m: 2 }}
-          id="outlined-multiline-static"
-          label="Descripción"
-          multiline
-          rows={4}
-          onChange={handleChange}
-          name="description"
-          value={values.description}
-          required
-        />
-        <div>
+
+          <TextField
+            sx={{ m: 2 }}
+            id="outlined-multiline-static"
+            label="Descripción"
+            multiline
+            rows={1}
+            onChange={handleChange}
+            name="description"
+            value={values.description}
+            required
+          />
+
           <TextField
             sx={{ m: 2 }}
             id="outlined-number"
@@ -150,9 +150,7 @@ const UpdateRoom = () => {
             }}
             required
           />
-        </div>
 
-        <div>
           <TextField
             sx={{ m: 2 }}
             label="Precio"

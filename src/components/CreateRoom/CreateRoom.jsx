@@ -109,7 +109,7 @@ const CreateRoom = () => {
         <h1>Nuevo room</h1>
       </div>
       <form onSubmit={handleSubmit} className="CreateRoom__form" action="">
-        <div>
+        <div className="CreateRoom__typeparameter">
           <TextField
             sx={{ m: 2 }}
             onChange={handleChange}
@@ -120,19 +120,19 @@ const CreateRoom = () => {
             value={values.title}
             required
           />
-        </div>
-        <TextField
-          sx={{ m: 2 }}
-          id="outlined-multiline-static"
-          label="Descripción"
-          multiline
-          rows={4}
-          onChange={handleChange}
-          name="description"
-          value={values.description}
-          required
-        />
-        <div>
+
+          <TextField
+            sx={{ m: 2 }}
+            id="outlined-multiline-static"
+            label="Descripción"
+            multiline
+            rows={1}
+            onChange={handleChange}
+            name="description"
+            value={values.description}
+            required
+          />
+
           <TextField
             sx={{ m: 2 }}
             id="outlined-number"
@@ -146,9 +146,7 @@ const CreateRoom = () => {
             }}
             required
           />
-        </div>
 
-        <div>
           <TextField
             sx={{ m: 2 }}
             label="Precio"

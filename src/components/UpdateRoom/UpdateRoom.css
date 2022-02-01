@@ -26,6 +26,11 @@
   color: #159b9b;
 }
 
+.UpdateRoom__typeparameter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (min-width: 1000px) {
   .UpdateRoom {
     width: 100%;

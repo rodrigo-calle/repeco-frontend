@@ -21,6 +21,11 @@
   padding: 1rem;
 }
 
+.CreateRoom__typeparameter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .CreateRoom__confirm {
   text-align: center;
   color: #159b9b;
