@@ -31,6 +31,7 @@ const Navbar = () => {
   useEffect(() => {
     getUserFromLocalStorage(dispatch);
   }, []);
+
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dwat1o60y',

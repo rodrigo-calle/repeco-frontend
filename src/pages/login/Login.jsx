@@ -25,7 +25,6 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     loginUser(dispatch, user);
-
     navigate('/');
   };
 
@@ -88,6 +87,7 @@ const Login = () => {
               placeholder="Ingrese email"
               value={user.email}
               onChange={handleChange}
+              required
             />
           </label>
           <br />
@@ -102,6 +102,7 @@ const Login = () => {
               placeholder="Ingrese contraseña"
               value={user.password}
               onChange={handleChange}
+              required
             />
           </label>
           <br />

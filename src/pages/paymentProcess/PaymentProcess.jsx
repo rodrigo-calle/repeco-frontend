@@ -200,9 +200,11 @@ const PaymentProcess = () => {
       setCartRooms(data);
     };
 
-    Axios.get('https://ipapi.co/json/').then((res) => {
-      setIp(res.data.ip);
-    });
+    Axios.get('https://ipapi.co/json/')
+      .then((res) => {
+        setIp(res.data.ip);
+      })
+      .catch((error) => console.log(error));
 
     const response = await userService.getUserProfile();
     const data = await response.json();

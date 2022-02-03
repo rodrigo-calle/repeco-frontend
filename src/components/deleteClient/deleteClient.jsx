@@ -26,8 +26,8 @@ const DeleteClient = () => {
       if (response.ok) {
         setInfo(true);
         setTimeout(() => {
-          logout(dispatch);
           navigate('/');
+          logout(dispatch);
         }, 2000);
       } else {
         setErr(true);

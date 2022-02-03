@@ -1,9 +1,19 @@
 /* eslint-disable */
 import './AdminDashboard.css';
 import { Link, useOutletContext } from 'react-router-dom';
+import roomServices from '../../services/room';
 
 const AdminDashboard = () => {
-  const [data] = useOutletContext();
+  const [data, setData] = useOutletContext();
+
+  const handleClickDelete = async (id) => {
+    const response = await roomServices.deleteRoomById(id);
+    if (response.ok) {
+      const newData = data.filter((d) => d._id !== id);
+      setData(newData);
+    }
+  };
+
   return (
     <div className="AdminDashboard">
       <header className="AdminDashboard__header">
@@ -32,12 +42,6 @@ const AdminDashboard = () => {
             {/* <button type="button" className="AdminDashboard__active">
               Activar
             </button> */}
-            <button type="button" className="AdminDashboard__edit">
-              Editar
-            </button>
-            <button type="button" className="AdminDashboard__delete">
-              Eliminar
-            </button>
           </div>
         </div>
       </section>
@@ -47,21 +51,16 @@ const AdminDashboard = () => {
 
             <thead>
               <tr>
-                <th>
-                  <input type="checkbox" disabled />
-                </th>
                 <th>Titulo</th>
                 <th>Description</th>
                 <th>Precio</th>
                 <th>Servicios</th>
+                <th>Acciones</th>
               </tr>
             </thead>
             <tbody>
               {data?.map((room) => (
                 <tr key={room._id}>
-                  <th scope="row">
-                    <input type="checkbox" />
-                  </th>
                   <td>{room.title}</td>
                   <td>{room.description}</td>
                   <td>{room.price}</td>
@@ -69,6 +68,31 @@ const AdminDashboard = () => {
                     {room.services?.map((service) => (
                       <span key={service._id}>{service.serviceName}, </span>
                     ))}
+                  </td>
+                  <td className="AdminDashboard__actions">
+                    {/* <button
+                      type="button"
+                      onClick={() => {
+                        handleClickEdit(room._id);
+                      }}
+                      className="AdminDashboard__edit"
+                    >
+                    </button> */}
+                    <Link
+                      className="AdminDashboard__edit"
+                      to={`updateroom/${room._id}`}
+                    >
+                      Editar
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleClickDelete(room._id);
+                      }}
+                      className="AdminDashboard__delete"
+                    >
+                      Eliminar
+                    </button>
                   </td>
                 </tr>
               ))}
