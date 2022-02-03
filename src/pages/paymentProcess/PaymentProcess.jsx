@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-nested-ternary */
 import {
@@ -21,6 +22,7 @@ import {
   MenuItem,
   InputLabel,
   Select,
+  Modal,
 } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
@@ -28,10 +30,27 @@ import { format, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
 import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
+import { useNavigate } from 'react-router-dom';
 import invoiceService from '../../services/invoice';
 import userService from '../../services/user';
 import reserveService from '../../services/reserve';
 import './PaymentProcess.css';
+import LoaderHotel from '../../components/loader/LoaderHotel';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  backgroundColor: 'black',
+  color: 'white',
+  padding: 20,
+  border: '2px solid #000',
+  borderRadius: 15,
+  boxShadow: 24,
+  p: 4,
+};
 
 const PaymentProcess = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -50,6 +69,8 @@ const PaymentProcess = () => {
   const [cartRooms, setCartRooms] = useState([]);
   const [ip, setIp] = useState('');
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
   const calcSubTotal = () => {
     const result = cartRooms
@@ -126,6 +147,7 @@ const PaymentProcess = () => {
   };
 
   const handleCheckOut = async () => {
+    setOpen(true);
     const rooms = [];
 
     cartRooms.map((cart) => {
@@ -162,8 +184,13 @@ const PaymentProcess = () => {
       rooms,
     };
 
-    await invoiceService.createInvoice(invoice);
+    const response = await invoiceService.createInvoice(invoice);
     await userService.deleteCartUser();
+
+    if (response.ok) {
+      setOpen(false);
+      navigate('/');
+    }
   };
 
   useEffect(async () => {
@@ -201,6 +228,18 @@ const PaymentProcess = () => {
           <StepLabel>Realizar Reserva</StepLabel>
         </Step>
       </Stepper>
+      <Modal
+        open={open}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div style={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Procesando pago...
+          </Typography>
+          <LoaderHotel widthLoader="100%" heightLoader="250px" />
+        </div>
+      </Modal>
       {activeStep === 1 ? (
         <div className="payment-method-container">
           <div>
@@ -227,6 +266,7 @@ const PaymentProcess = () => {
                         value={index}
                         control={<Radio color="primary" />}
                         label={credit.mask}
+                        key={index}
                       />
                     ))}
                     <FormControlLabel
@@ -367,82 +407,86 @@ const PaymentProcess = () => {
         <div>
           <h2 className="checkout-title">REALIZAR RESERVA</h2>
           <div className="checkout-container">
-            <div className="Checkout-info">
-              <div>
-                <h3>Datos del Cliente</h3>
-                <p>
-                  <span>Nombre completo: </span> Luis Baldeon
-                </p>
-              </div>
-              <div>
-                <h3>Método de Pago</h3>
-                <p>Método: Tarjeta de crédito</p>
-              </div>
-              <div>
-                <h3>Habitaciones a reservar</h3>
-                <TableContainer>
-                  <Table>
-                    <TableBody>
-                      {cartRooms.length ? (
-                        cartRooms.map((item) => (
-                          <TableRow>
-                            <TableCell>
-                              <CardMedia
-                                style={{
-                                  backgroundColor: '#F2F2F2',
-                                  width: 50,
-                                  height: 40,
-                                }}
-                                image="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg"
-                                title="room"
-                              />
-                            </TableCell>
-                            <TableCell>
-                              <Typography
-                                style={{
-                                  fontWeight: 500,
-                                  color: '#494949',
-                                  marginBottom: 5,
-                                }}
-                              >
-                                {item.room.title}
-                              </Typography>
-                            </TableCell>
-                            <TableCell>
-                              <Typography
-                                style={{
-                                  fontWeight: 500,
-                                  color: '#494949',
-                                  marginBottom: 5,
-                                }}
-                              >
-                                {differenceInDays(
-                                  new Date(item.checkOut),
-                                  new Date(item.checkIn),
-                                )}{' '}
-                                x $ {item.room.price} = ${' '}
-                                {item.room.price *
-                                  differenceInDays(
+            {cartRooms.length ? (
+              <div className="Checkout-info">
+                <div>
+                  <h3>Datos del Cliente</h3>
+                  <p>
+                    <span>Nombre completo: </span> Luis Baldeon
+                  </p>
+                </div>
+                <div>
+                  <h3>Método de Pago</h3>
+                  <p>Método: Tarjeta de crédito</p>
+                </div>
+                <div>
+                  <h3>Habitaciones a reservar</h3>
+                  <TableContainer>
+                    <Table>
+                      <TableBody>
+                        {cartRooms.length ? (
+                          cartRooms.map((item) => (
+                            <TableRow key={item.room._id}>
+                              <TableCell>
+                                <CardMedia
+                                  style={{
+                                    backgroundColor: '#F2F2F2',
+                                    width: 50,
+                                    height: 40,
+                                  }}
+                                  image="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg"
+                                  title="room"
+                                />
+                              </TableCell>
+                              <TableCell>
+                                <Typography
+                                  style={{
+                                    fontWeight: 500,
+                                    color: '#494949',
+                                    marginBottom: 5,
+                                  }}
+                                >
+                                  {item.room.title}
+                                </Typography>
+                              </TableCell>
+                              <TableCell>
+                                <Typography
+                                  style={{
+                                    fontWeight: 500,
+                                    color: '#494949',
+                                    marginBottom: 5,
+                                  }}
+                                >
+                                  {differenceInDays(
                                     new Date(item.checkOut),
                                     new Date(item.checkIn),
-                                  )}
-                              </Typography>
-                            </TableCell>
-                          </TableRow>
-                        ))
-                      ) : (
-                        <h3>There is not rooms</h3>
-                      )}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-                <div className="card-information__button--prev">
-                  <Button variant="contained" onClick={prevProcess}>
-                    ANTERIOR
-                  </Button>
+                                  )}{' '}
+                                  x $ {item.room.price} = ${' '}
+                                  {item.room.price *
+                                    differenceInDays(
+                                      new Date(item.checkOut),
+                                      new Date(item.checkIn),
+                                    )}
+                                </Typography>
+                              </TableCell>
+                            </TableRow>
+                          ))
+                        ) : (
+                          <h3>There is not rooms</h3>
+                        )}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                  <div className="card-information__button--prev">
+                    <Button variant="contained" onClick={prevProcess}>
+                      ANTERIOR
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <h3>Please book some rooms first...</h3>
+            )}
             <div>
               {cartRooms.length ? (
                 <div>
@@ -450,7 +494,7 @@ const PaymentProcess = () => {
                     <h3 className="resume__title">RESUMEN DE LA RESERVA</h3>
                     <hr />
                     {cartRooms.map((item) => (
-                      <div>
+                      <div key={item.room._id}>
                         <p className="resume__room-title"> {item.room.title}</p>
                         <div className="resume__dates-container">
                           <div>
@@ -531,7 +575,7 @@ const PaymentProcess = () => {
                   </Button>
                 </div>
               ) : (
-                <h3>There is no items </h3>
+                <h3>There is not rooms booked...</h3>
               )}
             </div>
           </div>

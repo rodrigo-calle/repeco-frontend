@@ -58,10 +58,7 @@ const BookingHistory = () => {
                 <tr>
                   <td>#{item._id.slice(3, 6)}</td>
                   <td>{item.room?.title}</td>
-                  <td>
-                    {stringReverse(item.checkIn)}
-                    {/* {item.checkIn.slice(0, 10).replace(/-/g, '/')} */}
-                  </td>
+                  <td>{stringReverse(item.checkIn)}</td>
                   <td>$.{item.room?.price}</td>
                 </tr>
               ))}

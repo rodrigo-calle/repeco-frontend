@@ -47,7 +47,8 @@ const AdminDashboard = () => {
       </section>
       <div className="AdminDashboard__table">
         <div className="AdminDashboard__table__border">
-          <table>
+          { data.length > 0 ? <table>
+
             <thead>
               <tr>
                 <th>Titulo</th>
@@ -96,7 +97,7 @@ const AdminDashboard = () => {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </table> : 'There is no items'}
         </div>
       </div>
     </div>

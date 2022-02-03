@@ -39,7 +39,7 @@ const BookingResume = ({ cartRooms }) => {
             <h3 className="resume__title">RESUMEN DE LA RESERVA</h3>
             <hr />
             {cartRooms.map((item) => (
-              <div>
+              <div key={item.room._id}>
                 <p className="resume__room-title"> {item.room.title}</p>
                 <div className="resume__dates-container">
                   <div>
@@ -86,15 +86,15 @@ const BookingResume = ({ cartRooms }) => {
           <div className="booking-container__price price-container__background">
             <div className="price__subtotal">
               <p>Sub Total</p>
-              <p>S/ {calcSubTotal()}</p>
+              <p>$ {calcSubTotal()}</p>
             </div>
             <div className="price__igv">
               <p>IGV(18%)</p>
-              <p>S/ {calcIgv()}</p>
+              <p>$ {calcIgv()}</p>
             </div>
             <div className="price__total">
               <p>TOTAL</p>
-              <p>S/ {calcTotal()}</p>
+              <p>$ {calcTotal()}</p>
             </div>
           </div>
           <Button
@@ -107,7 +107,7 @@ const BookingResume = ({ cartRooms }) => {
           </Button>
         </div>
       ) : (
-        <h3>There is no items </h3>
+        'Loading...'
       )}
     </div>
   );

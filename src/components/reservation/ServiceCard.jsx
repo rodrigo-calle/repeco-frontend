@@ -74,7 +74,7 @@ ServiceCard.propTypes = {
     type: PropTypes.string,
     title: PropTypes.string,
     description: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.string),
+    images: PropTypes.arrayOf(PropTypes.shape({})),
     hotel: PropTypes.shape({
       address: PropTypes.shape({
         street: PropTypes.string,

@@ -128,10 +128,10 @@ const SearchBar = ({ searchFields, setSearchFields }) => {
           </Select>
         </FormControl>
 
-        <button type="submit" className="search__form__submit">
+        {/* <button type="submit" className="search__form__submit">
           <i className="fas fa-search" />
           Buscar
-        </button>
+        </button> */}
       </form>
     </div>
   );

@@ -7,15 +7,16 @@ nav {
     rgba(71, 123, 205, 0.969625350140056) 100%
   );
 }
-.MuiPaper-root{
+.MuiPaper-root {
   margin-top: 27px;
 }
-.MuiPaper-root ul{
+.MuiPaper-root ul {
   margin-top: 8px;
 }
-.user-avatar-btn{
+.user-avatar-btn {
   width: 45px;
   height: 45px;
+  margin-right: 5px;
   border-radius: 50%;
 }
 .nav__container {
@@ -28,11 +29,26 @@ nav {
   align-items: center;
 }
 
+.nav__home {
+  display: flex;
+  align-items: center;
+}
+
+.nav__home__link {
+  color: white;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
 .nav__container__menu {
   display: flex;
   list-style: none;
   align-items: center;
   margin: 0;
+}
+
+.fa-chevron-circle-down {
+  margin-top: 10px;
 }
 
 .nav__container__menu__list {
@@ -48,6 +64,7 @@ nav {
   width: 50px;
   border-radius: 50px;
   align-self: center;
+  margin-right: 15px;
 }
 
 .nav__close-session {
