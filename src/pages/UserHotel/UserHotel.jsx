@@ -27,7 +27,7 @@ const UserHotel = () => {
         setData(payload);
       }
     };
-    getallDataUser();
+    getAllDataUser();
   }, [data]);
 
   return (
