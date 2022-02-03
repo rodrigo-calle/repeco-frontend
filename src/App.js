@@ -1,4 +1,5 @@
 import './App.css';
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -29,6 +30,8 @@ import TokenExpired from './components/verifyAccount/TokenExpired';
 import MenuProfile from './components/menuProfile/MenuProfile';
 import InvoiceDetail from './pages/invoiceDetail/InvoiceDetail';
 import PaymentProcess from './pages/paymentProcess/PaymentProcess';
+import UpdateRoom from './components/UpdateRoom/UpdateRoom';
+import Access from './components/Access/Access';
 import NotFound from './pages/404/NotFound';
 
 const App = () => {
@@ -56,10 +59,18 @@ const App = () => {
             <Route path="/user/account/" element={<Profile />} />
             <Route path="/user/account/edit" element={<ProfileEdit />} />
             <Route path="/userAdmin" element={<UserAdmin />} />
-            <Route path="/userHotel" element={<UserHotel />}>
+            <Route
+              path="/userHotel"
+              element={
+                <Access roleUser="hotel">
+                  <UserHotel />
+                </Access>
+              }
+            >
               <Route index element={<AdminDashboard />} />
               <Route path="stadistics" element={<Stadistics />} />
               <Route path="createroom" element={<CreateRoom />} />
+              <Route path="updateroom/:id" element={<UpdateRoom />} />
             </Route>
             <Route path="/user/activate/:hash" element={<VerifyAccount />} />
             <Route

@@ -1,10 +1,10 @@
-.CreateRoom {
+.UpdateRoom {
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   background-color: #f3f3f3;
 }
 
-.CreateRoom__header {
+.UpdateRoom__header {
   background-color: white;
   padding: 1rem 1rem 1rem 5rem;
   display: flex;
@@ -13,7 +13,7 @@
   align-items: center;
 }
 
-.CreateRoom__form {
+.UpdateRoom__form {
   display: block;
   max-width: 800px;
   margin: 0 auto;
@@ -21,18 +21,18 @@
   padding: 1rem;
 }
 
-.CreateRoom__typeparameter {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.CreateRoom__confirm {
+.UpdateRoom__confirm {
   text-align: center;
   color: #159b9b;
 }
 
+.UpdateRoom__typeparameter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 @media (min-width: 1000px) {
-  .CreateRoom {
+  .UpdateRoom {
     width: 100%;
   }
 }

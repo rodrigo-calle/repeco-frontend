@@ -49,11 +49,39 @@ const postRooms = (datos) => {
   });
 };
 
+const deleteRoomById = (id) => {
+  const token = localStorage.getItem('token');
+  return axios({
+    method: 'delete',
+    url: `${URL_BASE}/api/rooms/`,
+    data: { id },
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+const updateRoom = (datos, id) => {
+  const token = localStorage.getItem('token');
+  return axios({
+    method: 'patch',
+    url: `${URL_BASE}/api/rooms/${id}`,
+    data: datos,
+    headers: {
+      'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 const room = {
   getAllRooms,
   getRoomById,
   getRommsByHotel,
   postRooms,
+  deleteRoomById,
+  updateRoom,
 };
 
 export default room;

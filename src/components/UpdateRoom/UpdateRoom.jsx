@@ -7,10 +7,11 @@ import room from '../../services/room';
 import NumberFormat from 'react-number-format';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import './CreateRoom.css';
+import './UpdateRoom.css';
 import SendIcon from '@mui/icons-material/Send';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
-import aditionalServices from './functions';
+import aditionalServices from '../CreateRoom/functions';
+import { useParams } from 'react-router-dom';
 import Loading from '../loading/loading';
 
 const Input = styled('input')({
@@ -39,7 +40,7 @@ const NumberFormatCustom = forwardRef(function NumberFormatCustom(props, ref) {
   );
 });
 
-const CreateRoom = () => {
+const UpdateRoom = () => {
   const [values, setValues] = useState({
     title: '',
     description: '',
@@ -48,6 +49,8 @@ const CreateRoom = () => {
   });
 
   const [files, setFiles] = useState(null);
+
+  const { id } = useParams();
 
   const handleChangeFiles = (e) => {
     setFiles(e.target.files);
@@ -90,7 +93,8 @@ const CreateRoom = () => {
       formData.append('file', myfile);
     }
     setLoading(true);
-    const result = await room.postRooms(formData);
+    const result = await room.updateRoom(formData, id);
+    console.log(result);
     confirm(result);
   };
 
@@ -104,12 +108,12 @@ const CreateRoom = () => {
   };
 
   return (
-    <div className="CreateRoom">
-      <div className="CreateRoom__header">
-        <h1>Nuevo room</h1>
+    <div className="UpdateRoom">
+      <div className="UpdateRoom__header">
+        <h1>Editar room</h1>
       </div>
-      <form onSubmit={handleSubmit} className="CreateRoom__form" action="">
-        <div className="CreateRoom__typeparameter">
+      <form onSubmit={handleSubmit} className="UpdateRoom__form" action="">
+        <div className="UpdateRoom__typeparameter">
           <TextField
             sx={{ m: 2 }}
             onChange={handleChange}
@@ -209,10 +213,10 @@ const CreateRoom = () => {
         </div>
       </form>
       {created ? (
-        <h3 className="CreateRoom__confirm"> Habitación creada con Exito</h3>
+        <h3 className="UpdateRoom__confirm"> Habitación Actualizada</h3>
       ) : null}
       {loading ? <Loading /> : null}
     </div>
   );
 };
-export default CreateRoom;
+export default UpdateRoom;

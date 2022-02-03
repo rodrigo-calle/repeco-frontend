@@ -78,15 +78,26 @@
   color: #9b156e;
   background-color: transparent;
 }
+
+.AdminDashboard__actions {
+  display: flex;
+}
+
 .AdminDashboard__edit {
-  background-color: #ffe81d;
+  background-color: #ffeb00;
   color: black;
   border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin: 0.2rem 0.2rem;
 }
 .AdminDashboard__delete {
-  background-color: #ff0000;
+  background-color: #d01b1b;
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin: 0.2rem 0.2rem;
 }
 
 .AdminDashboard__table__border {
