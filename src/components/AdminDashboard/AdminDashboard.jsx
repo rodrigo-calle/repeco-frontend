@@ -43,7 +43,7 @@ const AdminDashboard = () => {
       </section>
       <div className="AdminDashboard__table">
         <div className="AdminDashboard__table__border">
-          { data.length > 1 ? <table>
+          { data.length > 0 ? <table>
 
             <thead>
               <tr>

@@ -3,6 +3,7 @@ import './Booking.css';
 import BookingCard from '../../components/BookingCard/BookingCard';
 import BookingResume from '../../components/BookingResume/BookingResume';
 import userService from '../../services/user';
+import LoaderHotel from '../../components/loader/LoaderHotel';
 
 const Booking = () => {
   const [cartRooms, setCartRooms] = useState([]);
@@ -19,10 +20,14 @@ const Booking = () => {
   return (
     <div className="body">
       <h1 className="title">Booking Process</h1>
-      <div className="container">
-        <BookingCard cartRooms={cartRooms} setCartRooms={setCartRooms} />
-        <BookingResume cartRooms={cartRooms} setCartRooms={setCartRooms} />
-      </div>
+      {cartRooms.length > 0 ? (
+        <div className="container">
+          <BookingCard cartRooms={cartRooms} setCartRooms={setCartRooms} />
+          <BookingResume cartRooms={cartRooms} setCartRooms={setCartRooms} />
+        </div>
+      ) : (
+        <LoaderHotel />
+      )}
     </div>
   );
 };

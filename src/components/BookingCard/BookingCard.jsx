@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
+
 import PropTypes from 'prop-types';
 import userService from '../../services/user';
 import './BookingCard.css';
@@ -8,9 +9,10 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
   const handleRemoveCart = async (roomId) => {
     const response = await userService.deleteItemFromUserCart(roomId);
     const data = await response.json();
-
+    console.log(data);
     setCartRooms(data.cart);
   };
+
   return (
     <div>
       <hr />
@@ -25,18 +27,18 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
               />
               <div className="bookingCard__description">
                 <p className="bookingCard__type">
-                  {roomsel.room.hotel.category}
+                  {roomsel?.room?.hotel?.category}
                 </p>
                 <h3 className="bookingCard__title">{roomsel.room.title}</h3>
                 <p className="bookingCard__address">
-                  {roomsel.room.hotel.address.street},{' '}
-                  {roomsel.room.hotel.address.city},{' '}
-                  {roomsel.room.hotel.address.province},{' '}
-                  {roomsel.room.hotel.address.country}.
+                  {roomsel?.room?.hotel?.address?.street},{' '}
+                  {roomsel?.room?.hotel?.address?.city},{' '}
+                  {roomsel?.room?.hotel?.address?.province},{' '}
+                  {roomsel?.room?.hotel?.address?.country}.
                 </p>
 
                 <div className="bookingCard__footer">
-                  {roomsel.room.services.map((service) => (
+                  {roomsel?.room?.services?.map((service) => (
                     <div className="tag__item" key={service._id}>
                       <i className={service.serviceUrl} />
                       <p className="tag__text">{service.serviceName}</p>
@@ -48,7 +50,7 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
                   <button
                     type="button"
                     className="bookingCard__button"
-                    onClick={() => handleRemoveCart(roomsel.room._id)}
+                    onClick={() => handleRemoveCart(roomsel?.room?._id)}
                   >
                     <i className="fa fa-trash" />
                     Eliminar

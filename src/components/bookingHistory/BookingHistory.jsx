@@ -26,14 +26,18 @@ const BookingHistory = () => {
           <table className="booking-container__booking-edit--table">
             <thead>
               <tr className="table-header">
-                <th> N° </th> <th> Descripción </th> <th>Fecha</th>
+                <th> N° </th>
+                <th> Descripción </th>
+                <th>Fecha</th>
                 <th> Costo </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td> #0001 </td> <td> Resumen de la reserva </td>
-                <td> 04/08/20 - 12:34 AM </td> <td> S/. 1200.00</td>
+                <td> #0001 </td>
+                <td> Resumen de la reserva </td>
+                <td> 04/08/20 - 12:34 AM </td>
+                <td> S/. 1200.00</td>
               </tr>
             </tbody>
           </table>

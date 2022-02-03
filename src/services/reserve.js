@@ -13,8 +13,21 @@ const createReserve = (reserve) => {
   return fetch(`${URL_BASE}/api/reserves/`, payload);
 };
 
+const getReservesByHotel = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/reserves/hotel/`, payload);
+};
+
 const reserve = {
   createReserve,
+  getReservesByHotel,
 };
 
 export default reserve;

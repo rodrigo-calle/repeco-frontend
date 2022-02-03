@@ -1,7 +1,6 @@
 // eslint-disable-next-line camelcase
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
-// import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Cloudinary } from '@cloudinary/url-gen';
@@ -9,7 +8,6 @@ import { AdvancedImage } from '@cloudinary/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserFromLocalStorage, logout } from '../../context/actions';
 import { useAppDispatch, useAppState } from '../../context/store';
-import userService from '../../services/user';
 
 import './Navbar.css';
 
@@ -21,8 +19,8 @@ const Navbar = () => {
   const handleCloseSession = () => {
     logout(dispatch);
     navigate('/');
+    setAnchorEl(null);
   };
-  const [client, setClient] = useState({});
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,38 +30,45 @@ const Navbar = () => {
   };
   useEffect(() => {
     getUserFromLocalStorage(dispatch);
-    const getUser = async () => {
-      const res = await userService.getUserProfile();
-      const data = await res.json();
-      setClient(data);
-    };
-    getUser();
   }, []);
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dwat1o60y',
     },
   });
-  const myAvatar = cld.image(client.avatar);
+  const myAvatar = cld.image(user?.avatar);
   return (
     <nav>
       <div className="nav__container">
-        <Link to="/">
-          <img
-            src="https://st2.depositphotos.com/3096625/8799/v/600/depositphotos_87990570-stock-illustration-letter-r-logo-monogram.jpg"
-            alt=""
-            className="nav__container__logo"
-          />
-        </Link>
+        <div className="nav__home">
+          <Link to="/" className="nav__home__link">
+            <img
+              src="https://st2.depositphotos.com/3096625/8799/v/600/depositphotos_87990570-stock-illustration-letter-r-logo-monogram.jpg"
+              alt=""
+              className="nav__container__logo"
+            />
+          </Link>
+          <Link to="/" className="nav__home__link">
+            <p>INICIO</p>
+          </Link>
+          {user?.role === 'hotel' ? (
+            <Link to="/userhotel" className="nav__home__link">
+              <p>ADMIN</p>
+            </Link>
+          ) : (
+            ''
+          )}
+        </div>
         <ul className="nav__container__menu">
           {user ? (
             <div className="nav__container__menu">
               <li className="nav__container__menu__list">
                 <div className="nav__container__menu__list__link">
-                  {`${client.firstName}`}
+                  {`Welcome, ${user.fullName}`}
                 </div>
               </li>
               <li className="nav__container__menu__list">
+                <AdvancedImage className="user-avatar-btn" cldImg={myAvatar} />
                 <IconButton
                   size="small"
                   aria-label="account of current user"
@@ -71,11 +76,9 @@ const Navbar = () => {
                   aria-haspopup="true"
                   onClick={handleMenu}
                   color="inherit"
+                  style={{ verticalAlign: 'top' }}
                 >
-                  <AdvancedImage
-                    className="user-avatar-btn"
-                    cldImg={myAvatar}
-                  />{' '}
+                  <i className="fas fa-chevron-circle-down" />
                   {/* <AccountCircle /> */}
                 </IconButton>
                 <Menu
@@ -101,7 +104,6 @@ const Navbar = () => {
                     Editar Perfil
                   </MenuItem> */}
                   <MenuItem onClick={handleCloseSession}>
-                    {' '}
                     Cerrar Sesión
                   </MenuItem>
                 </Menu>

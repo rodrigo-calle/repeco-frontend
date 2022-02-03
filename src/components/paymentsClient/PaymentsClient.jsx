@@ -31,25 +31,34 @@ const PaymentsClient = () => {
           <table className="payment-container__payment-edit--table">
             <thead>
               <tr>
-                <th> Fecha </th> <th> Estado </th> <th> Monto </th>
+                <th> Fecha </th>
+                <th> Estado </th>
+                <th> Monto </th>
                 <th> Acciones </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td> 10 / 12 / 2021 </td> <td> Generado </td>
-                <td> S / .207 .00 </td> <td> Boleta </td>
+                <td> 10 / 12 / 2021 </td>
+                <td> Generado </td>
+                <td> S / .207 .00 </td>
+                <td> Boleta </td>
               </tr>
               <tr>
-                <td> 10 / 12 / 2021 </td> <td> Generado </td>
-                <td> S / .207 .00 </td> <td> Boleta </td>
+                <td> 10 / 12 / 2021 </td>
+                <td> Generado </td>
+                <td> S / .207 .00 </td>
+                <td> Boleta </td>
               </tr>
               <tr>
-                <td> 10 / 12 / 2021 </td> <td> Generado </td>
-                <td> S / .207 .00 </td> <td> Boleta </td>
+                <td> 10 / 12 / 2021 </td>
+                <td> Generado </td>
+                <td> S / .207 .00 </td>
+                <td> Boleta </td>
               </tr>
               <tr>
-                <td> 10 / 12 / 2021 </td> <td> Generado </td>
+                <td> 10 / 12 / 2021 </td>
+                <td> Generado </td>
                 <td> S / .207 .00 </td>
                 <td> Boleta </td>
               </tr>

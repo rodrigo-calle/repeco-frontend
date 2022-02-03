@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 
 import PropTypes from 'prop-types';
@@ -27,7 +28,7 @@ const ServiceList = ({ roomList, searchFields }) => {
   return (
     <section className="rooms-container">
       {filterRooms.map((room) => (
-        <ServiceCard room={room} key={room.id} searchFields={searchFields} />
+        <ServiceCard room={room} key={room._id} searchFields={searchFields} />
       ))}
     </section>
   );

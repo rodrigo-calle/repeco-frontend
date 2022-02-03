@@ -1,4 +1,6 @@
-import { useOutletContext } from 'react-router-dom';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-param-reassign */
+import { useEffect, useState } from 'react';
 import './Stadistics.css';
 import {
   BarChart,
@@ -9,24 +11,26 @@ import {
   Tooltip,
   Legend,
 } from 'recharts';
+import reserveService from '../../services/reserve';
 
 const Stadistics = () => {
-  const [data] = useOutletContext();
+  const [reserves, setReserves] = useState([]);
 
-  const fakeData = [
-    { name: 'Enero', uv: 400, pv: 2400, amt: 2400 },
-    { name: 'Febrero', uv: 500, pv: 2400, amt: 2400 },
-    { name: 'Marzo', uv: 300, pv: 2400, amt: 2400 },
-    { name: 'Abril', uv: 450, pv: 2400, amt: 2400 },
-  ];
+  useEffect(async () => {
+    const response = await reserveService.getReservesByHotel();
+    const reservesData = await response.json();
+    console.log('reservas', reservesData);
+    setReserves(reservesData);
+  }, []);
+
   return (
     <div className="Stadistics">
       <div className="Stadistics__header">
-        <h1>Sistema del Hotel {data}</h1>
+        <h1>Sistema del Hotel</h1>
       </div>
       <div className="">Dinero ingresado por mes</div>
-      <BarChart width={600} height={300} data={fakeData}>
-        <XAxis dataKey="name" stroke="#8884d8" />
+      <BarChart width={600} height={300} data={reserves}>
+        <XAxis dataKey="title" stroke="#8884d8" />
         <YAxis />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
         <Legend
@@ -41,7 +45,7 @@ const Stadistics = () => {
           }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Bar dataKey="uv" fill="#8884d8" barSize={30} />
+        <Bar dataKey="count" fill="#8884d8" barSize={30} />
       </BarChart>
     </div>
   );
