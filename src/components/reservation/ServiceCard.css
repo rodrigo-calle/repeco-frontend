@@ -2,13 +2,15 @@
   background-color: #f3f3f3;
   margin-bottom: 1rem;
   border-radius: 2rem;
-  min-width: 20rem;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
 }
 
 .card__body {
   padding: 0 1rem;
+  margin-bottom: 60px;
 }
 
 .card__body > h3 {
@@ -18,7 +20,7 @@
 
 .card__image {
   width: 100%;
-  height: 100%;
+  height: 250px;
   object-fit: cover;
   border-radius: 2rem 2rem 0 0;
 }
@@ -45,9 +47,10 @@
 }
 
 .card__footer {
+  align-self: end;
   padding: 1rem;
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  right: 0;
 }
 
 .card__button {
@@ -66,12 +69,4 @@
 }
 
 @media screen and (min-width: 600px) {
-  .card {
-    flex-direction: column;
-    min-width: 20rem;
-    position: relative;
-  }
-  .card__body {
-    padding: 0 1rem;
-  }
 }
