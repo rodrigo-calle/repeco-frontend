@@ -1,5 +1,5 @@
 // eslint-disable-next-line camelcase
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import IconButton from '@mui/material/IconButton';
 // import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,7 +9,7 @@ import { AdvancedImage } from '@cloudinary/react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getUserFromLocalStorage, logout } from '../../context/actions';
 import { useAppDispatch, useAppState } from '../../context/store';
-import userService from '../../services/user';
+// import userService from '../../services/user';
 
 import './Navbar.css';
 
@@ -22,7 +22,7 @@ const Navbar = () => {
     logout(dispatch);
     navigate('/');
   };
-  const [client, setClient] = useState({});
+  // const [client, setClient] = useState({});
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,19 +32,14 @@ const Navbar = () => {
   };
   useEffect(() => {
     getUserFromLocalStorage(dispatch);
-    const getUser = async () => {
-      const res = await userService.getUserProfile();
-      const data = await res.json();
-      setClient(data);
-    };
-    getUser();
   }, []);
+
   const cld = new Cloudinary({
     cloud: {
       cloudName: 'dwat1o60y',
     },
   });
-  const myAvatar = cld.image(client.avatar);
+  const myAvatar = cld.image(user?.avatar);
   return (
     <nav>
       <div className="nav__container">
@@ -60,7 +55,7 @@ const Navbar = () => {
             <div className="nav__container__menu">
               <li className="nav__container__menu__list">
                 <div className="nav__container__menu__list__link">
-                  {`${client.firstName}`}
+                  {`${user.fullName}`}
                 </div>
               </li>
               <li className="nav__container__menu__list">

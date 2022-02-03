@@ -105,6 +105,30 @@ const getUserProfile = () => {
   return fetch(`${URL_BASE}/api/users/profile`, payload);
 };
 
+const getUserInvoices = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/invoices/user-invoices`, payload);
+};
+
+const getUserReserves = () => {
+  const token = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/reserves/user/reserves`, payload);
+};
+
 const confirmAccount = (hash) => {
   const payload = {
     method: 'POST',
@@ -113,6 +137,17 @@ const confirmAccount = (hash) => {
     },
   };
   return fetch(`${URL_BASE}/auth/local/confirm-account/${hash}`, payload);
+};
+
+const getInvoiceUserById = (id) => {
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/invoices/user/${id}`, payload);
 };
 
 const user = {
@@ -125,6 +160,9 @@ const user = {
   deleteCartUser,
   createUser,
   confirmAccount,
+  getUserInvoices,
+  getUserReserves,
+  getInvoiceUserById,
 };
 
 export default user;
