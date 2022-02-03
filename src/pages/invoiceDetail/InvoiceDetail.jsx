@@ -1,55 +1,130 @@
-import React from 'react';
+/* eslint-disable no-underscore-dangle */
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import userService from '../../services/user';
 import './InvoiceDetail.css';
 
 const InvoiceDetail = () => {
+  const [invoice, setInvoice] = useState({});
+  // const [loading, setLoading] = useState(false);
+  const { id } = useParams();
+  const stringReverse = (string) => {
+    return string
+      .slice(0, 10)
+      .replace(/-/g, '/')
+      .split('/')
+      .reverse()
+      .join('/');
+  };
+
+  const getInvoice = async () => {
+    const response = await userService.getInvoiceUserById(id);
+    if (response.ok) {
+      const data = await response.json();
+      setInvoice({
+        number: data.getInvoice,
+        date: stringReverse(data.createdAt),
+        romSize: data.rooms.length,
+        userFirstName: data.user.firstName,
+        userLastName: data.user.lastName,
+        email: data.user.email,
+        igv: data.taxBase,
+        subtotal: data.tax,
+        total: data.value,
+        fullName: `${data.user.firstName} ${data.user.lastName}`,
+      });
+    }
+  };
+
+  useEffect(() => {
+    getInvoice();
+  });
+
+  const print = () => {
+    window.print();
+  };
+
   return (
-    <div className="invoice-detail__container">
-      <div className="invoice-header">
-        <div className="invoice-logo">
-          <img src="" alt="" />
-        </div>
-        <div className="invoice-address">
-          <p>Address</p>
-        </div>
-      </div>
-      <div className="invoice-detail">
-        <p>Nombre del Hotel: Marriot</p>
-        <p>Número de factura: 123456</p>
-        <p>Fecha: 12/12/12</p>
-      </div>
-      <div className="invoice-table">
-        <table>
-          <tr>
-            <th>Descripción</th>
-            <th>Sub Total</th>
-            <th>IGV</th>
-            <th>Total</th>
+    <>
+      <div className="invoice-box" id="invoice-card">
+        <table cellPadding="0" cellSpacing="0">
+          <tr className="top">
+            <td colSpan="2">
+              <table>
+                <tr>
+                  <td className="title">
+                    <img
+                      src="/image/repe-logo.png"
+                      className="logo-invoice"
+                      alt="logo"
+                    />
+                  </td>
+
+                  <td>
+                    {/* Invoice #{invoice?.bill} */}
+                    Invoice #{invoice.number}
+                    <br />
+                    Creado: {invoice.date}
+                    <br />
+                    Entregado: {invoice.date}
+                  </td>
+                </tr>
+              </table>
+            </td>
           </tr>
-          <tr>
-            <td>2 habitaciones</td>
-            <td>123</td>
-            <td>23</td>
-            <td>146</td>
+
+          <tr className="information">
+            <td colSpan="2">
+              <table>
+                <tr>
+                  <td>
+                    Repeco.
+                    <br />
+                    12345 Cercado de Lima
+                    <br />
+                    Lima, Perú
+                  </td>
+
+                  <td>
+                    <br />
+                    {invoice.fullName}
+                    <br />
+                    {invoice.email}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr className="heading">
+            <td>Description</td>
+
+            <td>Price</td>
+          </tr>
+
+          <tr className="item">
+            <td>Número de cuartos ({invoice.romSize}) - subtotal</td>
+            <td>$ {invoice.subtotal}</td>
+          </tr>
+          <tr className="item">
+            <td>IGV</td>
+
+            <td>$ {invoice.igv}</td>
+          </tr>
+          <tr className="total">
+            <td />
+
+            <td>Total: $ {invoice.total} </td>
           </tr>
         </table>
       </div>
-      <div className="invoice-message">
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore
-          itaque eos, at facilis culpa vel veritatis provident doloribus iure
-          veniam magnam, dolores hic illum rem harum reiciendis necessitatibus,
-          ratione unde!
-        </p>
+      <div className="container-print-btn">
+        {' '}
+        <button className="print-btn" type="button" onClick={print}>
+          Imprimir
+        </button>
       </div>
-      <div className="invoice-footer">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum a
-          voluptate ex inventore nesciunt ullam molestias cumque pariatur nisi
-          iste cum consectetur natus aliquam placeat aperiam, repellendus aut
-          sit. Neque.
-        </p>
-      </div>
-    </div>
+    </>
   );
 };
 
