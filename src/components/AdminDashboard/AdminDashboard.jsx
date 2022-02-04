@@ -18,15 +18,13 @@ const AdminDashboard = () => {
     <div className="AdminDashboard">
       <header className="AdminDashboard__header">
         <h1>System Admin</h1>
-        <form action="">
-          <input type="text" placeholder="Buscar usuarios" />
-        </form>
+
       </header>
       <section className="AdminDashboard__accions">
         <div className="AdminDashboard__addUser">
           <Link className="button" to="createroom">
-            {' '}
-            <i className="fas fa-plus" /> Nuevo Cuarto{' '}
+
+            <i className="fas fa-plus" /> Nuevo Cuarto
           </Link>
         </div>
         <div className="AdminDashboard__infocrud">

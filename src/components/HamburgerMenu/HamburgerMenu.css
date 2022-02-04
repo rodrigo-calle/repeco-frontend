@@ -1,7 +1,6 @@
 .HamburgerMenu {
-  background-color: #9b156e;
   width: 300px;
-  height: 100vh;
+  height: 110vh;
   transition: all 1s;
   padding: 1rem;
   box-sizing: border-box;
@@ -9,6 +8,11 @@
   color: white;
   font-family: 'Ubuntu Mono', monospace;
   z-index: 3;
+  margin: 0 auto;
+}
+
+.HamburgerMenu__h1 {
+  text-align: center;
 }
 .HamburgerMenu li {
   display: block;
@@ -46,7 +50,7 @@
   position: absolute;
   top: 0;
   right: -60px;
-  background: #9b156e;
+
   border: none;
   color: white;
 }

@@ -18,7 +18,7 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
       <hr />
       {cartRooms.length ? (
         cartRooms.map((roomsel) => (
-          <div key={roomsel.room._id}>
+          <div key={roomsel?.room?._id}>
             <div className="bookingCard">
               <img
                 src="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg"
@@ -29,7 +29,7 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
                 <p className="bookingCard__type">
                   {roomsel?.room?.hotel?.category}
                 </p>
-                <h3 className="bookingCard__title">{roomsel.room.title}</h3>
+                <h3 className="bookingCard__title">{roomsel?.room?.title}</h3>
                 <p className="bookingCard__address">
                   {roomsel?.room?.hotel?.address?.street},{' '}
                   {roomsel?.room?.hotel?.address?.city},{' '}

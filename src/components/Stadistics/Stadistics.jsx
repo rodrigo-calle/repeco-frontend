@@ -28,8 +28,15 @@ const Stadistics = () => {
       <div className="Stadistics__header">
         <h1>Sistema del Hotel</h1>
       </div>
-      <div className="">Dinero ingresado por mes</div>
-      <BarChart width={600} height={300} data={reserves}>
+      <div className="stadistic__container">
+        Conteo de reservas por habitación
+      </div>
+      <BarChart
+        width={1200}
+        height={400}
+        data={reserves}
+        style={{ margin: '0 auto' }}
+      >
         <XAxis dataKey="title" stroke="#8884d8" />
         <YAxis />
         <Tooltip wrapperStyle={{ width: 100, backgroundColor: '#ccc' }} />
@@ -45,7 +52,7 @@ const Stadistics = () => {
           }}
         />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-        <Bar dataKey="count" fill="#8884d8" barSize={30} />
+        <Bar dataKey="count" fill="#8884d8" barSize={40} />
       </BarChart>
     </div>
   );

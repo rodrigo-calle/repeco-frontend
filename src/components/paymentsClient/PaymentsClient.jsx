@@ -64,7 +64,7 @@ const PaymentsClient = () => {
               {client?.map((item) => (
                 <tr key={item._id}>
                   <td>{stringReverse(item.createdAt)}</td>
-                  <td> {item.rooms?.map((room) => room.title)} </td>
+                  <td> {item.rooms?.map((room) => `${room.title}. `)} </td>
                   <td> {`$. ${item.value}`} </td>
                   <td>
                     <Link to={`/invoice/${item._id}`}>Detalle</Link>

@@ -40,6 +40,12 @@ nav {
   margin-right: 10px;
 }
 
+.nav__home__link:hover {
+  color: #9b156e;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .nav__container__menu {
   display: flex;
   list-style: none;
@@ -62,7 +68,6 @@ nav {
 
 .nav__container__logo {
   width: 50px;
-  border-radius: 50px;
   align-self: center;
   margin-right: 15px;
 }
