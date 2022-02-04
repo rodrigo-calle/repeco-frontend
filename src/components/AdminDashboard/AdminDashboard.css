@@ -8,7 +8,7 @@
   background-color: white;
   padding: 1rem 1rem 1rem 5rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -49,6 +49,7 @@
   border-radius: 2rem;
   font-size: 1.5rem;
   padding: 1rem 2rem;
+  text-decoration: none;
 }
 
 .AdminDashboard__iconuser {
@@ -90,6 +91,9 @@
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   margin: 0.2rem 0.2rem;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
 }
 .AdminDashboard__delete {
   background-color: #d01b1b;
@@ -98,6 +102,7 @@
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   margin: 0.2rem 0.2rem;
+  cursor: pointer;
 }
 
 .AdminDashboard__table__border {

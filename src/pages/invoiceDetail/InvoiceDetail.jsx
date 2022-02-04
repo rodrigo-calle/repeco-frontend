@@ -28,8 +28,8 @@ const InvoiceDetail = () => {
         userFirstName: data.user.firstName,
         userLastName: data.user.lastName,
         email: data.user.email,
-        igv: data.taxBase,
-        subtotal: data.tax,
+        igv: data.tax,
+        subtotal: data.taxBase,
         total: data.value,
         fullName: `${data.user.firstName} ${data.user.lastName}`,
       });

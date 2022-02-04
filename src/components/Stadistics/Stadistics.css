@@ -13,6 +13,13 @@
   align-items: center;
 }
 
+.stadistic__container {
+  text-align: center;
+  padding: 30px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 @media (min-width: 1000px) {
   .Stadistics {
     width: 100%;

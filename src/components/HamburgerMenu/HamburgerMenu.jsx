@@ -19,7 +19,7 @@ const HamburgerMenu = ({ menu }) => {
 
   return (
     <div className={style}>
-      <h1>REPECO</h1>
+      <h1 className="HamburgerMenu__h1">REPECO</h1>
       <ul>
         {menu?.map((link) => (
           <li className="HamburgerMenu__link" key={link.title}>

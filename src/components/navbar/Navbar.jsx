@@ -44,8 +44,8 @@ const Navbar = () => {
         <div className="nav__home">
           <Link to="/" className="nav__home__link">
             <img
-              src="https://st2.depositphotos.com/3096625/8799/v/600/depositphotos_87990570-stock-illustration-letter-r-logo-monogram.jpg"
-              alt=""
+              src="./logo-Repeco.png"
+              alt="Logo"
               className="nav__container__logo"
             />
           </Link>

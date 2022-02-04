@@ -7,6 +7,10 @@
   margin-top: 2rem;
 }
 
+.modal_warning {
+  color: white;
+}
+
 .payment-method-container {
   display: grid;
   grid-template-columns: 1fr;

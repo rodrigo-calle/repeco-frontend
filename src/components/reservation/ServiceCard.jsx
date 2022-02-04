@@ -43,11 +43,12 @@ const ServiceCard = ({ room, searchFields }) => {
         <div className="card__services">
           <p>Servicios Incluidos:</p>
           <ul>
-            {room.services?.map((service) => (
+            {room?.services?.slice(0,3).map((service) => (
               <li key={service.serviceUrl}>
                 <i className={service.serviceUrl} /> {service.serviceName}
               </li>
             ))}
+            y más...
           </ul>
         </div>
         <p className="card__addres">

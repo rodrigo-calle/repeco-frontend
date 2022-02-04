@@ -71,6 +71,10 @@ const PaymentProcess = () => {
   const [user, setUser] = useState({});
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [errorState, setErrorState] = useState({
+    state: false,
+    message: '',
+  });
 
   const calcSubTotal = () => {
     const result = cartRooms
@@ -175,7 +179,7 @@ const PaymentProcess = () => {
       name: creditCard.name,
       lastName: creditCard.lastName,
       description: 'Room Payment',
-      currency: 'COP',
+      currency: 'USD',
       ip,
       taxBase: calcSubTotal(),
       tax: calcIgv(),
@@ -189,7 +193,13 @@ const PaymentProcess = () => {
 
     if (response.ok) {
       setOpen(false);
-      navigate('/');
+      navigate('/user/account/payment');
+    } else {
+      setOpen(false);
+      setErrorState({
+        state: true,
+        message: 'Ocurrió un error en el pago, por favor inténtelo más tarde',
+      });
     }
   };
 
@@ -237,6 +247,9 @@ const PaymentProcess = () => {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Procesando pago...
           </Typography>
+          {errorState.state ? (
+            <span className="modal_warning">{errorState.message}</span>
+          ) : null}
           <LoaderHotel widthLoader="100%" heightLoader="250px" />
         </div>
       </Modal>
@@ -431,10 +444,10 @@ const PaymentProcess = () => {
                                 <CardMedia
                                   style={{
                                     backgroundColor: '#F2F2F2',
-                                    width: 50,
-                                    height: 40,
+                                    width: 100,
+                                    height: 55,
                                   }}
-                                  image="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg"
+                                  image={item.room.images[0].imageName}
                                   title="room"
                                 />
                               </TableCell>

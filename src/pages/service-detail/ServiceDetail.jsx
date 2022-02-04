@@ -225,13 +225,13 @@ const ServiceDetail = () => {
           {valueImage === 'first' ? (
             <img
               className="header-detail__main-image"
-              src="https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg"
+              src={room?.images[0]?.imageName}
               alt=""
             />
           ) : (
             <img
               className="header-detail__main-image"
-              src="https://cdna.artstation.com/p/assets/images/images/014/081/626/large/berktan-hatiboglu-modern-render1.jpg?1542377257"
+              src={room?.images[1]?.imageName}
               alt=""
             />
           )}
@@ -243,7 +243,7 @@ const ServiceDetail = () => {
               value="first"
               onClick={handleClickImages}
               style={{
-                backgroundImage: `url(https://static01.nyt.com/images/2019/03/24/travel/24trending-shophotels1/24trending-shophotels1-superJumbo.jpg)`,
+                backgroundImage: `url(${room?.images[0]?.imageName})`,
                 backgroundSize: '100% 100%',
               }}
             />
@@ -254,7 +254,7 @@ const ServiceDetail = () => {
               value="second"
               onClick={handleClickImages}
               style={{
-                backgroundImage: `url(https://cdna.artstation.com/p/assets/images/images/014/081/626/large/berktan-hatiboglu-modern-render1.jpg?1542377257)`,
+                backgroundImage: `url(${room?.images[1]?.imageName})`,
                 backgroundSize: '100% 100%',
               }}
             />

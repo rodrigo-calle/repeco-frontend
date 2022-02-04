@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './BookingResume.css';
-import { format } from 'date-fns';
+import { differenceInDays, format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { es } from 'date-fns/locale';
 
@@ -11,20 +11,24 @@ const BookingResume = ({ cartRooms }) => {
   const navigate = useNavigate();
   const calcSubTotal = () => {
     const result = cartRooms
-      .map((cart) => cart.room.price)
+      .map(
+        (cart) =>
+          cart.room.price *
+          differenceInDays(new Date(cart.checkOut), new Date(cart.checkIn)),
+      )
       .reduce((prev, next) => prev + next);
-    return Number(result);
+    return result;
   };
 
   const calcIgv = () => {
     const subTotal = calcSubTotal();
     const igv = 0.18 * subTotal;
-    return Number(igv).toFixed(2);
+    return igv.toFixed(2).toString();
   };
 
   const calcTotal = () => {
     const result = Number(calcSubTotal()) + Number(calcIgv());
-    return result.toFixed(2);
+    return result.toFixed(2).toString();
   };
 
   const handleClick = () => {
@@ -39,14 +43,14 @@ const BookingResume = ({ cartRooms }) => {
             <h3 className="resume__title">RESUMEN DE LA RESERVA</h3>
             <hr />
             {cartRooms.map((item) => (
-              <div key={item.room._id}>
-                <p className="resume__room-title"> {item.room.title}</p>
+              <div key={item?.room?._id}>
+                <p className="resume__room-title"> {item?.room?.title}</p>
                 <div className="resume__dates-container">
                   <div>
                     <p className="resume__date-header">Entrada</p>
                     <p className="resume__date">
                       {format(
-                        new Date(Date.parse(item.checkIn)),
+                        new Date(Date.parse(item?.checkIn)),
                         'EEE, dd-MM-yyyy',
                         { locale: es },
                       )}
@@ -57,7 +61,7 @@ const BookingResume = ({ cartRooms }) => {
                     <p className="resume__date-header">Salida</p>
                     <p className="resume__date">
                       {format(
-                        new Date(Date.parse(item.checkOut)),
+                        new Date(Date.parse(item?.checkOut)),
                         'EEE, dd-MM-yyyy',
                         { locale: es },
                       )}

@@ -20,6 +20,7 @@ const Booking = () => {
   return (
     <div className="body">
       <h1 className="title">Booking Process</h1>
+      {console.log(cartRooms)}
       {cartRooms.length > 0 ? (
         <div className="container">
           <BookingCard cartRooms={cartRooms} setCartRooms={setCartRooms} />
