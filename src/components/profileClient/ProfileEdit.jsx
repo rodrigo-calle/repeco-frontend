@@ -50,7 +50,6 @@ const ProfileEdit = () => {
     setLoading(true);
     showUser();
     setLoading(false);
-    // console.log(currentUser);
   }, [token]);
 
   const handleChange = (e) => {
@@ -59,7 +58,6 @@ const ProfileEdit = () => {
       ...prev,
       [name]: value,
     }));
-    // console.log(dataUser);
   };
 
   const handleSubmit = async (e) => {

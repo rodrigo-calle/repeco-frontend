@@ -94,9 +94,9 @@ const ServiceDetail = () => {
       searchFields.checkIn,
       searchFields.checkOut,
     );
-    if (response.status === 412) {
-      console.log('lastname failed');
-    }
+    // if (response.status === 412) {
+    //   console.log('lastname failed');
+    // }
 
     if (response.ok) {
       navigate('/booking');

@@ -25,7 +25,6 @@ const Profile = () => {
     getUser();
     setLoading(false);
   }, []);
-  // console.log(client.firstName);
   if (loading) {
     return (
       <div>

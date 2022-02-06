@@ -19,7 +19,6 @@ const Stadistics = () => {
   useEffect(async () => {
     const response = await reserveService.getReservesByHotel();
     const reservesData = await response.json();
-    console.log('reservas', reservesData);
     setReserves(reservesData);
   }, []);
 

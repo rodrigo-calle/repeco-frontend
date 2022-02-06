@@ -9,7 +9,6 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
   const handleRemoveCart = async (roomId) => {
     const response = await userService.deleteItemFromUserCart(roomId);
     const data = await response.json();
-    console.log(data);
     setCartRooms(data.cart);
   };
 
