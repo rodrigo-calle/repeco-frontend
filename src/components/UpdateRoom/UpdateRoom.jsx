@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useState, forwardRef } from 'react';
+import { useState, forwardRef, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -50,13 +50,50 @@ const UpdateRoom = () => {
 
   const [files, setFiles] = useState(null);
 
+  // no creo que sea la mejor solucion al problema de la inmutabilidad pero funciona
+  const initialService = JSON.parse(JSON.stringify(aditionalServices));
+
+  const [services, setServices] = useState(initialService);
+
   const { id } = useParams();
+
+  useEffect(() => {
+    const getDataUserById = async () => {
+      const response = await room.getRoomById(id);
+      const payload = await response.json();
+      if (response.ok) {
+        setValues({
+          title: payload.title,
+          description: payload.description,
+          capacity: payload.capacity,
+          price: payload.price,
+        });
+        payload.services.forEach((acData) => {
+          const change = services.find(
+            (service) => service.serviceName === acData.serviceName,
+          );
+          const index = services.indexOf(change);
+          change.isSelected = true;
+          const newArr = services.map((elem, i) =>
+            index === i ? change : elem,
+          );
+          setServices(newArr);
+        });
+      }
+    };
+
+    getDataUserById();
+    // return () => {
+    //   console.log(aditionalServices);
+    //   alert('hola mundo');
+    // };
+  }, []);
+
+  // console.log(actualData.services);
 
   const handleChangeFiles = (e) => {
     setFiles(e.target.files);
   };
-
-  const [services, setServices] = useState(aditionalServices);
 
   const handleCheckboxChange = (index) => {
     const change = services.find((service, i) => i === index);

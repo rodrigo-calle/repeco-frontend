@@ -12,6 +12,7 @@ import SendIcon from '@mui/icons-material/Send';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import aditionalServices from './functions';
 import Loading from '../loading/loading';
+import { useNavigate, UseNavigate } from 'react-router-dom';
 
 const Input = styled('input')({
   display: 'none',
@@ -40,6 +41,8 @@ const NumberFormatCustom = forwardRef(function NumberFormatCustom(props, ref) {
 });
 
 const CreateRoom = () => {
+  const Navigate = useNavigate();
+
   const [values, setValues] = useState({
     title: '',
     description: '',
@@ -97,6 +100,7 @@ const CreateRoom = () => {
   const confirm = (result) => {
     if (result.statusText === 'Created') {
       setCreated(true);
+      Navigate('/userhotel');
       setLoading(false);
     } else {
       setCreated(false);
