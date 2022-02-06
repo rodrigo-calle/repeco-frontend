@@ -44,7 +44,7 @@ const Navbar = () => {
         <div className="nav__home">
           <Link to="/" className="nav__home__link">
             <img
-              src="./logo-Repeco.png"
+              src="/logo-Repeco.png"
               alt="Logo"
               className="nav__container__logo"
             />

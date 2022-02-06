@@ -35,10 +35,10 @@
   width: 44%;
   margin: 0 10px;
   height: 135px;
-  border: 1px solid #555;
   outline: none;
   appearance: none;
   cursor: pointer;
+  object-fit: cover;
   box-shadow: 0 0 2px #000;
   -webkit-transition: all 0.7s ease-in-out;
   -moz-transition: all 0.7s ease-in-out;
@@ -55,9 +55,8 @@
 .header-detail__main-image {
   width: 100%;
   margin: 10px 0;
-  border: 1px solid #222;
   box-shadow: 0 0 5px #000;
-  object-fit: fill;
+  object-fit: cover;
 }
 
 .container-detail {
