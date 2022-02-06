@@ -84,7 +84,8 @@
 /** RTL **/
 .invoice-box.rtl {
   direction: rtl;
-  font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+  font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial,
+    sans-serif;
 }
 
 .invoice-box.rtl table {
@@ -94,18 +95,17 @@
 .invoice-box.rtl table tr td:nth-child(2) {
   text-align: left;
 }
-.logo-invoice{
-  width: 100%;
+.logo-invoice {
   max-width: 210px;
-  height: 60px;
+  height: auto;
 }
-.container-print-btn{
+.container-print-btn {
   margin: 0px auto;
   width: 100%;
   text-align: center;
   margin-top: 35px;
 }
-.container-print-btn .print-btn{
+.container-print-btn .print-btn {
   width: 50%;
   margin: 0px auto;
   color: #f3f3f3;

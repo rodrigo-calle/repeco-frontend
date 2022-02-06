@@ -75,7 +75,7 @@ const ProfileEdit = () => {
       formData.append('file', avatar);
 
       const result = await axios.post(
-        'http://localhost:8080/api/uploads/file',
+        'https://repeco-dev-api.herokuapp.com/api/uploads/file',
         formData,
       );
       values.avatar = result.data.public_id;

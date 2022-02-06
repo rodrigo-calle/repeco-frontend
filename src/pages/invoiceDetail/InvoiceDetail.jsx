@@ -52,9 +52,9 @@ const InvoiceDetail = () => {
             <td colSpan="2">
               <table>
                 <tr>
-                  <td className="title">
+                  <td>
                     <img
-                      src="/image/repe-logo.png"
+                      src="/image/presentacion-repeco.png"
                       className="logo-invoice"
                       alt="logo"
                     />
