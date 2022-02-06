@@ -13,7 +13,6 @@ const PaymentsClient = () => {
     if (response.ok) {
       const data = await response.json();
       setClient(data);
-      // console.log(client);
     }
   };
   useEffect(() => {

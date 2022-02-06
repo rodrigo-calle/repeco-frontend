@@ -214,7 +214,12 @@ const PaymentProcess = () => {
       .then((res) => {
         setIp(res.data.ip);
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        setErrorState((prev) => ({
+          ...prev,
+          message: error.message,
+        })),
+      );
 
     const response = await userService.getUserProfile();
     const data = await response.json();
