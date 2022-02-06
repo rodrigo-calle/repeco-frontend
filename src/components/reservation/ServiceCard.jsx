@@ -43,7 +43,7 @@ const ServiceCard = ({ room, searchFields }) => {
         <div className="card__services">
           <p>Servicios Incluidos:</p>
           <ul>
-            {room?.services?.slice(0,3).map((service) => (
+            {room?.services?.slice(0, 3).map((service) => (
               <li key={service.serviceUrl}>
                 <i className={service.serviceUrl} /> {service.serviceName}
               </li>
@@ -62,7 +62,7 @@ const ServiceCard = ({ room, searchFields }) => {
           className="card__button"
           onClick={() => handleClick(room._id)}
         >
-          Go to Detail
+          Detalles
         </button>
       </div>
     </div>
