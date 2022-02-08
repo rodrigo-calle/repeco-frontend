@@ -430,7 +430,8 @@ const PaymentProcess = () => {
                 <div>
                   <h3>Datos del Cliente</h3>
                   <p>
-                    <span>Nombre completo: </span> Luis Baldeon
+                    <span>Nombre completo: </span>
+                    {` ${user.firstName} ${user.lastName}`}
                   </p>
                 </div>
                 <div>
