@@ -50,7 +50,7 @@
   position: absolute;
   top: 0;
   right: -60px;
-
+  padding: 6px;
   border: none;
   color: white;
 }
