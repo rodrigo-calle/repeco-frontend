@@ -15,12 +15,13 @@ const BookingCard = ({ cartRooms, setCartRooms }) => {
   return (
     <div>
       <hr />
+
       {cartRooms.length ? (
         cartRooms.map((roomsel) => (
           <div key={roomsel?.room?._id}>
             <div className="bookingCard">
               <img
-                src="https://definicion.de/wp-content/uploads/2019/12/habitacion.jpg"
+                src={roomsel?.room?.images[0]?.imageName}
                 alt=""
                 className="bookingCard__image"
               />
